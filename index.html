@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>PhysicsAI 5054 | Cambridge O Level Physics</title>
+<title>Physics with Mr Nabeel | PhysicsAI 5054</title>
 
 <style>
 
@@ -28,7 +28,7 @@ body {
 /* NAVIGATION */
 
 nav {
-    background: rgba(255,255,255,0.96);
+    background: rgba(255,255,255,0.97);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid #e5eaf2;
     position: sticky;
@@ -74,15 +74,15 @@ nav a:hover {
         radial-gradient(circle at 10% 80%, rgba(76,201,240,0.12), transparent 30%),
         linear-gradient(135deg, #ffffff, #eef5ff);
 
-    padding: 90px 25px 100px;
+    padding: 80px 25px 100px;
 }
 
 .hero-content {
     max-width: 1200px;
     margin: auto;
     display: grid;
-    grid-template-columns: 1.3fr 0.7fr;
-    gap: 60px;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 70px;
     align-items: center;
 }
 
@@ -98,7 +98,7 @@ nav a:hover {
 }
 
 .hero h1 {
-    font-size: clamp(48px, 7vw, 82px);
+    font-size: clamp(48px, 7vw, 78px);
     line-height: 1;
     letter-spacing: -3px;
     color: #14213d;
@@ -109,10 +109,17 @@ nav a:hover {
     color: #2575fc;
 }
 
+.hero-subtitle {
+    font-size: 25px;
+    font-weight: 700;
+    color: #173b8f;
+    margin-bottom: 18px;
+}
+
 .hero-text {
-    font-size: 20px;
+    font-size: 19px;
     color: #5d6b82;
-    max-width: 650px;
+    max-width: 680px;
     margin-bottom: 30px;
 }
 
@@ -151,30 +158,47 @@ nav a:hover {
     background: #f0f6ff;
 }
 
-/* HERO VISUAL */
+/* AVATAR */
 
-.physics-visual {
+.avatar-card {
     background: white;
-    border-radius: 25px;
-    padding: 40px;
+    border-radius: 28px;
+    padding: 30px;
     box-shadow: 0 20px 60px rgba(36,67,110,0.12);
     border: 1px solid #e5ebf4;
     text-align: center;
 }
 
-.atom {
-    font-size: 90px;
-    margin-bottom: 15px;
+.avatar-container {
+    width: 270px;
+    height: 270px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: linear-gradient(135deg, #e8f1ff, #dcecff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.physics-visual h3 {
+.avatar-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.avatar-placeholder {
+    font-size: 100px;
+}
+
+.avatar-card h3 {
     color: #173b8f;
-    font-size: 25px;
+    font-size: 26px;
 }
 
-.physics-visual p {
+.avatar-card p {
     color: #718096;
-    margin-top: 8px;
+    margin-top: 5px;
 }
 
 /* SECTIONS */
@@ -201,6 +225,54 @@ section {
 
 .section-header p {
     color: #718096;
+    font-size: 17px;
+}
+
+/* ABOUT */
+
+.about {
+    background: white;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.about-text h2 {
+    font-size: 40px;
+    color: #172033;
+    margin-bottom: 20px;
+}
+
+.about-text h2 span {
+    color: #2575fc;
+}
+
+.about-text p {
+    color: #5d6b82;
+    font-size: 17px;
+    margin-bottom: 18px;
+}
+
+.vision-box {
+    background: linear-gradient(135deg, #173b8f, #2575fc);
+    color: white;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 20px 50px rgba(37,117,252,0.2);
+}
+
+.vision-box h3 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.vision-box p {
+    color: white;
+    opacity: 0.95;
     font-size: 17px;
 }
 
@@ -406,7 +478,8 @@ footer p {
 
 @media (max-width: 800px) {
 
-    .hero-content {
+    .hero-content,
+    .about-grid {
         grid-template-columns: 1fr;
         text-align: center;
     }
@@ -432,6 +505,15 @@ footer p {
         letter-spacing: -2px;
     }
 
+    .avatar-container {
+        width: 220px;
+        height: 220px;
+    }
+
+    .about-text h2 {
+        font-size: 32px;
+    }
+
 }
 
 </style>
@@ -446,13 +528,13 @@ footer p {
 <div class="nav-container">
 
 <div class="logo">
-Physics<span>AI</span> 5054
+Physics with <span>Mr Nabeel</span>
 </div>
 
 <div>
+<a href="#about">About</a>
 <a href="#syllabus">Syllabus</a>
 <a href="#features">Features</a>
-<a href="#about">About</a>
 </div>
 
 </div>
@@ -472,6 +554,10 @@ Physics<span>AI</span> 5054
 CAMBRIDGE O LEVEL PHYSICS • 5054 • 2026–2028
 </div>
 
+<div class="hero-subtitle">
+Physics with Mr Nabeel
+</div>
+
 <h1>
 Learn Physics.<br>
 <span>Understand the Universe.</span>
@@ -479,17 +565,16 @@ Learn Physics.<br>
 
 <p class="hero-text">
 
-Welcome to PhysicsAI 5054 — an interactive learning platform
-designed to help Cambridge O Level Physics students understand
-concepts through visual explanations, interactive activities,
-simulations and exam-focused practice.
+Welcome to a new way of learning Physics. Explore concepts,
+visualise ideas, interact with simulations and develop a deeper
+understanding of the physical world.
 
 </p>
 
 <div class="buttons">
 
 <a href="#syllabus" class="btn primary">
-Explore the Syllabus
+Explore the 5054 Syllabus
 </a>
 
 <a href="mass-weight-density.html" class="btn secondary">
@@ -501,21 +586,112 @@ Start Learning
 </div>
 
 
-<div class="physics-visual">
+<!-- AVATAR -->
 
-<div class="atom">⚛️</div>
+<div class="avatar-card">
 
-<h3>PhysicsAI 5054</h3>
+<div class="avatar-container">
 
-<p>
-Interactive learning for Cambridge O Level Physics
-</p>
+<!-- 
+Replace "avatar.png" with the filename of your avatar.
+For example:
+<img src="nabeel-avatar.png" alt="Mr Nabeel">
+-->
+
+<img src="avatar.png" alt="Mr Nabeel">
+
+</div>
+
+<h3>Mr Nabeel</h3>
+
+<p>Physics Educator • Almost 30 Years of Teaching Experience</p>
 
 </div>
 
 </div>
 
 </header>
+
+
+<!-- ABOUT -->
+
+<section class="about" id="about">
+
+<div class="container">
+
+<div class="about-grid">
+
+<div class="about-text">
+
+<h2>
+Teaching Physics for <span>the Future</span>
+</h2>
+
+<p>
+We are Physics educators with almost 30 years of teaching
+experience. Throughout our journey in education, we have
+seen how students learn differently and how technology is
+changing the way knowledge is shared.
+</p>
+
+<p>
+Our concern is simple: <strong>How can we find new and better
+ways to enhance teaching and learning?</strong>
+</p>
+
+<p>
+We believe that Physics should not be a subject that students
+simply memorise. It should be something they can see, explore,
+question and understand.
+</p>
+
+<p>
+Through this platform, we aim to combine clear explanations,
+interactive activities, visualisations, simulations and the
+power of Artificial Intelligence to create a more engaging
+and meaningful learning experience.
+</p>
+
+<p>
+Whether you are a student, a teacher or simply curious about
+how the world works, we invite you to explore Physics with us.
+</p>
+
+</div>
+
+
+<div class="vision-box">
+
+<h3>
+Our Vision
+</h3>
+
+<p>
+To use technology, innovation and our experience as educators
+to transform the way Physics is taught and learned.
+</p>
+
+<br>
+
+<p>
+We want learners to move beyond memorising formulas—to
+<strong>understand concepts, explore ideas, solve problems
+and discover the Physics all around them.</strong>
+</p>
+
+<br>
+
+<p>
+<strong>Explore. Understand. Apply. Discover.</strong>
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
 
 
 <!-- SYLLABUS -->
@@ -1026,8 +1202,26 @@ Explore
 </h3>
 
 <p>
-See physics in action through interactive models,
+See Physics in action through interactive models,
 visualisations and simulations.
+</p>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-icon">
+🤖
+</div>
+
+<h3>
+Learn with AI
+</h3>
+
+<p>
+Discover how Artificial Intelligence can support learning,
+questioning, feedback and personalised understanding.
 </p>
 
 </div>
@@ -1078,19 +1272,19 @@ with focused exam practice.
 
 <!-- CTA -->
 
-<section class="cta" id="about">
+<section class="cta">
 
 <h2>
 Ready to Start Learning?
 </h2>
 
 <p>
-Begin your PhysicsAI journey with Mass, Weight & Density —
+Begin your journey with Mass, Weight & Density —
 the first interactive lesson in the PhysicsAI 5054 platform.
 </p>
 
 <a href="mass-weight-density.html" class="cta-button">
-Start Mass, Weight & Density
+Start Learning Physics
 </a>
 
 </section>
@@ -1101,15 +1295,16 @@ Start Mass, Weight & Density
 <footer>
 
 <strong>
-PhysicsAI 5054
+Physics with Mr Nabeel
 </strong>
 
 <p>
-Cambridge O Level Physics • Interactive Digital Learning
+PhysicsAI 5054 • Cambridge O Level Physics
 </p>
 
 <p>
-An educational initiative for physics learners.
+Exploring new ways to enhance teaching and learning through
+technology, innovation and AI.
 </p>
 
 </footer>
