@@ -1,16 +1,645 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>PhysicsAI 5054</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PhysicsAI 5054 | Cambridge O Level Physics</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #07111f;
+    color: #f4f7fb;
+    line-height: 1.6;
+}
+
+header {
+    min-height: 90vh;
+    padding: 30px 7%;
+    display: flex;
+    align-items: center;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(0, 180, 255, 0.18), transparent 30%),
+        radial-gradient(circle at 80% 70%, rgba(120, 80, 255, 0.18), transparent 30%),
+        linear-gradient(135deg, #07111f, #0c1c31 55%, #07111f);
+}
+
+.hero {
+    max-width: 1100px;
+    margin: auto;
+    width: 100%;
+}
+
+.badge {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 30px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #8bdcff;
+    font-size: 14px;
+    margin-bottom: 22px;
+}
+
+h1 {
+    font-size: clamp(48px, 9vw, 100px);
+    line-height: 0.95;
+    letter-spacing: -4px;
+    margin-bottom: 25px;
+}
+
+h1 span {
+    color: #54c8ff;
+}
+
+.hero p {
+    max-width: 700px;
+    font-size: 20px;
+    color: #b8c7d9;
+    margin-bottom: 35px;
+}
+
+.buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: 14px 25px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.25s;
+}
+
+.primary {
+    background: #54c8ff;
+    color: #06111d;
+}
+
+.primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(84,200,255,0.3);
+}
+
+.secondary {
+    border: 1px solid #40556d;
+    color: white;
+}
+
+.secondary:hover {
+    background: rgba(255,255,255,0.08);
+}
+
+section {
+    padding: 80px 7%;
+}
+
+.container {
+    max-width: 1150px;
+    margin: auto;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.section-title p {
+    color: #9fb0c4;
+}
+
+.progress-box {
+    background: #0d1c2e;
+    border: 1px solid #1e344d;
+    padding: 25px;
+    border-radius: 18px;
+    margin-bottom: 50px;
+}
+
+.progress-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    color: #c8d5e3;
+}
+
+.progress-bar {
+    height: 10px;
+    background: #1a2a3d;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    width: 5%;
+    height: 100%;
+    background: #54c8ff;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 22px;
+}
+
+.card {
+    background: #0d1c2e;
+    border: 1px solid #1e344d;
+    border-radius: 18px;
+    padding: 28px;
+    transition: 0.25s;
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #54c8ff;
+}
+
+.card.active {
+    border-color: #54c8ff;
+    box-shadow: 0 0 30px rgba(84,200,255,0.08);
+}
+
+.icon {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #9fb0c4;
+    margin-bottom: 20px;
+}
+
+.status {
+    display: inline-block;
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    background: rgba(84,200,255,0.12);
+    color: #54c8ff;
+    margin-bottom: 15px;
+}
+
+.coming {
+    background: rgba(255,255,255,0.06);
+    color: #94a5b8;
+}
+
+.card a {
+    color: #54c8ff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.features {
+    background: #091725;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.feature {
+    text-align: center;
+    padding: 25px;
+}
+
+.feature-icon {
+    font-size: 35px;
+    margin-bottom: 12px;
+}
+
+.feature h3 {
+    margin-bottom: 8px;
+}
+
+.feature p {
+    color: #94a5b8;
+}
+
+footer {
+    padding: 45px 7%;
+    text-align: center;
+    border-top: 1px solid #1e344d;
+    color: #8093a8;
+}
+
+footer strong {
+    color: #54c8ff;
+}
+
+@media (max-width: 600px) {
+    h1 {
+        letter-spacing: -2px;
+    }
+
+    .hero p {
+        font-size: 17px;
+    }
+
+    section {
+        padding: 60px 5%;
+    }
+}
+</style>
 </head>
+
 <body>
-    <h1>PhysicsAI 5054</h1>
-    <h2>Cambridge O Level Physics</h2>
 
-    <p>Welcome to my interactive learning platform.</p>
+<header>
+<div class="hero">
 
-    <a href="mass-weight-density.html">
-        <button>Start Mass, Weight & Density</button>
-    </a>
+<div class="badge">CAMBRIDGE O LEVEL PHYSICS • 5054 • 2026–2028</div>
+
+<h1>Physics<span>AI</span><br>5054</h1>
+
+<p>
+An interactive digital learning platform designed to help students
+understand, explore and master Cambridge O Level Physics through
+visual learning, simulations, guided explanations and exam-focused practice.
+</p>
+
+<div class="buttons">
+<a class="btn primary" href="#syllabus">Explore the Syllabus</a>
+<a class="btn secondary" href="#features">Discover PhysicsAI</a>
+</div>
+
+</div>
+</header>
+
+
+<section id="syllabus">
+
+<div class="container">
+
+<div class="section-title">
+<h2>Cambridge O Level Physics</h2>
+<p>Explore the 5054 syllabus through interactive learning experiences.</p>
+</div>
+
+
+<div class="progress-box">
+
+<div class="progress-top">
+<span>Platform Development</span>
+<strong>1 topic available</strong>
+</div>
+
+<div class="progress-bar">
+<div class="progress-fill"></div>
+</div>
+
+</div>
+
+
+<div class="grid">
+
+
+<div class="card active">
+
+<div class="icon">⚖️</div>
+
+<span class="status">● AVAILABLE NOW</span>
+
+<h3>Mass, Weight & Density</h3>
+
+<p>
+Explore mass, weight and density through interactive explanations,
+visual learning and activities designed for Cambridge O Level Physics.
+</p>
+
+<a href="mass-weight-density.html">
+Launch Interactive Lesson →
+</a>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">📏</div>
+
+<span class="status coming">COMING SOON</span>
+
+<h3>Language of Measurement</h3>
+
+<p>
+Physical quantities, SI units, measuring instruments, accuracy,
+precision, significant figures and uncertainty.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">🏃</div>
+
+<span class="status coming">COMING SOON</span>
+
+<h3>Motion</h3>
+
+<p>
+Speed, velocity, acceleration, distance-time graphs and
+velocity-time graphs.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">🧲</div>
+
+<span class="status coming">COMING SOON</span>
+
+<h3>Forces</h3>
+
+<p>
+Forces, effects of forces, resultant force, Newton's laws,
+momentum and interactions.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">🔧</div>
+
+<span class="status coming">COMING SOON</span>
+
+<h3>Turning Effects of Forces</h3>
+
+<p>
+Moments, equilibrium, centre of gravity and applications
+of turning forces.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">⚡</div>
+
+<span class="status coming">COMING SOON</span>
+
+<h3>Energy, Work & Power</h3>
+
+<p>
+Energy transfers, work done, power, kinetic energy,
+gravitational potential energy and efficiency.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">🌊</div>
+
+<span class="status coming">COMING SOON</span>
+
+<h3>Pressure</h3>
+
+<p>
+Pressure in solids and liquids, atmospheric pressure
+and pressure changes with depth.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">🌡️</div>
+
+<span class="status coming">COMING SOON</span>
+
+<h3>Thermal Physics</h3>
+
+<p>
+Kinetic particle model, states of matter, thermal properties
+and transfer of thermal energy.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">🌊</div>
+
+<span class="status coming">COMING SOON</span>
+
+<h3>Waves</h3>
+
+<p>
+Wave properties, wave behaviour, light, sound and
+applications of waves.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">🔊</div>
+
+<span class="status coming">COMING SOON</span>
+
+<h3>Sound</h3>
+
+<p>
+Production and transmission of sound, pitch, loudness,
+frequency and applications.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">🔭</div>
+
+<span class="status coming">COMING SOON</span>
+
+<h3>Light</h3>
+
+<p>
+Reflection, refraction, lenses, image formation and
+applications of optical systems.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">🌈</div>
+
+<span class="status coming">COMING SOON</span>
+
+<h3>Electromagnetic Spectrum</h3>
+
+<p>
+The electromagnetic spectrum, properties of electromagnetic
+waves and their applications.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">🔌</div>
+
+<span class="status coming">COMING SOON</span>
+
+<h3>Electricity</h3>
+
+<p>
+Current, potential difference, resistance, electrical circuits,
+energy and power.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">🧭</div>
+
+<span class="status coming">COMING SOON</span>
+
+<h3>Magnetism & Electromagnetism</h3>
+
+<p>
+Magnetic fields, electromagnets, motors, generators and
+electromagnetic induction.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">☢️</div>
+
+<span class="status coming">COMING SOON</span>
+
+<h3>Nuclear Physics</h3>
+
+<p>
+Atomic structure, radioactivity, radioactive decay,
+half-life and nuclear applications.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">🌍</div>
+
+<span class="status coming">COMING SOON</span>
+
+<h3>Space Physics</h3>
+
+<p>
+The Solar System, stars, galaxies and the Universe.
+Explore our place in space through physics.
+</p>
+
+</div>
+
+
+</div>
+</div>
+</section>
+
+
+<section class="features" id="features">
+
+<div class="container">
+
+<div class="section-title">
+<h2>Learn Physics Differently</h2>
+<p>PhysicsAI is designed to move beyond passive learning.</p>
+</div>
+
+
+<div class="feature-grid">
+
+<div class="feature">
+<div class="feature-icon">🧠</div>
+<h3>Understand</h3>
+<p>Build strong conceptual understanding through clear explanations.</p>
+</div>
+
+<div class="feature">
+<div class="feature-icon">🔬</div>
+<h3>Explore</h3>
+<p>Interact with visual models and simulations to see physics in action.</p>
+</div>
+
+<div class="feature">
+<div class="feature-icon">🎯</div>
+<h3>Practise</h3>
+<p>Develop confidence through guided questions and problem solving.</p>
+</div>
+
+<div class="feature">
+<div class="feature-icon">🏆</div>
+<h3>Master</h3>
+<p>Prepare for Cambridge O Level Physics with focused exam practice.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+
+<footer>
+
+<p>
+<strong>PhysicsAI 5054</strong>
+</p>
+
+<p>
+Cambridge O Level Physics • Interactive Digital Learning
+</p>
+
+<p>
+Developed as an educational initiative to support physics learning.
+</p>
+
+</footer>
+
 </body>
 </html>
