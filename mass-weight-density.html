@@ -1,569 +1,825 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>PhysicsAI 5054 | Mass, Weight and Density</title>
+<title>Mass, Weight & Density | PhysicsAI 5054</title>
 
 <style>
 
-/* =========================
-   GENERAL PAGE DESIGN
-========================= */
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
+* {
     margin: 0;
-    background: #f4f7fb;
-    color: #222;
-    line-height: 1.6;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-header {
-    background: #1f4e79;
-    color: white;
-    padding: 35px 20px;
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f5f8fc;
+    color: #172033;
+    line-height: 1.65;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #e3e9f2;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 14px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-weight: 800;
+    font-size: 21px;
+    color: #173b8f;
+}
+
+.logo span {
+    color: #2575fc;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #506078;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.nav-links a:hover {
+    color: #2575fc;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    background:
+        radial-gradient(circle at 85% 20%, rgba(37,117,252,0.14), transparent 30%),
+        linear-gradient(135deg, #ffffff, #eef5ff);
+
+    padding: 75px 25px;
+}
+
+.hero-content {
+    max-width: 1150px;
+    margin: auto;
     text-align: center;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 34px;
+.badge {
+    display: inline-block;
+    background: #e7f0ff;
+    color: #1d5bd1;
+    padding: 7px 16px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 18px;
 }
 
-header p {
-    margin: 8px 0;
+.hero h1 {
+    font-size: clamp(42px, 7vw, 75px);
+    line-height: 1.05;
+    color: #14213d;
+    margin-bottom: 20px;
 }
+
+.hero h1 span {
+    color: #2575fc;
+}
+
+.hero p {
+    max-width: 750px;
+    margin: auto;
+    font-size: 19px;
+    color: #64748b;
+}
+
+.hero-buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: 13px 23px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+}
+
+.primary {
+    background: #2575fc;
+    color: white;
+}
+
+.secondary {
+    background: white;
+    color: #2575fc;
+    border: 1px solid #d9e2ef;
+}
+
+/* =========================
+   LAYOUT
+========================= */
 
 .container {
-    max-width: 1050px;
+    max-width: 1100px;
     margin: auto;
-    padding: 25px;
+    padding: 0 25px;
 }
+
+section {
+    padding: 70px 0;
+}
+
+.section-title {
+    margin-bottom: 35px;
+}
+
+.section-title h2 {
+    font-size: 36px;
+    color: #14213d;
+}
+
+.section-title p {
+    color: #718096;
+    margin-top: 5px;
+}
+
+/* =========================
+   LEARNING OBJECTIVES
+========================= */
+
+.objectives {
+    background: white;
+}
+
+.objective-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
+    gap: 18px;
+}
+
+.objective {
+    background: #f7faff;
+    padding: 22px;
+    border-radius: 15px;
+    border: 1px solid #e3ebf6;
+}
+
+.objective strong {
+    color: #173b8f;
+}
+
+/* =========================
+   CONTENT CARDS
+========================= */
 
 .card {
     background: white;
-    padding: 28px;
-    margin-bottom: 25px;
-    border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    padding: 35px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    border: 1px solid #e1e8f1;
+    box-shadow: 0 8px 25px rgba(40,70,110,0.05);
 }
 
-h2 {
-    color: #1f4e79;
-    border-bottom: 2px solid #e2e8f0;
-    padding-bottom: 8px;
+.card h3 {
+    font-size: 28px;
+    color: #173b8f;
+    margin-bottom: 15px;
 }
 
-h3 {
-    color: #333;
+.card h4 {
+    color: #2575fc;
+    margin-top: 25px;
+    margin-bottom: 8px;
 }
 
-h4 {
-    color: #1f4e79;
+.card p {
+    margin-bottom: 15px;
 }
 
 .highlight {
-    background: #fff8dc;
-    border-left: 5px solid #f0ad4e;
-    padding: 16px;
-    margin: 18px 0;
+    background: #eef6ff;
+    border-left: 5px solid #2575fc;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
 }
 
-.key {
-    background: #e8f3ff;
-    border-left: 5px solid #1f4e79;
-    padding: 16px;
-    margin: 18px 0;
-}
-
-.warning {
-    background: #fff0f0;
-    border-left: 5px solid #d9534f;
-    padding: 16px;
-    margin: 18px 0;
+.definition {
+    background: #f0fdf9;
+    border-left: 5px solid #10b981;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
 }
 
 .formula {
-    background: #eef4fa;
-    padding: 18px;
-    text-align: center;
-    font-size: 23px;
-    font-weight: bold;
-    border-radius: 8px;
-    margin: 18px 0;
-}
-
-.example {
-    background: #f5f5f5;
-    padding: 20px;
-    border-radius: 8px;
-    margin: 18px 0;
-}
-
-.activity {
-    background: #eef7ee;
-    padding: 22px;
-    border-radius: 10px;
-    margin-top: 22px;
-}
-
-.practical {
-    background: #f8f0ff;
-    padding: 22px;
-    border-radius: 10px;
-    margin: 18px 0;
-}
-
-.question {
-    background: #f4f7fb;
-    padding: 20px;
-    margin: 18px 0;
-    border-radius: 8px;
-}
-
-.answer {
-    display: none;
-    background: white;
-    padding: 18px;
-    margin-top: 12px;
-    border-left: 4px solid #2e8b57;
-}
-
-button {
-    background: #1f4e79;
+    background: #14213d;
     color: white;
-    border: none;
-    padding: 11px 18px;
-    margin: 5px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 15px;
-}
-
-button:hover {
-    background: #163a5c;
-}
-
-input {
-    padding: 10px;
-    margin: 5px;
-    border: 1px solid #bbb;
-    border-radius: 5px;
-}
-
-select {
-    padding: 10px;
-    margin: 5px;
-    border-radius: 5px;
-}
-
-.result {
-    background: white;
-    padding: 16px;
-    margin-top: 15px;
-    border-radius: 8px;
-    font-weight: bold;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
+    padding: 22px;
+    text-align: center;
+    border-radius: 12px;
+    font-size: 24px;
+    font-weight: 700;
     margin: 20px 0;
 }
 
-th, td {
-    border: 1px solid #ccc;
-    padding: 12px;
-    text-align: left;
+/* =========================
+   MASS ANIMATION
+========================= */
+
+.animation-box {
+    background: #f7faff;
+    border: 1px solid #dce7f4;
+    border-radius: 18px;
+    padding: 30px;
+    margin-top: 25px;
+    text-align: center;
 }
 
-th {
-    background: #e8f0f8;
+.mass-stage {
+    height: 230px;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(#dff3ff,#f7fcff);
+    border-radius: 15px;
+    margin-bottom: 20px;
 }
 
-.progress-container {
-    background: #ddd;
-    height: 22px;
-    border-radius: 12px;
+.ground {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 25px;
+    background: #7db36a;
+}
+
+.ball {
+    position: absolute;
+    bottom: 25px;
+    left: 10%;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background: #2575fc;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+    animation: moveBall 4s infinite alternate ease-in-out;
+}
+
+@keyframes moveBall {
+    from { left: 10%; }
+    to { left: 80%; }
+}
+
+/* =========================
+   EARTH MOON
+========================= */
+
+.compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-top: 25px;
+}
+
+.planet {
+    padding: 30px;
+    border-radius: 18px;
+    text-align: center;
+    color: white;
+}
+
+.earth {
+    background: linear-gradient(135deg,#1473e6,#0d47a1);
+}
+
+.moon {
+    background: linear-gradient(135deg,#737b87,#3f4650);
+}
+
+.planet-icon {
+    font-size: 65px;
+}
+
+.planet h4 {
+    color: white;
+    font-size: 24px;
+}
+
+/* =========================
+   DENSITY PARTICLES
+========================= */
+
+.particles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.particle-box {
+    height: 200px;
+    border-radius: 15px;
+    padding: 20px;
+    position: relative;
     overflow: hidden;
 }
 
-.progress-bar {
-    background: #2e8b57;
-    height: 100%;
-    width: 0%;
-    transition: width 0.5s;
+.dense {
+    background: #dbeafe;
 }
+
+.less-dense {
+    background: #eff6ff;
+}
+
+.particle {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #2575fc;
+    position: absolute;
+}
+
+.d1 {top:20px;left:20px;}
+.d2 {top:20px;left:70px;}
+.d3 {top:20px;left:120px;}
+.d4 {top:20px;left:170px;}
+.d5 {top:65px;left:20px;}
+.d6 {top:65px;left:70px;}
+.d7 {top:65px;left:120px;}
+.d8 {top:65px;left:170px;}
+.d9 {top:110px;left:20px;}
+.d10 {top:110px;left:70px;}
+.d11 {top:110px;left:120px;}
+.d12 {top:110px;left:170px;}
+
+.l1 {top:30px;left:30px;}
+.l2 {top:110px;left:150px;}
+.l3 {top:60px;left:230px;}
+.l4 {top:140px;left:80px;}
+
+/* =========================
+   INTERACTIVE CALCULATOR
+========================= */
+
+.calculator {
+    background: #f7faff;
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid #dfe8f4;
+}
+
+.input-group {
+    margin: 12px 0;
+}
+
+.input-group label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.calc-button {
+    background: #2575fc;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin-top: 15px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.result {
+    margin-top: 18px;
+    background: white;
+    padding: 18px;
+    border-radius: 10px;
+    font-weight: 700;
+    color: #173b8f;
+}
+
+/* =========================
+   VIRTUAL LAB
+========================= */
+
+.lab {
+    background: #eef6ff;
+    border-radius: 20px;
+    padding: 30px;
+}
+
+.lab-object {
+    width: 100px;
+    height: 100px;
+    background: #d97706;
+    margin: 25px auto;
+    border-radius: 8px;
+}
+
+.lab-step {
+    padding: 15px;
+    margin: 10px 0;
+    background: white;
+    border-radius: 10px;
+    border-left: 4px solid #2575fc;
+}
+
+/* =========================
+   QUIZ
+========================= */
+
+.quiz-question {
+    background: #f7faff;
+    padding: 20px;
+    border-radius: 12px;
+    margin: 15px 0;
+}
+
+.quiz-question button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 12px;
+    margin: 7px 0;
+    border: 1px solid #d8e2ef;
+    background: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.quiz-question button:hover {
+    background: #eef6ff;
+}
+
+.feedback {
+    margin-top: 10px;
+    font-weight: 700;
+}
+
+/* =========================
+   VIDEO
+========================= */
+
+.video-placeholder {
+    background: #14213d;
+    color: white;
+    height: 260px;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.play {
+    font-size: 55px;
+    margin-bottom: 10px;
+}
+
+/* =========================
+   AI TUTOR
+========================= */
+
+.ai-box {
+    background: linear-gradient(135deg,#eef5ff,#f7faff);
+    border: 1px solid #dce7f4;
+    border-radius: 18px;
+    padding: 30px;
+}
+
+.ai-message {
+    background: white;
+    padding: 18px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+.ai-message strong {
+    color: #2575fc;
+}
+
+.ai-input {
+    display: flex;
+    gap: 10px;
+}
+
+.ai-input input {
+    flex: 1;
+}
+
+.ai-input button {
+    background: #2575fc;
+    color: white;
+    border: none;
+    padding: 0 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* =========================
+   FOOTER
+========================= */
 
 footer {
+    background: #14213d;
+    color: #b7c3d4;
+    padding: 40px 25px;
     text-align: center;
-    padding: 35px;
-    color: #666;
 }
 
-.nav {
-    background: white;
-    padding: 15px;
-    margin-bottom: 25px;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+footer strong {
+    color: white;
+    font-size: 20px;
 }
 
-.nav a {
-    margin-right: 15px;
-    color: #1f4e79;
-    text-decoration: none;
-    font-weight: bold;
-}
+/* =========================
+   MOBILE
+========================= */
 
-.small {
-    font-size: 14px;
-    color: #666;
+@media(max-width:700px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .compare,
+    .particles {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        padding: 25px;
+    }
+
+    .ai-input {
+        flex-direction: column;
+    }
+
 }
 
 </style>
-
 </head>
 
 
 <body>
 
 
-<header>
+<!-- NAVIGATION -->
 
-<h1>📘 PhysicsAI 5054</h1>
+<nav>
 
-<p>Cambridge O Level Physics</p>
+<div class="nav-container">
 
-<h2 style="color:white; border:none;">
-Mass, Weight and Density
-</h2>
+<div class="logo">
+Physics<span>AI</span> 5054
+</div>
+
+<div class="nav-links">
+<a href="#mass">Mass</a>
+<a href="#weight">Weight</a>
+<a href="#density">Density</a>
+<a href="#experiments">Experiments</a>
+<a href="#practice">Practice</a>
+<a href="#tutor">AI Tutor</a>
+</div>
+
+</div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<header class="hero">
+
+<div class="hero-content">
+
+<div class="badge">
+CAMBRIDGE O LEVEL PHYSICS 5054
+</div>
+
+<h1>
+Mass, Weight <span>& Density</span>
+</h1>
 
 <p>
-Interactive Digital Learning Chapter
+Explore the physics of matter, gravity and density through
+interactive explanations, animations, calculations,
+experiments and exam practice.
 </p>
+
+<div class="hero-buttons">
+
+<a href="#mass" class="btn primary">
+Start Learning
+</a>
+
+<a href="#practice" class="btn secondary">
+Test Yourself
+</a>
+
+</div>
+
+</div>
 
 </header>
 
 
+<!-- LEARNING OBJECTIVES -->
+
+<section class="objectives">
 
 <div class="container">
 
+<div class="section-title">
 
-<!-- NAVIGATION -->
+<h2>Learning Objectives</h2>
 
-<div class="nav">
-
-<a href="#mass">Mass</a>
-
-<a href="#weight">Weight</a>
-
-<a href="#density">Density</a>
-
-<a href="#practicals">Practicals</a>
-
-<a href="#questions">Questions</a>
-
-<a href="#summary">Summary</a>
+<p>By the end of this lesson, you should be able to:</p>
 
 </div>
 
+<div class="objective-grid">
+
+<div class="objective">
+<strong>✓ Mass</strong>
+<p>Define mass and explain its relationship with inertia.</p>
+</div>
+
+<div class="objective">
+<strong>✓ Weight</strong>
+<p>Explain weight as the gravitational force acting on a body.</p>
+</div>
+
+<div class="objective">
+<strong>✓ Gravitational Field</strong>
+<p>Define gravitational field strength and use g = F/m.</p>
+</div>
+
+<div class="objective">
+<strong>✓ Density</strong>
+<p>Define density and use the equation ρ = m/V.</p>
+</div>
+
+<div class="objective">
+<strong>✓ Experiments</strong>
+<p>Describe how to determine the density of different objects.</p>
+</div>
+
+<div class="objective">
+<strong>✓ Applications</strong>
+<p>Explain why objects float or sink using density.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
 
 
-<!-- LEARNING OBJECTIVES -->
+<!-- MASS -->
+
+<section id="mass">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>01 — Mass</h2>
+
+<p>Understanding the amount of matter and inertia.</p>
+
+</div>
 
 <div class="card">
-
-<h2>🎯 Learning Objectives</h2>
-
-<p>
-By the end of this chapter, you should be able to:
-</p>
-
-<ul>
-
-<li>Define mass.</li>
-
-<li>Explain that mass is a measure of the amount of matter in an object.</li>
-
-<li>Explain why mass is independent of location, shape and physical conditions.</li>
-
-<li>Define inertia.</li>
-
-<li>Explain the relationship between mass and inertia.</li>
-
-<li>Describe how mass is measured using a beam balance.</li>
-
-<li>Define a gravitational field.</li>
-
-<li>Define gravitational field strength.</li>
-
-<li>Use the equation <b>g = F/m</b>.</li>
-
-<li>Explain the relationship between gravitational field strength and acceleration of free fall.</li>
-
-<li>Define weight.</li>
-
-<li>Distinguish between mass and weight.</li>
-
-<li>Use the equation <b>W = mg</b>.</li>
-
-<li>Define density.</li>
-
-<li>Deduce the SI unit of density.</li>
-
-<li>Use the equation <b>ρ = m/V</b>.</li>
-
-<li>Calculate density, mass and volume.</li>
-
-<li>Determine the density of regular solids.</li>
-
-<li>Determine the density of irregular solids.</li>
-
-<li>Determine the density of liquids.</li>
-
-<li>Determine the density of irregular solids that float.</li>
-
-</ul>
-
-</div>
-
-
-
-<!-- PROGRESS -->
-
-<div class="card">
-
-<h2>📊 Your Progress</h2>
-
-<p>
-Complete the sections and activities as you learn.
-</p>
-
-<p>
-Progress: <b id="progressText">0%</b>
-</p>
-
-<div class="progress-container">
-
-<div id="progressBar"
-class="progress-bar">
-
-</div>
-
-</div>
-
-<br>
-
-<button onclick="updateProgress(25)">
-I've completed Mass
-</button>
-
-<button onclick="updateProgress(50)">
-I've completed Weight
-</button>
-
-<button onclick="updateProgress(75)">
-I've completed Density
-</button>
-
-<button onclick="updateProgress(100)">
-I've completed the Chapter
-</button>
-
-</div>
-
-
-
-<!-- =========================
-     MASS
-========================= -->
-
-<div class="card" id="mass">
-
-<h2>⚖️ 1. Mass</h2>
-
 
 <h3>What is Mass?</h3>
 
-<p>
-The <b>mass</b> of an object is a measure of the amount
-of matter it contains.
-</p>
+<div class="definition">
+
+<strong>Definition:</strong>
 
 <p>
-Mass is a basic property of a body. It is a constant
-quantity and does not depend on the location of the object.
-</p>
-
-<p>
-The mass of an object also does not depend on its
-shape or on physical conditions such as temperature
-or pressure.
-</p>
-
-<div class="key">
-
-<b>Key idea:</b>
-
-<br><br>
-
-The mass of an object remains the same wherever
-the object is located.
-
-</div>
-
-
-<h3>Another Definition of Mass</h3>
-
-<p>
-Mass may also be defined as the amount of
-<b>inertia</b> an object possesses.
-</p>
-
-<p>
-The greater the inertia of an object, the greater
-its mass.
-</p>
-
-
-<h3>📏 SI Unit of Mass</h3>
-
-<p>
-The SI unit of mass is the <b>kilogram (kg)</b>.
-</p>
-
-<p>
-Mass can be measured using a <b>beam balance</b>.
-</p>
-
-<div class="example">
-
-<b>Example:</b>
-
-<p>
-A student places an object on one side of a beam
-balance and adjusts standard masses on the other side
-until the balance is in equilibrium.
-</p>
-
-<p>
-The total value of the standard masses gives the
-mass of the object.
+The mass of an object is a measure of the amount of matter it contains.
+It is a basic property of a body and is constant.
 </p>
 
 </div>
 
-
-
-<h3>🧠 Inertia</h3>
-
 <p>
-Inertia is the reluctance of an object to change
-its state of motion.
+Mass does not depend on the object's location, shape or physical
+conditions such as temperature or pressure.
 </p>
 
 <p>
-An object that is stationary tends to remain stationary.
-An object that is moving tends to continue moving
-with the same velocity unless a resultant force acts
-on it.
-</p>
-
-<p>
-A force is required to overcome inertia.
+The SI unit of mass is the <strong>kilogram (kg)</strong>.
+Mass is commonly measured using a <strong>beam balance</strong>
+or an electronic balance.
 </p>
 
 <div class="highlight">
 
-<b>The greater the mass of an object, the greater
-its inertia.</b>
-
-<br><br>
-
-Therefore, the greater the mass, the more difficult
-it is to start the object moving or to stop it once
-it is moving.
-
-</div>
-
-
-<h3>🌍 Examples of Inertia</h3>
-
-<ul>
-
-<li>
-A loaded shopping trolley is harder to push from rest
-than an empty trolley.
-</li>
-
-<li>
-A heavy truck is more difficult to stop than a bicycle
-travelling at the same speed.
-</li>
-
-<li>
-A passenger may move forward when a moving bus suddenly stops.
-</li>
-
-<li>
-A passenger may move backward when a stationary bus
-suddenly accelerates.
-</li>
-
-</ul>
-
-
-<div class="activity">
-
-<h3>🧪 Explore: Mass and Inertia</h3>
+<strong>Remember:</strong>
 
 <p>
-Imagine applying the same force to two objects.
+If you take an object from Earth to the Moon, its mass remains the same.
+The amount of matter in the object has not changed.
 </p>
 
-<button onclick="inertiaTest('light')">
-Light Object
-</button>
-
-<button onclick="inertiaTest('heavy')">
-Heavy Object
-</button>
-
-<div id="inertiaResult"
-class="result">
-
-Choose an object.
-
 </div>
 
 </div>
 
 
-<div class="activity">
+<div class="card">
 
-<h3>📝 Quick Check</h3>
+<h3>Mass and Inertia</h3>
 
 <p>
-Which object has greater inertia?
+The mass of a body may also be described in terms of the amount
+of <strong>inertia</strong> it possesses.
 </p>
 
-<button onclick="inertiaQuiz('A')">
-A. A 2 kg football
-</button>
+<div class="definition">
 
-<button onclick="inertiaQuiz('B')">
-B. A 50 kg person
-</button>
+<strong>Inertia</strong>
 
-<div id="inertiaQuizResult"
-class="result">
+<p>
+Inertia is the reluctance of an object to start moving if it is
+stationary, or the reluctance of an object to stop moving once it
+is in motion.
+</p>
+
+</div>
+
+<p>
+A force is required to overcome inertia.
+The greater the mass of an object, the greater its inertia.
+Therefore, a large mass is more difficult to start moving or to stop.
+</p>
+
+<div class="animation-box">
+
+<h4>Animation: Inertia in Action</h4>
+
+<div class="mass-stage">
+
+<div class="ball"></div>
+
+<div class="ground"></div>
+
+</div>
+
+<p>
+The moving object tends to remain in motion unless a force acts on it.
+</p>
 
 </div>
 
@@ -571,36 +827,43 @@ class="result">
 
 </div>
 
+</section>
 
 
-<!-- =========================
-     WEIGHT
-========================= -->
+<!-- WEIGHT -->
 
-<div class="card" id="weight">
+<section id="weight">
 
-<h2>🌍 2. Weight and Gravitational Field</h2>
+<div class="container">
 
+<div class="section-title">
+
+<h2>02 — Weight & Gravitational Field</h2>
+
+<p>Mass and weight are related — but they are not the same thing.</p>
+
+</div>
+
+<div class="card">
 
 <h3>Gravitational Field</h3>
 
+<div class="definition">
+
+<strong>Definition:</strong>
+
 <p>
-A <b>gravitational field</b> is a region in which
-a mass experiences a force due to gravitational attraction.
+A gravitational field is a region in which a mass experiences
+a force due to gravitational attraction.
 </p>
 
-<p>
-For example, the Earth produces a gravitational field
-around itself. Objects within this field experience
-a force of gravitational attraction towards the Earth.
-</p>
+</div>
 
-
-<h3>Gravitational Field Strength</h3>
+<h4>Gravitational Field Strength</h4>
 
 <p>
-Gravitational field strength is defined as the
-<b>force per unit mass</b>.
+Gravitational field strength is defined as the gravitational force
+acting per unit mass.
 </p>
 
 <div class="formula">
@@ -610,23 +873,8 @@ g = F / m
 </div>
 
 <p>
-where:
-</p>
-
-<ul>
-
-<li><b>g</b> = gravitational field strength</li>
-
-<li><b>F</b> = gravitational force</li>
-
-<li><b>m</b> = mass</li>
-
-</ul>
-
-
-<p>
-Near the surface of the Earth, the gravitational
-field strength is approximately:
+The unit of gravitational field strength is <strong>N/kg</strong>.
+Near the surface of Earth, the value is approximately:
 </p>
 
 <div class="formula">
@@ -635,274 +883,139 @@ g ≈ 9.8 N/kg
 
 </div>
 
-
-<h3>Acceleration of Free Fall</h3>
-
 <p>
-The value of gravitational field strength is numerically
-the same as the acceleration of free fall near the
-surface of the Earth, when air resistance is ignored.
+This is numerically equal to the acceleration of free fall,
+approximately <strong>9.8 m/s²</strong>.
 </p>
-
-<div class="formula">
-
-g ≈ 9.8 m/s²
-
-</div>
-
-<div class="key">
-
-<b>Important:</b>
-
-<br><br>
-
-9.8 N/kg and 9.8 m/s² have different units and
-describe related but different physical quantities.
-
-<br><br>
-
-<b>9.8 N/kg</b> → gravitational field strength
-
-<br>
-
-<b>9.8 m/s²</b> → acceleration of free fall
 
 </div>
 
 
-<h3>⚖️ Weight</h3>
+<div class="card">
+
+<h3>Weight</h3>
+
+<div class="definition">
+
+<strong>Definition:</strong>
 
 <p>
-The <b>weight</b> of a body is the pull of gravity
-on the body.
+The weight of a body is the pull of gravity on the body.
+</p>
+
+</div>
+
+<p>
+Weight is a <strong>vector quantity</strong> because it has both
+magnitude and direction.
+The direction of weight is towards the centre of the gravitational field.
+Near Earth, this means vertically downwards.
 </p>
 
 <p>
-Weight is a <b>force</b>, so its unit is the
-<b>newton (N)</b>.
-</p>
-
-<p>
-Weight is a <b>vector quantity</b> because it has
-both magnitude and direction.
-</p>
-
-<p>
-The direction of the weight of an object near
-the Earth's surface is vertically downwards,
-towards the centre of the Earth.
-</p>
-
-<p>
-Weight can be measured using a <b>spring balance</b>.
-</p>
-
-
-<h3>⚖️ Relationship Between Mass and Weight</h3>
-
-<p>
-Weight is related to mass by:
+Weight has the same unit as force: the <strong>newton (N)</strong>.
+It can be measured using a <strong>spring balance</strong>.
 </p>
 
 <div class="formula">
+
+Weight = mass × gravitational field strength
+
+<br><br>
 
 W = mg
 
 </div>
 
-<p>
-where:
-</p>
-
-<ul>
-
-<li><b>W</b> = weight in newtons (N)</li>
-
-<li><b>m</b> = mass in kilograms (kg)</li>
-
-<li><b>g</b> = gravitational field strength in N/kg</li>
-
-</ul>
-
-
-<div class="example">
-
-<h3>Worked Example</h3>
-
-<p>
-A student has a mass of 60 kg.
-Calculate the student's weight on Earth.
-Take g = 9.8 N/kg.
-</p>
-
-<p>
-<b>W = mg</b>
-</p>
-
-<p>
-W = 60 × 9.8
-</p>
-
-<p>
-<b>W = 588 N</b>
-</p>
-
 </div>
 
 
+<div class="card">
 
-<h3>🌍 Earth vs Moon</h3>
-
-<p>
-The mass of an object remains constant when it moves
-from Earth to the Moon.
-</p>
+<h3>🌍 Mass vs Weight — Earth and Moon</h3>
 
 <p>
-However, its weight changes because the Moon has a
-different gravitational field strength.
+Imagine taking the same object from Earth to the Moon.
+What changes?
 </p>
 
-<div class="activity">
+<div class="compare">
 
-<h3>🧮 Interactive Weight Calculator</h3>
+<div class="planet earth">
 
-<p>
-Enter the mass of an object.
-</p>
+<div class="planet-icon">🌍</div>
 
-<input id="weightMass"
-type="number"
-placeholder="Mass in kg">
+<h4>Earth</h4>
 
-<br>
+<p>Mass = 5 kg</p>
 
-<button onclick="calculateWeight()">
-Calculate Weight
-</button>
+<p>g ≈ 9.8 N/kg</p>
 
-<div id="weightResult"
-class="result">
+<p>Weight ≈ 49 N</p>
+
+</div>
+
+<div class="planet moon">
+
+<div class="planet-icon">🌙</div>
+
+<h4>Moon</h4>
+
+<p>Mass = 5 kg</p>
+
+<p>g ≈ 1.6 N/kg</p>
+
+<p>Weight ≈ 8 N</p>
 
 </div>
 
 </div>
 
+<div class="highlight">
 
-<div class="activity">
-
-<h3>📝 Think About It</h3>
+<strong>Key Idea:</strong>
 
 <p>
-An astronaut has a mass of 70 kg on Earth.
-What happens to the astronaut's mass on the Moon?
+Mass stays constant because the amount of matter stays the same.
+Weight changes because gravitational field strength changes.
 </p>
 
-<button onclick="moonAnswer('same')">
-It stays the same
-</button>
-
-<button onclick="moonAnswer('change')">
-It changes
-</button>
-
-<div id="moonResult"
-class="result">
+</div>
 
 </div>
 
 </div>
 
+</section>
 
 
-<h3>📋 Mass vs Weight</h3>
+<!-- DENSITY -->
 
-<table>
+<section id="density">
 
-<tr>
+<div class="container">
 
-<th>Mass</th>
+<div class="section-title">
 
-<th>Weight</th>
+<h2>03 — Density</h2>
 
-</tr>
-
-<tr>
-
-<td>Amount of matter in an object</td>
-
-<td>Gravitational force acting on an object</td>
-
-</tr>
-
-<tr>
-
-<td>Measured in kilograms (kg)</td>
-
-<td>Measured in newtons (N)</td>
-
-</tr>
-
-<tr>
-
-<td>Measured using a beam balance</td>
-
-<td>Measured using a spring balance</td>
-
-</tr>
-
-<tr>
-
-<td>Scalar quantity</td>
-
-<td>Vector quantity</td>
-
-</tr>
-
-<tr>
-
-<td>Does not change with location</td>
-
-<td>Depends on gravitational field strength</td>
-
-</tr>
-
-</table>
-
-
-<div class="warning">
-
-<b>Common Mistake:</b>
-
-<br><br>
-
-Do not say that an object "has less mass on the Moon".
-
-The mass stays constant.
-
-It is the <b>weight</b> that changes.
+<p>Why are some materials heavier than others of the same size?</p>
 
 </div>
 
-</div>
-
-
-
-<!-- =========================
-     DENSITY
-========================= -->
-
-<div class="card" id="density">
-
-<h2>🧊 3. Density</h2>
-
+<div class="card">
 
 <h3>Definition of Density</h3>
 
+<div class="definition">
+
+<strong>Definition:</strong>
+
 <p>
-The <b>density</b> of a substance is defined as
-the mass per unit volume.
+The density of a substance is defined as its mass per unit volume.
 </p>
+
+</div>
 
 <div class="formula">
 
@@ -910,29 +1023,18 @@ the mass per unit volume.
 
 </div>
 
-<p>
-where:
-</p>
+<p>Where:</p>
 
 <ul>
-
-<li><b>ρ</b> = density</li>
-
-<li><b>m</b> = mass</li>
-
-<li><b>V</b> = volume</li>
-
+<li>ρ = density</li>
+<li>m = mass</li>
+<li>V = volume</li>
 </ul>
 
-
-<h3>SI Unit of Density</h3>
-
-<p>
-The SI unit of mass is kg and the SI unit of volume
-is m³.
-</p>
+<h4>SI Unit of Density</h4>
 
 <p>
+Mass is measured in kilograms (kg) and volume in cubic metres (m³).
 Therefore:
 </p>
 
@@ -942,1298 +1044,658 @@ SI unit of density = kg/m³
 
 </div>
 
-
-<div class="example">
-
-<h3>Deduction of the SI Unit</h3>
-
 <p>
-
-Density = mass / volume
-
-</p>
-
-<p>
-
-Unit of density = kg / m³
-
-</p>
-
-<p>
-
-<b>Therefore, SI unit = kg/m³</b>
-
+Other units may also be used, such as <strong>g/cm³</strong>.
 </p>
 
 </div>
 
 
-<h3>🔄 Rearranging the Density Equation</h3>
+<div class="card">
 
-<div class="formula">
-
-ρ = m/V
-
-<br><br>
-
-m = ρV
-
-<br><br>
-
-V = m/ρ
-
-</div>
-
-
-<h3>📏 Common Density Units</h3>
+<h3>Density and Particles</h3>
 
 <p>
-Density may also be expressed in:
+Density depends on how much mass is contained in a given volume.
+A material with more mass packed into the same volume has a higher density.
 </p>
 
-<ul>
+<div class="particles">
 
-<li>g/cm³</li>
+<div class="particle-box dense">
 
-<li>g/mL</li>
+<h4>Higher Density</h4>
 
-<li>kg/m³</li>
+<div class="particle d1"></div>
+<div class="particle d2"></div>
+<div class="particle d3"></div>
+<div class="particle d4"></div>
+<div class="particle d5"></div>
+<div class="particle d6"></div>
+<div class="particle d7"></div>
+<div class="particle d8"></div>
+<div class="particle d9"></div>
+<div class="particle d10"></div>
+<div class="particle d11"></div>
+<div class="particle d12"></div>
 
-</ul>
+</div>
 
-<div class="key">
+<div class="particle-box less-dense">
 
-<b>Useful conversion:</b>
+<h4>Lower Density</h4>
 
-<br><br>
+<div class="particle l1"></div>
+<div class="particle l2"></div>
+<div class="particle l3"></div>
+<div class="particle l4"></div>
 
-1 g/cm³ = 1000 kg/m³
+</div>
+
+</div>
 
 </div>
 
 
+<div class="card">
 
-<h3>🧮 Density Calculator</h3>
-
-<div class="activity">
+<h3>Worked Example 1 — Concrete</h3>
 
 <p>
-Enter mass and volume.
+A concrete slab is 1.0 m × 0.5 m × 0.1 m.
+Its mass is 120 kg.
+Find its density.
 </p>
-
-<input id="densityMass"
-type="number"
-placeholder="Mass">
-
-<select id="densityMassUnit">
-
-<option value="kg">
-kg
-</option>
-
-<option value="g">
-g
-</option>
-
-</select>
-
-<br>
-
-<input id="densityVolume"
-type="number"
-placeholder="Volume">
-
-<select id="densityVolumeUnit">
-
-<option value="m3">
-m³
-</option>
-
-<option value="cm3">
-cm³
-</option>
-
-</select>
-
-<br>
-
-<button onclick="densityCalculator()">
-
-Calculate Density
-
-</button>
-
-<div id="densityResult"
-class="result">
-
-</div>
-
-</div>
-
-
-
-<!-- QUESTION 1 -->
-
-<div class="question">
-
-<h3>📝 Question 1</h3>
-
-<p>
-Deduce the SI unit of density.
-</p>
-
-<button onclick="toggleAnswer('ans1')">
-Show Answer
-</button>
-
-<div id="ans1"
-class="answer">
-
-Density = mass / volume
-
-<br><br>
-
-SI unit of mass = kg
-
-<br>
-
-SI unit of volume = m³
-
-<br><br>
-
-Therefore:
-
-<br><br>
-
-<b>SI unit of density = kg/m³</b>
-
-</div>
-
-</div>
-
-
-
-<!-- QUESTION 2 -->
-
-<div class="question">
-
-<h3>📝 Question 2</h3>
-
-<p>
-A concrete slab 1.0 m by 0.5 m by 0.1 m
-has a mass of 120 kg.
-
-What is the density of the concrete?
-</p>
-
-<button onclick="toggleAnswer('ans2')">
-Show Answer
-</button>
-
-<div id="ans2"
-class="answer">
-
-Volume:
-
-<br><br>
-
-V = l × w × h
-
-<br>
-
-V = 1.0 × 0.5 × 0.1
-
-<br>
-
-V = 0.05 m³
-
-<br><br>
-
-Density:
-
-<br>
-
-ρ = m/V
-
-<br>
-
-ρ = 120/0.05
-
-<br><br>
-
-<b>ρ = 2400 kg/m³</b>
-
-</div>
-
-</div>
-
-
-
-<!-- QUESTION 3 -->
-
-<div class="question">
-
-<h3>📝 Question 3</h3>
-
-<p>
-An alloy is made by mixing 360 g of copper,
-of density 9 g/cm³, with 80 g of iron,
-of density 8 g/cm³.
-
-Find the density of the alloy, assuming the
-volume of each metal used does not change
-during mixing.
-</p>
-
-<button onclick="toggleAnswer('ans3')">
-Show Answer
-</button>
-
-<div id="ans3"
-class="answer">
-
-For copper:
-
-<br><br>
-
-Volume = mass / density
-
-<br>
-
-= 360/9
-
-<br>
-
-= 40 cm³
-
-<br><br>
-
-For iron:
-
-<br>
-
-Volume = 80/8
-
-<br>
-
-= 10 cm³
-
-<br><br>
-
-Total mass:
-
-<br>
-
-360 + 80 = 440 g
-
-<br><br>
-
-Total volume:
-
-<br>
-
-40 + 10 = 50 cm³
-
-<br><br>
-
-Density of alloy:
-
-<br>
-
-ρ = 440/50
-
-<br><br>
-
-<b>ρ = 8.8 g/cm³</b>
-
-</div>
-
-</div>
-
-</div>
-
-
-
-<!-- =========================
-     PRACTICALS
-========================= -->
-
-<div class="card" id="practicals">
-
-<h2>🔬 4. Determination of Density</h2>
-
-
-<h3>🧊 A. Regular Solid — Example: Cuboid</h3>
-
-<div class="practical">
-
-<p>
-A regular solid has a simple geometric shape,
-so its volume can be calculated using measurements.
-</p>
-
-<h4>Apparatus</h4>
-
-<ul>
-
-<li>Beam balance</li>
-
-<li>Vernier calipers or suitable ruler</li>
-
-</ul>
-
-<h4>Procedure</h4>
-
-<ol>
-
-<li>
-Determine the mass, m, of the rectangular glass
-block using a beam balance.
-</li>
-
-<li>
-Using a pair of vernier calipers, measure the
-height (h), width (w) and length (l) of the block.
-</li>
-
-<li>
-Calculate the volume using:
-</li>
-
-</ol>
-
-<div class="formula">
-
-V = l × w × h
-
-</div>
-
-<p>
-Calculate density using:
-</p>
-
-<div class="formula">
-
-ρ = m/V
-
-</div>
-
-<h4>Precautions</h4>
-
-<ul>
-
-<li>Take care when reading the measuring instrument.</li>
-
-<li>Check for zero error where applicable.</li>
-
-<li>Take measurements at eye level to avoid parallax error.</li>
-
-<li>Repeat measurements and calculate an average where appropriate.</li>
-
-</ul>
-
-</div>
-
-
-
-<h3>🪨 B. Irregular Solid — Example: Stone</h3>
-
-<div class="practical">
-
-<h4>Apparatus</h4>
-
-<ul>
-
-<li>Beam balance</li>
-
-<li>Measuring cylinder</li>
-
-<li>Water</li>
-
-</ul>
-
-<h4>Procedure</h4>
-
-<ol>
-
-<li>
-Measure the mass of the stone using a balance.
-</li>
-
-<li>
-Partially fill a measuring cylinder with water.
-</li>
-
-<li>
-Record the initial volume of water.
-</li>
-
-<li>
-Carefully place the stone into the water.
-</li>
-
-<li>
-Ensure the stone is completely submerged.
-</li>
-
-<li>
-Record the final volume.
-</li>
-
-<li>
-Calculate the volume of the stone.
-</li>
-
-</ol>
-
-<div class="formula">
-
-Volume of stone =
-Final volume − Initial volume
-
-</div>
-
-<p>
-Finally:
-</p>
-
-<div class="formula">
-
-ρ = m/V
-
-</div>
-
-<div class="warning">
-
-The stone should be completely submerged and
-should not trap air bubbles.
-
-</div>
-
-</div>
-
-
-
-<!-- QUESTION 4 -->
-
-<div class="question">
-
-<h3>📝 Question 4</h3>
-
-<p>
-Describe how you would determine the density
-of an irregular solid such as a stone.
-</p>
-
-<button onclick="toggleAnswer('ans4')">
-Show Answer
-</button>
-
-<div id="ans4"
-class="answer">
-
-1. Measure the mass of the stone using a balance.
-
-<br><br>
-
-2. Place water in a measuring cylinder and record
-the initial volume.
-
-<br><br>
-
-3. Carefully place the stone into the water.
-
-<br><br>
-
-4. Ensure that the stone is completely submerged.
-
-<br><br>
-
-5. Record the final volume.
-
-<br><br>
-
-6. Calculate the volume of the stone:
-
-<br>
-
-Final volume − Initial volume
-
-<br><br>
-
-7. Calculate density using:
-
-<br><br>
-
-ρ = m/V
-
-</div>
-
-</div>
-
-
-
-<h3>💧 C. Density of a Liquid</h3>
-
-<div class="practical">
-
-<h4>Procedure</h4>
-
-<ol>
-
-<li>
-Measure the mass of an empty container.
-</li>
-
-<li>
-Pour a known volume of liquid into the container.
-</li>
-
-<li>
-Measure the mass of the container and liquid.
-</li>
-
-<li>
-Calculate the mass of the liquid by subtraction.
-</li>
-
-<li>
-Calculate density using ρ = m/V.
-</li>
-
-</ol>
-
-<div class="formula">
-
-Mass of liquid =
-Mass of container + liquid − Mass of empty container
-
-</div>
-
-</div>
-
-
-
-<h3>🪵 D. Irregular Solid That Floats — Example: Cork</h3>
-
-<div class="practical">
-
-<p>
-A cork floats on water, so it cannot be measured
-using simple water displacement because it will
-not become fully submerged.
-</p>
-
-<p>
-The cork must be forced completely below the water
-surface using a suitable sinker or another method.
-</p>
-
-<h4>Method Using a Sinker</h4>
-
-<ol>
-
-<li>
-Measure the mass of the cork.
-</li>
-
-<li>
-Measure the volume of the sinker using water displacement.
-</li>
-
-<li>
-Attach the cork to the sinker.
-</li>
-
-<li>
-Fully submerge both objects in water.
-</li>
-
-<li>
-Measure the combined volume.
-</li>
-
-<li>
-Subtract the volume of the sinker.
-</li>
-
-<li>
-The remaining volume is the volume of the cork.
-</li>
-
-<li>
-Calculate the density of the cork using ρ = m/V.
-</li>
-
-</ol>
 
 <div class="highlight">
 
-<b>Important:</b>
-
-The object must be fully submerged when using
-the displacement method.
-
-</div>
-
-</div>
-
-
-
-<h3>🔬 Practical Comparison</h3>
-
-<table>
-
-<tr>
-
-<th>Object</th>
-
-<th>Mass</th>
-
-<th>Volume</th>
-
-</tr>
-
-<tr>
-
-<td>Regular solid</td>
-
-<td>Balance</td>
-
-<td>Calculate from dimensions</td>
-
-</tr>
-
-<tr>
-
-<td>Irregular solid</td>
-
-<td>Balance</td>
-
-<td>Water displacement</td>
-
-</tr>
-
-<tr>
-
-<td>Liquid</td>
-
-<td>Mass by difference</td>
-
-<td>Measuring cylinder</td>
-
-</tr>
-
-<tr>
-
-<td>Floating solid</td>
-
-<td>Balance</td>
-
-<td>Displacement using sinker</td>
-
-</tr>
-
-</table>
-
-</div>
-
-
-
-<!-- =========================
-     EXTRA PRACTICE
-========================= -->
-
-<div class="card" id="questions">
-
-<h2>📝 5. Extra Practice</h2>
-
-
-<div class="question">
-
-<h3>Question 5</h3>
+<strong>Step 1: Find the volume</strong>
 
 <p>
-An object has a mass of 500 g and a volume
-of 200 cm³.
-
-Calculate its density in g/cm³.
+V = l × w × h
 </p>
 
-<button onclick="toggleAnswer('ans5')">
-Show Answer
-</button>
+<p>
+V = 1.0 × 0.5 × 0.1
+</p>
 
-<div id="ans5"
-class="answer">
+<p>
+V = 0.05 m³
+</p>
 
+</div>
+
+<div class="highlight">
+
+<strong>Step 2: Use the density equation</strong>
+
+<p>
 ρ = m/V
-
-<br><br>
-
-ρ = 500/200
-
-<br><br>
-
-<b>ρ = 2.5 g/cm³</b>
-
-</div>
-
-</div>
-
-
-
-<div class="question">
-
-<h3>Question 6</h3>
-
-<p>
-A liquid has a density of 800 kg/m³.
-What is the mass of 0.5 m³ of the liquid?
 </p>
 
-<button onclick="toggleAnswer('ans6')">
-Show Answer
-</button>
-
-<div id="ans6"
-class="answer">
-
-m = ρV
-
-<br><br>
-
-m = 800 × 0.5
-
-<br><br>
-
-<b>m = 400 kg</b>
-
-</div>
-
-</div>
-
-
-
-<div class="question">
-
-<h3>Question 7</h3>
-
 <p>
-A metal has a mass of 2 kg and a density
-of 8000 kg/m³.
-
-Calculate its volume.
+ρ = 120/0.05
 </p>
 
-<button onclick="toggleAnswer('ans7')">
-Show Answer
-</button>
+</div>
 
-<div id="ans7"
-class="answer">
+<div class="formula">
 
-V = m/ρ
-
-<br><br>
-
-V = 2/8000
-
-<br><br>
-
-<b>V = 0.00025 m³</b>
+ρ = 2400 kg/m³
 
 </div>
 
 </div>
 
-
-
-<div class="question">
-
-<h3>Question 8</h3>
-
-<p>
-An object has a mass of 10 kg.
-Calculate its weight on Earth.
-Take g = 9.8 N/kg.
-</p>
-
-<button onclick="toggleAnswer('ans8')">
-Show Answer
-</button>
-
-<div id="ans8"
-class="answer">
-
-W = mg
-
-<br><br>
-
-W = 10 × 9.8
-
-<br><br>
-
-<b>W = 98 N</b>
-
-</div>
-
-</div>
-
-</div>
-
-
-
-<!-- =========================
-     MISCONCEPTIONS
-========================= -->
 
 <div class="card">
 
-<h2>⚠️ Common Misconceptions</h2>
+<h3>Worked Example 2 — Alloy</h3>
 
-<table>
+<p>
+An alloy is made by mixing 360 g of copper, of density 9 g/cm³,
+with 80 g of iron, of density 8 g/cm³.
+Find the density of the alloy, assuming the volumes do not change during mixing.
+</p>
 
-<tr>
+<div class="highlight">
 
-<th>Incorrect Idea</th>
+<strong>Copper volume:</strong>
 
-<th>Correct Idea</th>
+<p>
+V = m/ρ = 360/9 = 40 cm³
+</p>
 
-</tr>
+<strong>Iron volume:</strong>
 
-<tr>
+<p>
+V = m/ρ = 80/8 = 10 cm³
+</p>
 
-<td>Mass and weight are the same.</td>
+<strong>Total mass:</strong>
 
-<td>Mass is the amount of matter; weight is gravitational force.</td>
+<p>
+360 + 80 = 440 g
+</p>
 
-</tr>
+<strong>Total volume:</strong>
 
-<tr>
-
-<td>An object has less mass on the Moon.</td>
-
-<td>Mass stays constant; weight changes.</td>
-
-</tr>
-
-<tr>
-
-<td>Heavy objects always fall faster.</td>
-
-<td>Ignoring air resistance, objects near Earth accelerate at approximately the same rate.</td>
-
-</tr>
-
-<tr>
-
-<td>Density is the same as mass.</td>
-
-<td>Density is mass per unit volume.</td>
-
-</tr>
-
-<tr>
-
-<td>A floating object cannot have its density measured.</td>
-
-<td>Its volume can be determined using a suitable displacement method.</td>
-
-</tr>
-
-</table>
+<p>
+40 + 10 = 50 cm³
+</p>
 
 </div>
-
-
-
-<!-- =========================
-     CHAPTER SUMMARY
-========================= -->
-
-<div class="card" id="summary">
-
-<h2>📚 Chapter Summary</h2>
-
-<h3>Mass</h3>
-
-<p>
-Mass is the amount of matter in an object.
-It is measured in kilograms and remains constant
-regardless of location.
-</p>
-
-<h3>Inertia</h3>
-
-<p>
-Inertia is the reluctance of an object to change
-its state of motion. Greater mass means greater inertia.
-</p>
-
-<h3>Weight</h3>
-
-<p>
-Weight is the gravitational force acting on an object.
-It is measured in newtons.
-</p>
 
 <div class="formula">
 
-W = mg
+Density = 440/50
+
+<br><br>
+
+= 8.8 g/cm³
 
 </div>
 
-<h3>Gravitational Field Strength</h3>
-
-<div class="formula">
-
-g = F/m
+</div>
 
 </div>
 
-<p>
-Near Earth's surface, g is approximately 9.8 N/kg.
-</p>
+</section>
 
-<h3>Density</h3>
 
-<p>
-Density is mass per unit volume.
-</p>
+<!-- CALCULATOR -->
 
-<div class="formula">
+<section>
 
-ρ = m/V
+<div class="container">
 
-</div>
+<div class="section-title">
 
-<p>
-SI unit: <b>kg/m³</b>
-</p>
+<h2>🧮 Density Calculator</h2>
+
+<p>Change the values and explore the relationship between mass, volume and density.</p>
 
 </div>
 
+<div class="card calculator">
+
+<div class="input-group">
+
+<label>Mass (kg)</label>
+
+<input type="number" id="massInput" value="10">
+
+</div>
+
+<div class="input-group">
+
+<label>Volume (m³)</label>
+
+<input type="number" id="volumeInput" value="2">
+
+</div>
+
+<button class="calc-button" onclick="calculateDensity()">
+Calculate Density
+</button>
+
+<div class="result" id="densityResult">
+
+Density = 5 kg/m³
+
+</div>
+
+</div>
+
+</div>
+
+</section>
 
 
-<!-- =========================
-     FINAL CHECK
-========================= -->
+<!-- EXPERIMENTS -->
+
+<section id="experiments">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>04 — Determining Density Experimentally</h2>
+
+<p>How do scientists determine the density of different bodies?</p>
+
+</div>
+
 
 <div class="card">
 
-<h2>🏆 Final Mastery Check</h2>
+<h3>A. Regular Solid — Example: Cuboid</h3>
+
+<div class="lab">
+
+<div class="lab-object"></div>
+
+<div class="lab-step">
+<strong>1.</strong> Determine the mass, m, using a beam balance.
+</div>
+
+<div class="lab-step">
+<strong>2.</strong> Measure the length, width and height using a ruler or vernier calipers.
+</div>
+
+<div class="lab-step">
+<strong>3.</strong> Calculate the volume using:
+<br><br>
+V = l × w × h
+</div>
+
+<div class="lab-step">
+<strong>4.</strong> Calculate the density:
+<br><br>
+ρ = m/V
+</div>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h3>B. Irregular Solid — Example: Stone</h3>
+
+<div class="lab-step">
+<strong>1.</strong> Measure the mass of the stone using a balance.
+</div>
+
+<div class="lab-step">
+<strong>2.</strong> Place a known volume of water in a measuring cylinder.
+</div>
+
+<div class="lab-step">
+<strong>3.</strong> Carefully lower the stone completely into the water.
+</div>
+
+<div class="lab-step">
+<strong>4.</strong> Record the new water level.
+</div>
+
+<div class="lab-step">
+<strong>5.</strong> The volume of the stone is equal to the increase in water level.
+</div>
+
+<div class="lab-step">
+<strong>6.</strong> Calculate density using ρ = m/V.
+</div>
+
+<div class="highlight">
+
+<strong>Important:</strong>
+The stone must be completely submerged and no air bubbles should remain attached to it.
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h3>C. Determining the Density of a Liquid</h3>
+
+<div class="lab-step">
+<strong>1.</strong> Measure the mass of an empty measuring cylinder.
+</div>
+
+<div class="lab-step">
+<strong>2.</strong> Pour a known volume of liquid into the cylinder.
+</div>
+
+<div class="lab-step">
+<strong>3.</strong> Measure the mass of the cylinder and liquid together.
+</div>
+
+<div class="lab-step">
+<strong>4.</strong> Calculate the mass of the liquid by subtraction.
+</div>
+
+<div class="lab-step">
+<strong>5.</strong> Calculate density using ρ = m/V.
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h3>D. Irregular Solid That Floats — Example: Cork</h3>
 
 <p>
-Before considering this chapter complete,
-ask yourself:
+A cork floats on water, so its volume cannot be found simply by
+submerging it and reading the displacement.
 </p>
 
-<ul>
+<div class="lab-step">
+<strong>1.</strong> Measure the mass of the cork.
+</div>
 
-<li>Can I explain what mass means?</li>
+<div class="lab-step">
+<strong>2.</strong> Attach a heavy object, such as a sinker, to the cork.
+</div>
 
-<li>Can I explain inertia?</li>
+<div class="lab-step">
+<strong>3.</strong> Measure the combined volume of the cork and sinker when fully submerged.
+</div>
 
-<li>Can I distinguish mass from weight?</li>
+<div class="lab-step">
+<strong>4.</strong> Measure the volume of the sinker alone.
+</div>
 
-<li>Can I use W = mg?</li>
+<div class="lab-step">
+<strong>5.</strong> Subtract the sinker's volume from the combined volume.
+</div>
 
-<li>Can I explain gravitational field strength?</li>
+<div class="lab-step">
+<strong>6.</strong> Calculate the density of the cork.
+</div>
 
-<li>Can I calculate density?</li>
+</div>
 
-<li>Can I rearrange ρ = m/V?</li>
+</div>
 
-<li>Can I determine the density of a regular solid?</li>
+</section>
 
-<li>Can I determine the density of an irregular solid?</li>
 
-<li>Can I determine the density of a liquid?</li>
+<!-- VIDEO -->
 
-<li>Can I determine the density of a floating object?</li>
+<section>
 
-</ul>
+<div class="container">
 
-<button onclick="mastery()">
+<div class="section-title">
 
-🏆 Check My Mastery
+<h2>🎥 Visual Learning</h2>
 
+<p>Watch, observe and connect the physics to the real world.</p>
+
+</div>
+
+<div class="video-placeholder">
+
+<div class="play">▶</div>
+
+<h3>Mass, Weight & Density — Video Lesson</h3>
+
+<p>Interactive video content will be added here.</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PRACTICE -->
+
+<section id="practice">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>🎯 Test Your Understanding</h2>
+
+<p>Check your understanding before moving to exam practice.</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="quiz-question">
+
+<strong>1. Which quantity remains constant when an object moves from Earth to the Moon?</strong>
+
+<button onclick="checkAnswer(this,false)">
+A. Weight
 </button>
 
-<div id="masteryResult"
-class="result">
+<button onclick="checkAnswer(this,true)">
+B. Mass
+</button>
+
+<button onclick="checkAnswer(this,false)">
+C. Gravitational force
+</button>
+
+<div class="feedback"></div>
+
+</div>
+
+
+<div class="quiz-question">
+
+<strong>2. What is the SI unit of density?</strong>
+
+<button onclick="checkAnswer(this,false)">
+A. N
+</button>
+
+<button onclick="checkAnswer(this,false)">
+B. kg
+</button>
+
+<button onclick="checkAnswer(this,true)">
+C. kg/m³
+</button>
+
+<div class="feedback"></div>
+
+</div>
+
+
+<div class="quiz-question">
+
+<strong>3. What instrument is commonly used to measure weight?</strong>
+
+<button onclick="checkAnswer(this,true)">
+A. Spring balance
+</button>
+
+<button onclick="checkAnswer(this,false)">
+B. Beam balance
+</button>
+
+<button onclick="checkAnswer(this,false)">
+C. Measuring cylinder
+</button>
+
+<div class="feedback"></div>
 
 </div>
 
 </div>
 
+</div>
 
+</section>
+
+
+<!-- AI TUTOR -->
+
+<section id="tutor">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>🤖 PhysicsAI Tutor</h2>
+
+<p>Ask a question about Mass, Weight or Density.</p>
 
 </div>
 
+<div class="ai-box">
 
+<div class="ai-message">
+
+<strong>PhysicsAI:</strong>
+
+<p>
+Hello! I'm your PhysicsAI tutor.
+Ask me something like:
+"Why does mass stay the same on the Moon?"
+</p>
+
+</div>
+
+<div class="ai-input">
+
+<input
+type="text"
+id="aiQuestion"
+placeholder="Ask your physics question..."
+>
+
+<button onclick="askTutor()">
+Ask
+</button>
+
+</div>
+
+<div id="aiAnswer"></div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
 
 <footer>
 
-PhysicsAI 5054
+<strong>PhysicsAI 5054</strong>
 
-<br>
+<p>
+Cambridge O Level Physics • Mass, Weight & Density
+</p>
 
-Mass, Weight and Density
-
-<br>
-
-Interactive Digital Textbook Prototype
+<p>
+Interactive Digital Learning Platform
+</p>
 
 </footer>
 
 
-
 <script>
 
+/* DENSITY CALCULATOR */
 
-/* =========================
-   PROGRESS
-========================= */
+function calculateDensity() {
 
-function updateProgress(value) {
+    let mass = parseFloat(document.getElementById("massInput").value);
 
-document.getElementById("progressBar").style.width =
-value + "%";
+    let volume = parseFloat(document.getElementById("volumeInput").value);
 
-document.getElementById("progressText").innerHTML =
-value + "%";
+    let result = document.getElementById("densityResult");
 
-}
+    if (isNaN(mass) || isNaN(volume) || volume <= 0) {
 
+        result.innerHTML = "Please enter valid values.";
 
+        return;
 
-/* =========================
-   INERTIA
-========================= */
+    }
 
-function inertiaTest(type) {
+    let density = mass / volume;
 
-if(type === "light") {
-
-document.getElementById("inertiaResult").innerHTML =
-
-"🟢 A light object has less mass and therefore less inertia. " +
-"It is easier to change its state of motion.";
-
-}
-
-else {
-
-document.getElementById("inertiaResult").innerHTML =
-
-"🔴 A heavy object has greater mass and therefore greater inertia. " +
-"More force is needed to change its state of motion.";
-
-}
+    result.innerHTML =
+        "Density = " + density.toFixed(2) + " kg/m³";
 
 }
 
 
+/* QUIZ */
 
-function inertiaQuiz(answer) {
+function checkAnswer(button, correct) {
 
-if(answer === "B") {
+    let feedback =
+        button.parentElement.querySelector(".feedback");
 
-document.getElementById("inertiaQuizResult").innerHTML =
+    if (correct) {
 
-"🎉 Correct! The 50 kg person has greater mass and therefore greater inertia.";
+        feedback.innerHTML = "✅ Correct! Well done.";
 
-}
+        feedback.style.color = "#087f5b";
 
-else {
+    } else {
 
-document.getElementById("inertiaQuizResult").innerHTML =
+        feedback.innerHTML = "❌ Not quite. Try again.";
 
-"❌ Not quite. Greater mass means greater inertia.";
+        feedback.style.color = "#d94841";
 
-}
-
-}
-
-
-
-/* =========================
-   WEIGHT CALCULATOR
-========================= */
-
-function calculateWeight() {
-
-let mass =
-parseFloat(document.getElementById("weightMass").value);
-
-if(isNaN(mass) || mass < 0) {
-
-document.getElementById("weightResult").innerHTML =
-
-"Please enter a valid mass.";
-
-return;
-
-}
-
-let earthWeight =
-mass * 9.8;
-
-let moonWeight =
-mass * 1.62;
-
-document.getElementById("weightResult").innerHTML =
-
-"🌍 Earth weight = " +
-earthWeight.toFixed(2) +
-" N<br><br>" +
-
-"🌙 Moon weight ≈ " +
-moonWeight.toFixed(2) +
-" N<br><br>" +
-
-"Mass remains " +
-mass +
-" kg in both locations.";
+    }
 
 }
 
 
+/* SIMPLE AI TUTOR */
 
-/* =========================
-   MOON QUESTION
-========================= */
+function askTutor() {
 
-function moonAnswer(answer) {
+    let question =
+        document.getElementById("aiQuestion").value.toLowerCase();
 
-if(answer === "same") {
+    let answer = "";
 
-document.getElementById("moonResult").innerHTML =
+    if (question.includes("mass") && question.includes("moon")) {
 
-"🎉 Correct! The mass remains constant. " +
-"Only the weight changes because gravitational field strength changes.";
+        answer =
+        "Your mass stays the same on the Moon because mass measures the amount of matter in an object. The amount of matter has not changed.";
 
-}
+    }
 
-else {
+    else if (question.includes("weight") && question.includes("moon")) {
 
-document.getElementById("moonResult").innerHTML =
+        answer =
+        "Your weight is smaller on the Moon because the Moon has a weaker gravitational field strength than Earth. Your mass remains unchanged.";
 
-"❌ Incorrect. Mass does not depend on location. " +
-"The astronaut's weight changes, but the mass remains the same.";
+    }
 
-}
+    else if (question.includes("density")) {
 
-}
+        answer =
+        "Density is the mass per unit volume of a substance. The equation is ρ = m/V. The SI unit is kg/m³.";
 
+    }
 
+    else if (question.includes("inertia")) {
 
-/* =========================
-   DENSITY CALCULATOR
-========================= */
+        answer =
+        "Inertia is the reluctance of an object to change its state of motion. The greater the mass of an object, the greater its inertia.";
 
-function densityCalculator() {
+    }
 
-let mass =
-parseFloat(document.getElementById("densityMass").value);
+    else if (question.includes("weight")) {
 
-let volume =
-parseFloat(document.getElementById("densityVolume").value);
+        answer =
+        "Weight is the gravitational force acting on an object. It is calculated using W = mg, where m is mass and g is gravitational field strength.";
 
-let massUnit =
-document.getElementById("densityMassUnit").value;
+    }
 
-let volumeUnit =
-document.getElementById("densityVolumeUnit").value;
+    else {
 
+        answer =
+        "That's a good question! Try asking about mass, weight, density, inertia, gravitational fields, or the Moon.";
 
-if(isNaN(mass) || isNaN(volume) || volume <= 0) {
+    }
 
-document.getElementById("densityResult").innerHTML =
+    document.getElementById("aiAnswer").innerHTML =
 
-"Please enter valid values.";
-
-return;
-
-}
-
-
-let density =
-mass / volume;
-
-
-let unit =
-"";
-
-
-if(massUnit === "kg" && volumeUnit === "m3") {
-
-unit = "kg/m³";
-
-}
-
-else if(massUnit === "g" && volumeUnit === "cm3") {
-
-unit = "g/cm³";
-
-}
-
-else {
-
-unit = "mass unit / volume unit";
-
-}
-
-
-document.getElementById("densityResult").innerHTML =
-
-"Density = " +
-density.toFixed(4) +
-" " +
-unit;
-
-}
-
-
-
-/* =========================
-   SHOW ANSWERS
-========================= */
-
-function toggleAnswer(id) {
-
-let answer =
-document.getElementById(id);
-
-if(answer.style.display === "block") {
-
-answer.style.display = "none";
-
-}
-
-else {
-
-answer.style.display = "block";
-
-}
-
-}
-
-
-
-/* =========================
-   MASTERY
-========================= */
-
-function mastery() {
-
-document.getElementById("masteryResult").innerHTML =
-
-"🏆 Excellent! If you can confidently answer all the questions " +
-"above and explain the practical methods, you are ready to move " +
-"on to exam-style questions on Mass, Weight and Density.";
+    '<div class="ai-message"><strong>PhysicsAI:</strong><p>'
+    + answer +
+    '</p></div>';
 
 }
 
@@ -2241,5 +1703,4 @@ document.getElementById("masteryResult").innerHTML =
 
 
 </body>
-
 </html>
