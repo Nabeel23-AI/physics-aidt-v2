@@ -308,7 +308,21 @@ button:hover {
 .diagram-title {
     font-weight: bold;
     color: #1554a3;
-    margin-bottom: 15px;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+/* =========================
+   IMAGE DIAGRAMS
+========================= */
+
+.diagram img {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    display: block;
+    margin: 0 auto 20px;
+    border-radius: 12px;
 }
 
 /* =========================
@@ -569,7 +583,9 @@ footer {
 <body>
 
 
-<!-- HEADER -->
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
 
@@ -588,7 +604,9 @@ footer {
 </header>
 
 
-<!-- HERO -->
+<!-- =========================
+     HERO
+========================= -->
 
 <div class="hero">
 
@@ -614,7 +632,9 @@ select appropriate instruments and analyse measurements.
 <div class="layout">
 
 
-<!-- SIDEBAR -->
+<!-- =========================
+     SIDEBAR
+========================= -->
 
 <nav class="sidebar">
 
@@ -645,12 +665,16 @@ select appropriate instruments and analyse measurements.
 </nav>
 
 
-<!-- MAIN CONTENT -->
+<!-- =========================
+     MAIN CONTENT
+========================= -->
 
 <main class="content">
 
 
-<!-- OBJECTIVES -->
+<!-- =========================
+     OBJECTIVES
+========================= -->
 
 <section>
 
@@ -691,7 +715,9 @@ By the end of this chapter, you should be able to:
 </section>
 
 
-<!-- SI UNITS -->
+<!-- =========================
+     SI UNITS
+========================= -->
 
 <section id="units">
 
@@ -842,7 +868,9 @@ Show Answer
 </section>
 
 
-<!-- LENGTH -->
+<!-- =========================
+     LENGTH
+========================= -->
 
 <section id="length">
 
@@ -943,7 +971,9 @@ appropriate precision.
 </section>
 
 
-<!-- PARALLAX -->
+<!-- =========================
+     PARALLAX
+========================= -->
 
 <section id="parallax">
 
@@ -976,16 +1006,12 @@ The line of sight should be perpendicular to the scale.
 
 <svg viewBox="0 0 900 300" width="100%">
 
-<!-- scale -->
-
 <line x1="150"
 y1="220"
 x2="750"
 y2="220"
 stroke="#163b63"
 stroke-width="8"/>
-
-<!-- correct eye -->
 
 <circle cx="450"
 cy="70"
@@ -1010,8 +1036,6 @@ CORRECT
 
 </text>
 
-<!-- high eye -->
-
 <circle cx="180"
 cy="70"
 r="25"
@@ -1034,8 +1058,6 @@ font-size="20">
 WRONG
 
 </text>
-
-<!-- low eye -->
 
 <circle cx="720"
 cy="100"
@@ -1090,7 +1112,9 @@ measurement.
 </section>
 
 
-<!-- MICROMETER -->
+<!-- =========================
+     MICROMETER
+========================= -->
 
 <section id="micrometer">
 
@@ -1128,6 +1152,8 @@ Take several readings at different positions where appropriate.
 
 <div class="note">
 
+<strong>Important:</strong>
+
 The ratchet prevents excessive force from being applied to the object,
 which could deform it and affect the measurement.
 
@@ -1136,106 +1162,23 @@ which could deform it and affect the measurement.
 </div>
 
 
+<!-- YOUR GENERATED MICROMETER IMAGE -->
+
 <div class="diagram">
 
 <div class="diagram-title">
-🔩 Parts of a Micrometer Screw Gauge
+🔩 Micrometer Screw Gauge
 </div>
 
-<svg viewBox="0 0 1000 300" width="100%">
+<img
+src="micrometer.png"
+alt="Micrometer screw gauge with labelled parts"
+>
 
-<!-- frame -->
-
-<path d="M180 210
-L180 90
-Q180 40 240 40
-L750 40
-Q820 40 820 110
-L820 210"
-fill="none"
-stroke="#60798c"
-stroke-width="35"/>
-
-<!-- anvil -->
-
-<rect x="235"
-y="110"
-width="30"
-height="100"
-fill="#163b63"/>
-
-<!-- spindle -->
-
-<rect x="265"
-y="145"
-width="300"
-height="25"
-fill="#0878d1"/>
-
-<!-- thimble -->
-
-<rect x="565"
-y="100"
-width="170"
-height="120"
-rx="25"
-fill="#8ca5b8"/>
-
-<!-- ratchet -->
-
-<circle cx="790"
-cy="160"
-r="45"
-fill="#52687c"/>
-
-<!-- labels -->
-
-<text x="200"
-y="255"
-fill="#1554a3"
-font-size="20">
-
-Frame
-
-</text>
-
-<text x="225"
-y="90"
-fill="#1554a3"
-font-size="20">
-
-Anvil
-
-</text>
-
-<text x="370"
-y="135"
-fill="#1554a3"
-font-size="20">
-
-Spindle
-
-</text>
-
-<text x="610"
-y="90"
-fill="#1554a3"
-font-size="20">
-
-Thimble
-
-</text>
-
-<text x="755"
-y="240"
-fill="#1554a3"
-font-size="20">
-
-Ratchet
-
-</text>
-
-</svg>
+<p>
+A micrometer screw gauge is used to measure very small dimensions,
+such as the diameter of a thin wire or the thickness of a sheet of paper.
+</p>
 
 </div>
 
@@ -1293,7 +1236,9 @@ Measurement = 5.00 + 0.32
 </section>
 
 
-<!-- VOLUME -->
+<!-- =========================
+     VOLUME
+========================= -->
 
 <section id="volume">
 
@@ -1403,7 +1348,9 @@ Volume = 67 − 40
 </section>
 
 
-<!-- TIME -->
+<!-- =========================
+     TIME
+========================= -->
 
 <section id="time">
 
@@ -1427,7 +1374,9 @@ several repeated events and calculate the average time.
 </section>
 
 
-<!-- PENDULUM -->
+<!-- =========================
+     PENDULUM
+========================= -->
 
 <section id="pendulum">
 
@@ -1522,7 +1471,9 @@ T = 20.4 ÷ 25
 </section>
 
 
-<!-- SCALARS VECTORS -->
+<!-- =========================
+     SCALARS & VECTORS
+========================= -->
 
 <section id="vectors">
 
@@ -1589,7 +1540,9 @@ A <strong>vector quantity</strong> has both magnitude and direction.
 </section>
 
 
-<!-- RESULTANTS -->
+<!-- =========================
+     RESULTANTS
+========================= -->
 
 <section id="resultants">
 
@@ -1691,7 +1644,9 @@ R = √113
 </section>
 
 
-<!-- QUIZ -->
+<!-- =========================
+     QUIZ
+========================= -->
 
 <section id="quiz">
 
@@ -1817,7 +1772,9 @@ class="quiz-result">
 </section>
 
 
-<!-- PLAYGROUND -->
+<!-- =========================
+     PHYSICS PLAYGROUND
+========================= -->
 
 <section id="playground">
 
@@ -1930,7 +1887,9 @@ Solve Mystery
 </section>
 
 
-<!-- FINAL CHALLENGE -->
+<!-- =========================
+     FINAL CHALLENGE
+========================= -->
 
 <section>
 
@@ -1978,6 +1937,10 @@ and gives a more reliable estimate of the wire's diameter.
 </div>
 
 
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
 
 <strong>PhysicsAI 5054</strong>
@@ -1989,23 +1952,35 @@ Learn • Explore • Understand
 </footer>
 
 
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
 <script>
 
 /* =========================
-   SHOW ANSWER
+   SHOW / HIDE ANSWERS
 ========================= */
 
 function showAnswer(id) {
 
     const answer = document.getElementById(id);
 
-    answer.classList.toggle("show");
+    if (answer.classList.contains("show")) {
+
+        answer.classList.remove("show");
+
+    } else {
+
+        answer.classList.add("show");
+
+    }
 
 }
 
 
 /* =========================
-   QUIZ
+   QUIZ FUNCTION
 ========================= */
 
 function quiz(button, correct, resultID) {
@@ -2013,7 +1988,7 @@ function quiz(button, correct, resultID) {
     const result =
     document.getElementById(resultID);
 
-    if(correct) {
+    if (correct) {
 
         result.innerHTML =
         "✅ Correct! Well done.";
@@ -2037,5 +2012,4 @@ function quiz(button, correct, resultID) {
 
 
 </body>
-
 </html>
