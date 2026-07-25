@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -307,7 +308,7 @@ section {
 
 .progress-fill {
     height: 100%;
-    width: 7%;
+    width: 13%;
     background: linear-gradient(90deg, #2575fc, #4cc9f0);
     border-radius: 20px;
 }
@@ -446,6 +447,13 @@ section {
     opacity: 0.9;
 }
 
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
 .cta-button {
     display: inline-block;
     background: white;
@@ -454,6 +462,12 @@ section {
     border-radius: 10px;
     font-weight: 800;
     text-decoration: none;
+}
+
+.cta-button.secondary-cta {
+    background: rgba(255,255,255,0.15);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.5);
 }
 
 /* FOOTER */
@@ -512,6 +526,11 @@ footer p {
 
     .about-text h2 {
         font-size: 32px;
+    }
+
+    .progress-info {
+        flex-direction: column;
+        gap: 5px;
     }
 
 }
@@ -717,7 +736,7 @@ Learn at your own pace. New interactive lessons will be added progressively.
 
 <span>Platform Development</span>
 
-<strong>1 lesson available</strong>
+<strong>2 lessons available</strong>
 
 </div>
 
@@ -733,7 +752,7 @@ Learn at your own pace. New interactive lessons will be added progressively.
 <div class="topic-grid">
 
 
-<!-- AVAILABLE -->
+<!-- AVAILABLE: MASS, WEIGHT & DENSITY -->
 
 <div class="topic-card available">
 
@@ -766,9 +785,9 @@ Launch Interactive Lesson →
 </div>
 
 
-<!-- COMING SOON -->
+<!-- AVAILABLE: PHYSICAL QUANTITIES & MEASUREMENT -->
 
-<div class="topic-card">
+<div class="topic-card available">
 
 <div class="topic-number">
 02
@@ -778,21 +797,28 @@ Launch Interactive Lesson →
 📏
 </div>
 
-<span class="status coming-status">
-COMING SOON
+<span class="status available-status">
+● AVAILABLE NOW
 </span>
 
 <h3>
-Language of Measurement
+Physical Quantities & Measurement Techniques
 </h3>
 
 <p>
-Physical quantities, SI units, measuring instruments,
-accuracy, precision and uncertainty.
+Learn about physical quantities, SI units, prefixes,
+measurement instruments, parallax error, micrometers,
+volume, time, scalars, vectors and resultant forces.
 </p>
+
+<a class="launch" href="physical-quantities.html">
+Launch Interactive Lesson →
+</a>
 
 </div>
 
+
+<!-- 03 MOTION -->
 
 <div class="topic-card">
 
@@ -820,6 +846,8 @@ of motion.
 </div>
 
 
+<!-- 04 FORCES -->
+
 <div class="topic-card">
 
 <div class="topic-number">
@@ -845,6 +873,8 @@ Forces, resultant forces, Newton's laws and momentum.
 </div>
 
 
+<!-- 05 TURNING EFFECTS -->
+
 <div class="topic-card">
 
 <div class="topic-number">
@@ -869,6 +899,8 @@ Moments, equilibrium and applications of turning forces.
 
 </div>
 
+
+<!-- 06 ENERGY -->
 
 <div class="topic-card">
 
@@ -896,6 +928,8 @@ energy resources.
 </div>
 
 
+<!-- 07 PRESSURE -->
+
 <div class="topic-card">
 
 <div class="topic-number">
@@ -920,6 +954,8 @@ Pressure in solids, liquids and gases.
 
 </div>
 
+
+<!-- 08 THERMAL -->
 
 <div class="topic-card">
 
@@ -946,6 +982,8 @@ The kinetic particle model and transfer of thermal energy.
 </div>
 
 
+<!-- 09 WAVES -->
+
 <div class="topic-card">
 
 <div class="topic-number">
@@ -970,6 +1008,8 @@ Wave properties and wave behaviour.
 
 </div>
 
+
+<!-- 10 SOUND -->
 
 <div class="topic-card">
 
@@ -996,6 +1036,8 @@ Production, transmission and properties of sound.
 </div>
 
 
+<!-- 11 LIGHT -->
+
 <div class="topic-card">
 
 <div class="topic-number">
@@ -1020,6 +1062,8 @@ Reflection, refraction, lenses and optical systems.
 
 </div>
 
+
+<!-- 12 ELECTROMAGNETIC SPECTRUM -->
 
 <div class="topic-card">
 
@@ -1046,6 +1090,8 @@ Properties and applications of electromagnetic radiation.
 </div>
 
 
+<!-- 13 ELECTRICITY -->
+
 <div class="topic-card">
 
 <div class="topic-number">
@@ -1070,6 +1116,8 @@ Current, potential difference, resistance and electrical circuits.
 
 </div>
 
+
+<!-- 14 MAGNETISM -->
 
 <div class="topic-card">
 
@@ -1096,6 +1144,8 @@ Magnetic fields, electromagnets, motors and electromagnetic induction.
 </div>
 
 
+<!-- 15 NUCLEAR -->
+
 <div class="topic-card">
 
 <div class="topic-number">
@@ -1120,6 +1170,8 @@ Atomic structure, radioactivity, radioactive decay and half-life.
 
 </div>
 
+
+<!-- 16 SPACE -->
 
 <div class="topic-card">
 
@@ -1279,13 +1331,22 @@ Ready to Start Learning?
 </h2>
 
 <p>
-Begin your journey with Mass, Weight & Density —
-the first interactive lesson in the PhysicsAI 5054 platform.
+Begin your journey with our interactive Physics lessons.
+Explore Mass, Weight & Density or discover Physical Quantities
+and Measurement Techniques.
 </p>
 
+<div class="cta-buttons">
+
 <a href="mass-weight-density.html" class="cta-button">
-Start Learning Physics
+Mass, Weight & Density →
 </a>
+
+<a href="physical-quantities.html" class="cta-button secondary-cta">
+Physical Quantities & Measurement →
+</a>
+
+</div>
 
 </section>
 
@@ -1312,3 +1373,4 @@ technology, innovation and AI.
 
 </body>
 </html>
+```
