@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Physical Quantities & Measurement Techniques | PhysicsAI 5054</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7fb;
+    color: #1f2937;
+    line-height: 1.7;
+}
+
+header {
+    background: linear-gradient(135deg, #0f4c81, #1976d2);
+    color: white;
+    padding: 45px 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.3rem;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.1rem;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 25px;
+}
+
+nav {
+    background: white;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+nav a {
+    display: inline-block;
+    margin: 5px;
+    padding: 8px 12px;
+    background: #e8f1fb;
+    color: #0f4c81;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+section {
+    background: white;
+    padding: 30px;
+    margin: 25px 0;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+}
+
+h2 {
+    color: #0f4c81;
+    border-bottom: 3px solid #1976d2;
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+}
+
+h3 {
+    color: #1565c0;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.card {
+    background: #f8fafc;
+    padding: 20px;
+    margin: 15px 0;
+    border-left: 5px solid #1976d2;
+    border-radius: 8px;
+}
+
+.tip {
+    background: #fff8e1;
+    border-left: 5px solid #ffb300;
+    padding: 18px;
+    margin: 15px 0;
+    border-radius: 8px;
+}
+
+.warning {
+    background: #ffebee;
+    border-left: 5px solid #e53935;
+    padding: 18px;
+    margin: 15px 0;
+    border-radius: 8px;
+}
+
+.success {
+    background: #e8f5e9;
+    border-left: 5px solid #43a047;
+    padding: 18px;
+    margin: 15px 0;
+    border-radius: 8px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background: #e3f2fd;
+    color: #0f4c81;
+}
+
+ul, ol {
+    padding-left: 25px;
+}
+
+.formula {
+    background: #eef6ff;
+    padding: 18px;
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin: 15px 0;
+    border-radius: 10px;
+}
+
+button {
+    background: #1976d2;
+    color: white;
+    border: none;
+    padding: 11px 18px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin: 5px;
+}
+
+button:hover {
+    background: #0d47a1;
+}
+
+input, select {
+    padding: 10px;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    margin: 5px;
+    max-width: 100%;
+}
+
+.result {
+    margin-top: 12px;
+    font-weight: bold;
+}
+
+.playground {
+    background: linear-gradient(135deg, #eef7ff, #f7fbff);
+    border: 3px solid #1976d2;
+}
+
+.game-box {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin: 20px 0;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+.progress-container {
+    background: #ddd;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 15px 0;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 22px;
+    background: #43a047;
+    transition: width 0.5s;
+}
+
+.quiz-question {
+    background: #f8fafc;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 10px;
+}
+
+.option {
+    display: block;
+    padding: 8px;
+    margin: 5px 0;
+    background: #eef4f8;
+    border-radius: 5px;
+}
+
+.vector-area {
+    position: relative;
+    height: 300px;
+    background: #f8fafc;
+    border: 2px solid #ddd;
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+.arrow {
+    position: absolute;
+    height: 5px;
+    background: #1976d2;
+    transform-origin: left center;
+}
+
+.arrow::after {
+    content: "";
+    position: absolute;
+    right: -1px;
+    top: -7px;
+    border-left: 15px solid #1976d2;
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+}
+
+.parallax-demo {
+    position: relative;
+    height: 220px;
+    background: #eef6ff;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.ruler {
+    position: absolute;
+    bottom: 50px;
+    left: 10%;
+    width: 80%;
+    height: 45px;
+    background: #f4d35e;
+    border: 2px solid #333;
+}
+
+.eye {
+    position: absolute;
+    font-size: 40px;
+    transition: all 0.5s;
+}
+
+.eye.good {
+    left: 47%;
+    top: 20px;
+}
+
+.eye.bad {
+    left: 20%;
+    top: 80px;
+}
+
+.micrometer {
+    background: #e8eef4;
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.sleeve {
+    display: inline-block;
+    width: 250px;
+    height: 45px;
+    background: #b0bec5;
+    vertical-align: middle;
+    border: 2px solid #555;
+}
+
+.thimble {
+    display: inline-block;
+    width: 100px;
+    height: 65px;
+    background: #78909c;
+    border-radius: 10px;
+    vertical-align: middle;
+    color: white;
+    padding-top: 20px;
+}
+
+footer {
+    background: #0f4c81;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    margin-top: 40px;
+}
+
+@media(max-width:700px) {
+    header h1 {
+        font-size: 1.7rem;
+    }
+
+    section {
+        padding: 20px;
+    }
+
+    table {
+        font-size: 0.9rem;
+    }
+
+    .sleeve {
+        width: 160px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>📏 Physical Quantities & Measurement Techniques</h1>
+    <p>Cambridge O Level Physics 5054 | PhysicsAI</p>
+    <p>Chapter 1</p>
+</header>
+
+<div class="container">
+
+<nav>
+    <strong>Jump to:</strong><br>
+    <a href="#objectives">Objectives</a>
+    <a href="#units">SI Units</a>
+    <a href="#length">Length</a>
+    <a href="#micrometer">Micrometer</a>
+    <a href="#volume">Volume</a>
+    <a href="#time">Time</a>
+    <a href="#vectors">Vectors</a>
+    <a href="#practice">Practice</a>
+    <a href="#playground">Playground</a>
+    <a href="#quiz">Final Quiz</a>
+</nav>
+
+<section id="objectives">
+<h2>🎯 Learning Objectives</h2>
+
+<p>By the end of this chapter, you should be able to:</p>
+
+<ul>
+<li>Measure lengths using appropriate instruments.</li>
+<li>Read a micrometer screw gauge.</li>
+<li>Measure liquid volume using a measuring cylinder.</li>
+<li>Determine the volume of an irregular solid by displacement.</li>
+<li>Measure time intervals using clocks and timers.</li>
+<li>Determine average values by measuring multiples.</li>
+<li>Understand the difference between scalar and vector quantities.</li>
+<li>Identify common scalar and vector quantities.</li>
+<li>Determine the resultant of two perpendicular vectors.</li>
+</ul>
+
+<div class="progress-container">
+    <div class="progress-bar" id="progressBar"></div>
+</div>
+
+<p id="progressText">Chapter progress: 0%</p>
+</section>
+
+<section id="units">
+<h2>📐 SI Base Units</h2>
+
+<table>
+<tr>
+<th>Quantity</th>
+<th>Name of Unit</th>
+<th>Symbol</th>
+</tr>
+<tr><td>Length</td><td>metre</td><td>m</td></tr>
+<tr><td>Mass</td><td>kilogram</td><td>kg</td></tr>
+<tr><td>Time</td><td>second</td><td>s</td></tr>
+<tr><td>Temperature</td><td>kelvin</td><td>K</td></tr>
+<tr><td>Electric current</td><td>ampere</td><td>A</td></tr>
+</table>
+
+<h3>SI Prefixes</h3>
+
+<table>
+<tr>
+<th>Prefix</th>
+<th>Symbol</th>
+<th>Factor</th>
+</tr>
+<tr><td>micro</td><td>μ</td><td>10⁻⁶</td></tr>
+<tr><td>milli</td><td>m</td><td>10⁻³</td></tr>
+<tr><td>centi</td><td>c</td><td>10⁻²</td></tr>
+<tr><td>deci</td><td>d</td><td>10⁻¹</td></tr>
+<tr><td>kilo</td><td>k</td><td>10³</td></tr>
+<tr><td>mega</td><td>M</td><td>10⁶</td></tr>
+<tr><td>giga</td><td>G</td><td>10⁹</td></tr>
+</table>
+
+<div class="game-box">
+<h3>🎮 SI Prefix Challenge</h3>
+
+<p>Convert <strong>3.5 km</strong> into metres.</p>
+
+<input type="number" id="prefixAnswer" placeholder="Your answer">
+<button onclick="checkPrefix()">Check</button>
+
+<div class="result" id="prefixResult"></div>
+</div>
+
+</section>
+
+<section id="length">
+<h2>📏 Measuring Length</h2>
+
+<p>
+Different instruments are used depending on the size and precision required.
+</p>
+
+<ul>
+<li>Metre rule</li>
+<li>Measuring tape</li>
+<li>Vernier calipers</li>
+<li>Micrometer screw gauge</li>
+</ul>
+
+<h3>Parallax Error</h3>
+
+<p>
+Parallax error occurs when an instrument is viewed from the wrong position.
+The apparent position of the scale reading changes because the eye is not directly above the measurement.
+</p>
+
+<div class="tip">
+<strong>Remember:</strong>
+The line of sight should be perpendicular to the scale at the point where the reading is taken.
+</div>
+
+<div class="parallax-demo">
+
+<div class="eye good">👁️</div>
+<div class="eye bad">👁️</div>
+
+<div class="ruler">
+0 &nbsp; 1 &nbsp; 2 &nbsp; 3 &nbsp; 4 &nbsp; 5 &nbsp; 6 &nbsp; 7 &nbsp; 8 &nbsp; 9 &nbsp; 10 cm
+</div>
+
+</div>
+
+<button onclick="showParallax()">Show Correct Position</button>
+
+<div id="parallaxResult" class="result"></div>
+
+<h3>❓ Question 1</h3>
+
+<p>Why should we avoid parallax error?</p>
+
+<input type="text" id="q1" placeholder="Type your answer">
+
+<button onclick="answerQ1()">Check</button>
+
+<div id="q1Result" class="result"></div>
+
+<h3>End Error / Zero Error</h3>
+
+<p>
+End error may occur when a ruler has a damaged end or when the zero mark does not lie at the edge of the ruler.
+</p>
+
+<div class="card">
+
+<p>
+If the ruler is damaged at the zero end, place the object at another known mark.
+Read both ends of the object and subtract:
+</p>
+
+<div class="formula">
+Length = Final reading − Initial reading
+</div>
+
+<p>
+Example:
+</p>
+
+<p>
+X = 1.0 cm<br>
+Y = 4.3 cm
+</p>
+
+<div class="formula">
+Length = 4.3 − 1.0 = 3.3 cm
+</div>
+
+</div>
+
+<h3>❓ Question 2</h3>
+
+<p>
+A ruler has a broken zero end. Explain how you can use it to measure the length of an object.
+</p>
+
+<textarea id="q2" rows="4" style="width:100%;padding:10px;"></textarea>
+
+<button onclick="answerQ2()">Check Answer</button>
+
+<div id="q2Result" class="result"></div>
+
+</section>
+
+<section id="micrometer">
+<h2>🔬 The Micrometer Screw Gauge</h2>
+
+<p>
+A micrometer screw gauge is used to measure very small lengths, such as the diameter of a fine wire or the thickness of paper.
+</p>
+
+<div class="success">
+A typical micrometer can measure to the nearest <strong>0.01 mm</strong>.
+</div>
+
+<h3>Precautions</h3>
+
+<ol>
+<li>Use the ratchet to close the micrometer.</li>
+<li>Do not overtighten.</li>
+<li>Check for zero error.</li>
+<li>Hold the object correctly between the anvil and spindle.</li>
+</ol>
+
+<div class="warning">
+<strong>Why use the ratchet?</strong><br>
+It prevents excessive force being applied to the object, which could deform it.
+</div>
+
+<h3>Reading a Micrometer</h3>
+
+<p>
+The reading consists of:
+</p>
+
+<div class="formula">
+Total reading = Sleeve reading + Thimble reading
+</div>
+
+<div class="micrometer">
+
+<div class="sleeve">
+4.0 mm
+</div>
+
+<div class="thimble">
+0.08 mm
+</div>
+
+<p>
+<strong>Total = 4.08 mm</strong>
+</p>
+
+</div>
+
+<h3>🔬 Micrometer Reading Challenge</h3>
+
+<p>
+A micrometer shows a sleeve reading of <strong>5.5 mm</strong>
+and a thimble reading of <strong>0.23 mm</strong>.
+</p>
+
+<input type="number" step="0.01" id="microAnswer" placeholder="mm">
+
+<button onclick="checkMicro()">Check</button>
+
+<div id="microResult" class="result"></div>
+
+<h3>Practice Examples</h3>
+
+<div class="game-box">
+
+<p><strong>Example 1</strong></p>
+
+<p>
+Sleeve reading = 3.5 mm<br>
+Thimble reading = 0.17 mm
+</p>
+
+<input type="number" step="0.01" id="micro1">
+
+<button onclick="checkMicro1()">Check</button>
+
+<div id="micro1Result" class="result"></div>
+
+</div>
+
+<div class="game-box">
+
+<p><strong>Example 2</strong></p>
+
+<p>
+Sleeve reading = 6.0 mm<br>
+Thimble reading = 0.42 mm
+</p>
+
+<input type="number" step="0.01" id="micro2">
+
+<button onclick="checkMicro2()">Check</button>
+
+<div id="micro2Result" class="result"></div>
+
+</div>
+
+</section>
+
+<section id="volume">
+<h2>🧪 Volume</h2>
+
+<p>
+Volume is the amount of space occupied by an object or substance.
+</p>
+
+<h3>Measuring Liquid Volume</h3>
+
+<p>
+A measuring cylinder can be used to measure the volume of a liquid.
+The reading should normally be taken at eye level, avoiding parallax error.
+For water and many other liquids, read the bottom of the meniscus.
+</p>
+
+<div class="tip">
+<strong>Important:</strong>
+Always check the scale carefully and read the correct part of the meniscus.
+</div>
+
+<h3>Volume of an Irregular Solid</h3>
+
+<p>
+The volume of an irregular object can be found using water displacement.
+</p>
+
+<div class="formula">
+Volume of object = Final water volume − Initial water volume
+</div>
+
+<h3>🧪 Displacement Challenge</h3>
+
+<p>
+Initial water volume = <strong>45 cm³</strong><br>
+Final water volume = <strong>73 cm³</strong>
+</p>
+
+<input type="number" id="volumeAnswer" placeholder="cm³">
+
+<button onclick="checkVolume()">Check</button>
+
+<div id="volumeResult" class="result"></div>
+
+<h3>Objects That Float</h3>
+
+<p>
+If an object floats, it cannot simply be completely submerged and measured by displacement.
+A method must be used to force it below the surface, for example by attaching a sinking object whose volume is known.
+</p>
+
+<h3>❓ Experiment Question</h3>
+
+<p>
+Describe an experiment to determine the volume of an irregular solid that:
+</p>
+
+<ol>
+<li>Sinks in water.</li>
+<li>Floats on water.</li>
+</ol>
+
+<textarea rows="6" style="width:100%;padding:10px;" placeholder="Write your answer here..."></textarea>
+
+</section>
+
+<section id="time">
+<h2>⏱️ Time</h2>
+
+<p>
+The SI unit of time is the second (s).
+Other units include minutes, hours and days.
+</p>
+
+<p>
+Time intervals can be measured using clocks, watches, stopwatches and digital timers.
+</p>
+
+<h3>The Simple Pendulum</h3>
+
+<p>
+One complete oscillation occurs when the bob moves from one extreme position to the other and back again.
+</p>
+
+<ul>
+<li><strong>Period (T):</strong> Time taken for one complete oscillation.</li>
+<li><strong>Frequency (f):</strong> Number of oscillations completed per second.</li>
+</ul>
+
+<div class="formula">
+f = 1 / T
+</div>
+
+<h3>Measuring the Period</h3>
+
+<p>
+Measuring one oscillation directly may produce a large percentage uncertainty.
+Instead, measure the time for many oscillations and divide by the number of oscillations.
+</p>
+
+<div class="formula">
+T = Total time / Number of oscillations
+</div>
+
+<h3>❓ Question</h3>
+
+<p>
+A student measures the time for 25 oscillations of a pendulum.
+The stopwatch reading is 20.4 s.
+Calculate the period.
+</p>
+
+<input type="number" step="0.01" id="pendulumAnswer">
+
+<button onclick="checkPendulum()">Check</button>
+
+<div id="pendulumResult" class="result"></div>
+
+<h3>🎮 Pendulum Experiment</h3>
+
+<div class="game-box">
+
+<label>
+Number of oscillations:
+<input type="number" id="oscillations" value="20">
+</label>
+
+<br>
+
+<label>
+Total time (s):
+<input type="number" step="0.1" id="oscTime" value="16">
+</label>
+
+<br>
+
+<button onclick="calculatePeriod()">Calculate Period</button>
+
+<div id="periodResult" class="result"></div>
+
+</div>
+
+</section>
+
+<section id="vectors">
+<h2>➡️ Scalars and Vectors</h2>
+
+<h3>Scalar Quantity</h3>
+
+<p>
+A scalar quantity has magnitude (size) only.
+</p>
+
+<h3>Vector Quantity</h3>
+
+<p>
+A vector quantity has both magnitude and direction.
+</p>
+
+<table>
+<tr>
+<th>Scalars</th>
+<th>Vectors</th>
+</tr>
+<tr>
+<td>Distance</td>
+<td>Displacement</td>
+</tr>
+<tr>
+<td>Speed</td>
+<td>Force</td>
+</tr>
+<tr>
+<td>Time</td>
+<td>Weight</td>
+</tr>
+<tr>
+<td>Mass</td>
+<td>Velocity</td>
+</tr>
+<tr>
+<td>Energy</td>
+<td>Acceleration</td>
+</tr>
+<tr>
+<td>Temperature</td>
+<td>Momentum</td>
+</tr>
+<tr>
+<td></td>
+<td>Electric field strength</td>
+</tr>
+<tr>
+<td></td>
+<td>Gravitational field strength</td>
+</tr>
+</table>
+
+<h3>🎮 Scalar or Vector?</h3>
+
+<div class="game-box">
+
+<p id="svQuestion">Click Start.</p>
+
+<button onclick="startSVGame()">Start Game</button>
+
+<button onclick="svAnswer('scalar')">Scalar</button>
+
+<button onclick="svAnswer('vector')">Vector</button>
+
+<div id="svResult" class="result"></div>
+
+<p>Score: <span id="svScore">0</span></p>
+
+</div>
+
+<h3>Resultant of Two Vectors</h3>
+
+<p>
+When two vectors act together, their combined effect can be represented by one vector called the <strong>resultant</strong>.
+</p>
+
+<h3>Same Direction</h3>
+
+<div class="formula">
+Resultant = A + B
+</div>
+
+<h3>Opposite Directions</h3>
+
+<div class="formula">
+Resultant = Larger force − Smaller force
+</div>
+
+<p>
+For two forces of 2 N and 3 N:
+</p>
+
+<div class="success">
+Maximum resultant = 5 N<br>
+Minimum resultant = 1 N
+</div>
+
+<h3>Perpendicular Vectors</h3>
+
+<p>
+For two vectors at 90°, the magnitude of the resultant can be calculated using Pythagoras' theorem.
+</p>
+
+<div class="formula">
+R² = A² + B²
+</div>
+
+<h3>🎮 Vector Resultant Challenge</h3>
+
+<label>
+Vector A:
+<input type="number" id="vectorA" value="7">
+</label>
+
+<label>
+Vector B:
+<input type="number" id="vectorB" value="8">
+</label>
+
+<button onclick="calculateVector()">Calculate Resultant</button>
+
+<div id="vectorResult" class="result"></div>
+
+<h3>Example</h3>
+
+<p>
+Find the resultant of 7 N and 8 N acting at 90°.
+</p>
+
+<div class="formula">
+R = √(7² + 8²) = √113 ≈ 10.6 N
+</div>
+
+</section>
+
+<section id="practice">
+<h2>📝 Practice Questions</h2>
+
+<div class="card">
+<h3>Question 1</h3>
+<p>Why should parallax error be avoided?</p>
+<textarea rows="3" style="width:100%;padding:10px;"></textarea>
+</div>
+
+<div class="card">
+<h3>Question 2</h3>
+<p>Explain how a ruler with a broken end can still be used to measure length.</p>
+<textarea rows="3" style="width:100%;padding:10px;"></textarea>
+</div>
+
+<div class="card">
+<h3>Question 3</h3>
+<p>Define volume.</p>
+<textarea rows="3" style="width:100%;padding:10px;"></textarea>
+</div>
+
+<div class="card">
+<h3>Question 4</h3>
+<p>List three instruments used to measure liquid volume.</p>
+<textarea rows="3" style="width:100%;padding:10px;"></textarea>
+</div>
+
+<div class="card">
+<h3>Question 5</h3>
+<p>Describe an experiment to determine the volume of an irregular solid that sinks in water.</p>
+<textarea rows="5" style="width:100%;padding:10px;"></textarea>
+</div>
+
+<div class="card">
+<h3>Question 6</h3>
+<p>What is the difference between a scalar and a vector?</p>
+<textarea rows="3" style="width:100%;padding:10px;"></textarea>
+</div>
+
+<div class="card">
+<h3>Question 7</h3>
+<p>Give three examples of scalar quantities.</p>
+<textarea rows="3" style="width:100%;padding:10px;"></textarea>
+</div>
+
+<div class="card">
+<h3>Question 8</h3>
+<p>Give three examples of vector quantities.</p>
+<textarea rows="3" style="width:100%;padding:10px;"></textarea>
+</div>
+
+<div class="card">
+<h3>Question 9</h3>
+<p>What are the maximum and minimum resultants of 2 N and 3 N forces?</p>
+<input type="text" style="width:100%;">
+</div>
+
+<div class="card">
+<h3>Question 10</h3>
+<p>Find the resultant of 7 N and 8 N acting at 90°.</p>
+<input type="number" step="0.1" id="practiceVector">
+<button onclick="checkPracticeVector()">Check</button>
+<div id="practiceVectorResult" class="result"></div>
+</div>
+
+</section>
+
+<section id="playground" class="playground">
+<h2>🎮 Physics Playground</h2>
+
+<p>
+Welcome to the Physics Playground!
+Test your knowledge and challenge yourself.
+</p>
+
+<div class="game-box">
+<h3>🔢 Game 1: Measurement Challenge</h3>
+
+<p>
+A student measures a wire three times:
+</p>
+
+<p>
+12.4 cm, 12.6 cm, 12.5 cm
+</p>
+
+<p>Calculate the average length.</p>
+
+<input type="number" step="0.1" id="averageAnswer">
+
+<button onclick="checkAverage()">Check</button>
+
+<div id="averageResult" class="result"></div>
+</div>
+
+<div class="game-box">
+<h3>⚖️ Game 2: Scalar or Vector Sorting</h3>
+
+<p>
+Sort the quantities using the buttons below.
+</p>
+
+<button onclick="sortGame('scalar')">Scalar</button>
+<button onclick="sortGame('vector')">Vector</button>
+
+<p id="sortQuestion">Press Start</p>
+<p>Score: <span id="sortScore">0</span></p>
+
+<button onclick="startSort()">Start</button>
+
+<div id="sortResult" class="result"></div>
+</div>
+
+<div class="game-box">
+<h3>🧪 Game 3: Density Lab Puzzle</h3>
+
+<p>
+An object has a mass of 200 g.
+Its volume is 50 cm³.
+</p>
+
+<div class="formula">
+Density = Mass / Volume
+</div>
+
+<input type="number" id="densityAnswer" placeholder="g/cm³">
+
+<button onclick="checkDensity()">Check</button>
+
+<div id="densityResult" class="result"></div>
+</div>
+
+<div class="game-box">
+<h3>🔐 Game 4: Physics Escape Room</h3>
+
+<p>
+You are locked inside the Physics Laboratory.
+To escape, solve the following:
+</p>
+
+<p>
+A force of 3 N acts east and a force of 4 N acts north.
+What is the magnitude of the resultant?
+</p>
+
+<input type="number" step="0.1" id="escapeAnswer">
+
+<button onclick="escapeGame()">Unlock</button>
+
+<div id="escapeResult" class="result"></div>
+</div>
+
+</section>
+
+<section id="quiz">
+<h2>🏆 Final Chapter Quiz</h2>
+
+<form id="quizForm">
+
+<div class="quiz-question">
+<p><strong>1. Which is a scalar quantity?</strong></p>
+<label class="option">
+<input type="radio" name="q1" value="a"> Force
+</label>
+<label class="option">
+<input type="radio" name="q1" value="b"> Velocity
+</label>
+<label class="option">
+<input type="radio" name="q1" value="c"> Mass
+</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>2. Which instrument measures very small lengths to high precision?</strong></p>
+<label class="option">
+<input type="radio" name="q2" value="a"> Measuring tape
+</label>
+<label class="option">
+<input type="radio" name="q2" value="b"> Micrometer screw gauge
+</label>
+<label class="option">
+<input type="radio" name="q2" value="c"> Metre rule
+</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>3. What causes parallax error?</strong></p>
+<label class="option">
+<input type="radio" name="q3" value="a"> Wrong eye position
+</label>
+<label class="option">
+<input type="radio" name="q3" value="b"> Large object
+</label>
+<label class="option">
+<input type="radio" name="q3" value="c"> Small ruler
+</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>4. What is the SI unit of time?</strong></p>
+<label class="option">
+<input type="radio" name="q4" value="a"> Minute
+</label>
+<label class="option">
+<input type="radio" name="q4" value="b"> Hour
+</label>
+<label class="option">
+<input type="radio" name="q4" value="c"> Second
+</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>5. A student measures 20 oscillations in 16 s. What is the period?</strong></p>
+<label class="option">
+<input type="radio" name="q5" value="a"> 0.8 s
+</label>
+<label class="option">
+<input type="radio" name="q5" value="b"> 1.25 s
+</label>
+<label class="option">
+<input type="radio" name="q5" value="c"> 16 s
+</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>6. What is the resultant of 3 N and 4 N perpendicular forces?</strong></p>
+<label class="option">
+<input type="radio" name="q6" value="a"> 1 N
+</label>
+<label class="option">
+<input type="radio" name="q6" value="b"> 5 N
+</label>
+<label class="option">
+<input type="radio" name="q6" value="c"> 7 N
+</label>
+</div>
+
+<button type="button" onclick="markQuiz()">Submit Quiz</button>
+
+</form>
+
+<div id="quizResult" class="result"></div>
+
+</section>
+
+<section>
+<h2>🎓 Chapter Complete!</h2>
+
+<p>
+You have completed the learning material for
+<strong>Physical Quantities and Measurement Techniques</strong>.
+</p>
+
+<p>
+Before moving to the next chapter, make sure you can:
+</p>
+
+<ul>
+<li>Choose appropriate measuring instruments.</li>
+<li>Explain and avoid parallax error.</li>
+<li>Read a micrometer.</li>
+<li>Measure volume by displacement.</li>
+<li>Calculate the period of a pendulum.</li>
+<li>Distinguish scalars from vectors.</li>
+<li>Calculate the resultant of perpendicular vectors.</li>
+</ul>
+
+<div class="success">
+<strong>Well done!</strong> Keep practising. Physics becomes easier when you interact with it.
+</div>
+
+</section>
+
+</div>
+
+<footer>
+<p>© 2026 PhysicsAI 5054</p>
+<p>Cambridge O Level Physics Learning Platform</p>
+</footer>
+
+<script>
+
+let progress = 0;
+
+function updateProgress() {
+    progress += 10;
+    if(progress > 100) progress = 100;
+
+    document.getElementById("progressBar").style.width = progress + "%";
+    document.getElementById("progressText").innerText =
+        "Chapter progress: " + progress + "%";
+}
+
+function checkPrefix() {
+    let a = Number(document.getElementById("prefixAnswer").value);
+    let r = document.getElementById("prefixResult");
+
+    if(a === 3500) {
+        r.innerHTML = "✅ Correct! 3.5 km = 3500 m.";
+        updateProgress();
+    } else {
+        r.innerHTML = "❌ Try again. Remember: 1 km = 1000 m.";
+    }
+}
+
+function showParallax() {
+    document.getElementById("parallaxResult").innerHTML =
+        "👁️ Correct position: place your eye directly above the point being measured, with the line of sight perpendicular to the scale.";
+}
+
+function answerQ1() {
+    document.getElementById("q1Result").innerHTML =
+        "✅ Expected idea: Parallax error causes an incorrect reading because the scale is viewed from the wrong position.";
+    updateProgress();
+}
+
+function answerQ2() {
+    document.getElementById("q2Result").innerHTML =
+        "✅ Expected answer: Place the object at a known mark other than zero, read both ends, then subtract the two readings.";
+    updateProgress();
+}
+
+function checkMicro() {
+    let a = Number(document.getElementById("microAnswer").value);
+
+    if(Math.abs(a - 5.73) < 0.001) {
+        document.getElementById("microResult").innerHTML =
+            "✅ Correct! 5.5 + 0.23 = 5.73 mm.";
+        updateProgress();
+    } else {
+        document.getElementById("microResult").innerHTML =
+            "❌ Try again. Add the sleeve and thimble readings.";
+    }
+}
+
+function checkMicro1() {
+    let a = Number(document.getElementById("micro1").value);
+
+    document.getElementById("micro1Result").innerHTML =
+        Math.abs(a - 3.67) < 0.001
+        ? "✅ Correct! 3.5 + 0.17 = 3.67 mm."
+        : "❌ Try again.";
+}
+
+function checkMicro2() {
+    let a = Number(document.getElementById("micro2").value);
+
+    document.getElementById("micro2Result").innerHTML =
+        Math.abs(a - 6.42) < 0.001
+        ? "✅ Correct! 6.0 + 0.42 = 6.42 mm."
+        : "❌ Try again.";
+}
+
+function checkVolume() {
+    let a = Number(document.getElementById("volumeAnswer").value);
+
+    document.getElementById("volumeResult").innerHTML =
+        a === 28
+        ? "✅ Correct! Volume = 73 − 45 = 28 cm³."
+        : "❌ Try again.";
+}
+
+function checkPendulum() {
+    let a = Number(document.getElementById("pendulumAnswer").value);
+
+    document.getElementById("pendulumResult").innerHTML =
+        Math.abs(a - 0.816) < 0.01
+        ? "✅ Correct! T = 20.4 ÷ 25 = 0.816 s."
+        : "❌ Try again. Divide 20.4 s by 25.";
+}
+
+function calculatePeriod() {
+    let n = Number(document.getElementById("oscillations").value);
+    let t = Number(document.getElementById("oscTime").value);
+
+    if(n > 0) {
+        document.getElementById("periodResult").innerHTML =
+            "⏱️ Period = " + (t/n).toFixed(3) + " s";
+    }
+}
+
+let svItems = [
+    ["distance","scalar"],
+    ["force","vector"],
+    ["mass","scalar"],
+    ["velocity","vector"],
+    ["energy","scalar"],
+    ["acceleration","vector"],
+    ["temperature","scalar"],
+    ["weight","vector"]
+];
+
+let svIndex = 0;
+let svScore = 0;
+
+function startSVGame() {
+    svIndex = Math.floor(Math.random()*svItems.length);
+    document.getElementById("svQuestion").innerText =
+        "Is " + svItems[svIndex][0] + " a scalar or vector?";
+}
+
+function svAnswer(answer) {
+
+    if(answer === svItems[svIndex][1]) {
+        svScore++;
+        document.getElementById("svResult").innerHTML = "✅ Correct!";
+    } else {
+        document.getElementById("svResult").innerHTML = "❌ Incorrect.";
+    }
+
+    document.getElementById("svScore").innerText = svScore;
+
+    setTimeout(startSVGame, 800);
+}
+
+function calculateVector() {
+
+    let a = Number(document.getElementById("vectorA").value);
+    let b = Number(document.getElementById("vectorB").value);
+
+    let r = Math.sqrt(a*a + b*b);
+
+    document.getElementById("vectorResult").innerHTML =
+        "Resultant = √(" + a + "² + " + b + "²) = " +
+        r.toFixed(2) + " N";
+}
+
+function checkPracticeVector() {
+
+    let a = Number(document.getElementById("practiceVector").value);
+
+    document.getElementById("practiceVectorResult").innerHTML =
+        Math.abs(a - 10.63) < 0.1
+        ? "✅ Correct!"
+        : "❌ Try again using Pythagoras' theorem.";
+}
+
+function checkAverage() {
+
+    let a = Number(document.getElementById("averageAnswer").value);
+
+    document.getElementById("averageResult").innerHTML =
+        Math.abs(a - 12.5) < 0.01
+        ? "✅ Correct! Average = 12.5 cm."
+        : "❌ Try again.";
+}
+
+let sortItems = [
+    ["distance","scalar"],
+    ["force","vector"],
+    ["mass","scalar"],
+    ["velocity","vector"],
+    ["energy","scalar"],
+    ["weight","vector"]
+];
+
+let sortIndex = 0;
+let sortScore = 0;
+
+function startSort() {
+    sortIndex = Math.floor(Math.random()*sortItems.length);
+
+    document.getElementById("sortQuestion").innerText =
+        "Is " + sortItems[sortIndex][0] + " a scalar or vector?";
+}
+
+function sortGame(answer) {
+
+    if(answer === sortItems[sortIndex][1]) {
+        sortScore++;
+        document.getElementById("sortResult").innerHTML =
+            "✅ Correct!";
+    } else {
+        document.getElementById("sortResult").innerHTML =
+            "❌ Incorrect!";
+    }
+
+    document.getElementById("sortScore").innerText = sortScore;
+
+    setTimeout(startSort, 700);
+}
+
+function checkDensity() {
+
+    let a = Number(document.getElementById("densityAnswer").value);
+
+    document.getElementById("densityResult").innerHTML =
+        Math.abs(a - 4) < 0.01
+        ? "✅ Correct! Density = 200 ÷ 50 = 4 g/cm³."
+        : "❌ Try again.";
+}
+
+function escapeGame() {
+
+    let a = Number(document.getElementById("escapeAnswer").value);
+
+    if(Math.abs(a - 5) < 0.1) {
+
+        document.getElementById("escapeResult").innerHTML =
+            "🔓 ESCAPE SUCCESSFUL! The resultant is 5 N. Well done!";
+
+        updateProgress();
+
+    } else {
+
+        document.getElementById("escapeResult").innerHTML =
+            "🔒 Locked! Use Pythagoras' theorem.";
+    }
+}
+
+function markQuiz() {
+
+    let answers = {
+        q1:"c",
+        q2:"b",
+        q3:"a",
+        q4:"c",
+        q5:"a",
+        q6:"b"
+    };
+
+    let score = 0;
+
+    for(let q in answers) {
+
+        let selected =
+            document.querySelector('input[name="'+q+'"]:checked');
+
+        if(selected && selected.value === answers[q]) {
+            score++;
+        }
+    }
+
+    document.getElementById("quizResult").innerHTML =
+        "🏆 Your score: " + score + " / 6";
+
+    if(score === 6) {
+        document.getElementById("quizResult").innerHTML +=
+            "<br>🌟 Excellent! You mastered this chapter!";
+    } else if(score >= 4) {
+        document.getElementById("quizResult").innerHTML +=
+            "<br>👍 Good work! Review the questions you missed.";
+    } else {
+        document.getElementById("quizResult").innerHTML +=
+            "<br>📚 Keep practising and review the chapter.";
+    }
+
+    updateProgress();
+}
+
+</script>
+
+</body>
+</html>
