@@ -2,417 +2,2040 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Physical Quantities & Measurement Techniques | PhysicsAI 5054</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Physical Quantities and Measurement | PhysicsAI 5054</title>
+
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:Segoe UI,Arial,sans-serif;background:#071426;color:#eaf2ff;line-height:1.6}
-a{color:inherit}.top{position:sticky;top:0;z-index:50;background:#081a30ee;border-bottom:1px solid #21415f;backdrop-filter:blur(12px)}
-.nav{max-width:1200px;margin:auto;padding:13px 20px;display:flex;align-items:center;justify-content:space-between;gap:15px}
-.logo{font-size:21px;font-weight:800}.logo span{color:#49a1ff}
-.nav a{text-decoration:none;color:#c9d9ed;font-weight:600}
-.hero{background:radial-gradient(circle at 80% 15%,#174c82 0,transparent 32%),linear-gradient(135deg,#071426,#0c2845);padding:70px 20px 55px;text-align:center}
-.hero .tag{display:inline-block;color:#79bbff;border:1px solid #2e6ea7;border-radius:30px;padding:5px 14px;font-size:12px;font-weight:800;letter-spacing:.08em}
-.hero h1{font-size:clamp(34px,6vw,62px);line-height:1.08;margin:18px auto;max-width:900px}.hero h1 span{color:#4ca7ff}.hero p{max-width:780px;margin:auto;color:#b9cbe0;font-size:17px}
-.wrap{max-width:1150px;margin:auto;padding:25px 18px 70px}
-.progress{position:sticky;top:61px;z-index:40;background:#0a2038;border:1px solid #21415f;border-radius:12px;padding:10px 14px;margin:0 0 28px}
-.bar{height:7px;background:#19344e;border-radius:10px;overflow:hidden}.fill{height:100%;width:0;background:#49a1ff;transition:.3s}
-section{margin:35px 0}.card{background:#0c2138;border:1px solid #244965;border-radius:18px;padding:27px;margin:20px 0;box-shadow:0 12px 35px #0002}
-h2{font-size:31px;color:#70b9ff;margin-bottom:12px}h3{color:#77baff;margin:18px 0 9px}
-p{margin:8px 0 13px}ul,ol{margin:10px 0 18px 25px}li{margin:5px 0}
-.note{border-left:4px solid #49a7ff;background:#102d49;padding:16px;border-radius:8px;margin:17px 0}
-.formula{background:#06111f;border:1px solid #2b5678;padding:17px;text-align:center;border-radius:12px;font-size:21px;margin:17px 0;color:#fff}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}.mini{background:#102943;border:1px solid #28516e;border-radius:14px;padding:18px}
-table{width:100%;border-collapse:collapse;margin:18px 0}th,td{padding:11px;border:1px solid #2a4b65;text-align:left}th{background:#173e61}
-figure{background:#07192c;border:1px solid #2b526d;border-radius:16px;padding:18px;margin:20px 0;text-align:center}figcaption{color:#9eb5cd;font-size:13px;margin-top:10px}
-svg{max-width:100%;height:auto}
-button{border:0;border-radius:9px;padding:10px 16px;background:#257ef0;color:#fff;font-weight:700;cursor:pointer;margin-top:10px}button:hover{filter:brightness(1.12)}
-.answer{display:none;background:#0b352e;border:1px solid #19725d;padding:17px;border-radius:10px;margin-top:12px}.answer.show{display:block}
-.quiz-option{display:block;width:100%;text-align:left;background:#102943;border:1px solid #2a526f;margin:8px 0}.quiz-result{margin-top:12px;font-weight:700}
-.sim{background:#07192c;border:1px solid #28516e;border-radius:16px;padding:20px;margin:20px 0}.simrow{display:flex;gap:12px;flex-wrap:wrap;align-items:center}.sim input{accent-color:#49a1ff}.readout{font-size:20px;font-weight:800;color:#70b9ff}
-.ruler{position:relative;height:90px;background:#d9c17d;border:3px solid #927b39;border-radius:5px;margin:25px auto;max-width:850px}.ruler:before{content:"";position:absolute;left:4%;right:4%;bottom:20px;height:3px;background:#222}.tick{position:absolute;bottom:20px;width:2px;background:#222}.tick.big{height:30px}.tick.small{height:16px}.rlabel{position:absolute;bottom:0;transform:translateX(-50%);color:#111;font-size:12px}
-.meniscus{width:130px;height:280px;border:5px solid #9db4ca;border-top:0;border-radius:0 0 25px 25px;margin:20px auto;position:relative;overflow:hidden;background:#dcecf8}.water{position:absolute;bottom:0;left:0;right:0;height:58%;background:#4aa6df99}.water:before{content:"";position:absolute;top:-7px;left:12px;right:12px;height:14px;border-bottom:3px solid #1779b8;border-radius:50%}
-.pendulum{height:300px;position:relative;overflow:hidden}.pivot{position:absolute;top:18px;left:50%;width:12px;height:12px;border-radius:50%;background:#fff}.string{position:absolute;top:28px;left:50%;width:3px;height:190px;background:#b9cbe0;transform-origin:top;animation:swing 2.2s ease-in-out infinite}.bob{position:absolute;bottom:-18px;left:-18px;width:38px;height:38px;border-radius:50%;background:#49a1ff}@keyframes swing{0%,100%{transform:rotate(-28deg)}50%{transform:rotate(28deg)}}
-.vectorbox{height:300px;position:relative;background:#081b2e;border:1px solid #244965;border-radius:12px;overflow:hidden}.arrow{position:absolute;height:5px;transform-origin:left center}.arrow:after{content:"";position:absolute;right:-2px;top:-6px;border-top:8px solid transparent;border-bottom:8px solid transparent;border-left:14px solid currentColor}.a{left:15%;top:72%;width:210px;background:#52b788;color:#52b788;transform:rotate(-35deg)}.b{left:15%;top:72%;width:180px;background:#ff7676;color:#ff7676;transform:rotate(-1deg)}.r{left:15%;top:72%;width:275px;background:#ffd166;color:#ffd166;transform:rotate(-20deg)}
-.play{background:linear-gradient(135deg,#102f52,#123e67);border:1px solid #32698d;border-radius:20px;padding:28px}
-footer{border-top:1px solid #203c55;padding:35px;text-align:center;color:#91a7be}
-@media(max-width:700px){.nav a{font-size:13px}.card{padding:20px}h2{font-size:27px}.progress{top:56px}}
+
+/* =========================
+   GENERAL
+========================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f4f8fc;
+    color: #243447;
+    line-height: 1.7;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    background: linear-gradient(135deg, #0878d1, #1554a3);
+    color: white;
+    padding: 22px 5%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.12);
+}
+
+.header-inner {
+    max-width: 1250px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #bde7ff;
+}
+
+.back {
+    background: rgba(255,255,255,0.15);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    background: white;
+    text-align: center;
+    padding: 65px 20px;
+    border-bottom: 1px solid #dbe7f2;
+}
+
+.hero .tag {
+    display: inline-block;
+    background: #e7f4ff;
+    color: #0878d1;
+    padding: 6px 16px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.hero h1 {
+    font-size: clamp(34px, 6vw, 58px);
+    line-height: 1.15;
+    margin: 20px 0;
+    color: #163b63;
+}
+
+.hero h1 span {
+    color: #0878d1;
+}
+
+.hero p {
+    max-width: 750px;
+    margin: auto;
+    color: #61758a;
+    font-size: 18px;
+}
+
+/* =========================
+   LAYOUT
+========================= */
+
+.page {
+    max-width: 1250px;
+    margin: auto;
+    padding: 35px 20px 80px;
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 30px;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar {
+    position: sticky;
+    top: 95px;
+    height: fit-content;
+    background: white;
+    border: 1px solid #dce8f2;
+    border-radius: 16px;
+    padding: 18px;
+    box-shadow: 0 5px 20px rgba(30,80,120,0.06);
+}
+
+.sidebar h3 {
+    color: #1554a3;
+    margin-bottom: 12px;
+}
+
+.sidebar a {
+    display: block;
+    padding: 8px 10px;
+    color: #52687c;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.sidebar a:hover {
+    background: #eaf5ff;
+    color: #0878d1;
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.content {
+    min-width: 0;
+}
+
+section {
+    margin-bottom: 45px;
+}
+
+h2 {
+    color: #163b63;
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+h3 {
+    color: #1554a3;
+    margin: 20px 0 10px;
+}
+
+.card {
+    background: white;
+    border: 1px solid #dce8f2;
+    border-radius: 18px;
+    padding: 28px;
+    margin: 20px 0;
+    box-shadow: 0 6px 25px rgba(30,80,120,0.06);
+}
+
+.note {
+    background: #eef8ff;
+    border-left: 5px solid #0878d1;
+    padding: 16px;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.exam-tip {
+    background: #fff8e7;
+    border-left: 5px solid #f2b134;
+    padding: 16px;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.formula {
+    background: #edf6ff;
+    color: #1554a3;
+    padding: 18px;
+    text-align: center;
+    border-radius: 12px;
+    font-size: 22px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+ul,
+ol {
+    margin-left: 25px;
+}
+
+li {
+    margin: 7px 0;
+}
+
+/* =========================
+   TABLES
+========================= */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: white;
+}
+
+th,
+td {
+    padding: 12px;
+    border: 1px solid #d7e3ed;
+    text-align: left;
+}
+
+th {
+    background: #eaf5ff;
+    color: #1554a3;
+}
+
+/* =========================
+   QUESTIONS
+========================= */
+
+.question {
+    background: #f8fbfe;
+    border: 1px solid #d8e5ef;
+    border-radius: 14px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+button {
+    border: none;
+    background: #0878d1;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: #1554a3;
+}
+
+.answer {
+    display: none;
+    margin-top: 15px;
+    padding: 15px;
+    background: #e9f8ef;
+    border-left: 5px solid #2e9d62;
+    border-radius: 8px;
+}
+
+.answer.show {
+    display: block;
+}
+
+/* =========================
+   DIAGRAM CARDS
+========================= */
+
+.diagram {
+    background: #f9fcff;
+    border: 1px solid #dce8f2;
+    border-radius: 18px;
+    padding: 25px;
+    margin: 25px 0;
+    text-align: center;
+}
+
+.diagram-title {
+    font-weight: bold;
+    color: #1554a3;
+    margin-bottom: 15px;
+}
+
+/* =========================
+   MEASURING CYLINDER
+========================= */
+
+.cylinder {
+    width: 130px;
+    height: 260px;
+    margin: 25px auto;
+    border: 5px solid #8ca5b8;
+    border-top: none;
+    border-radius: 0 0 25px 25px;
+    position: relative;
+    overflow: hidden;
+    background: #f8fcff;
+}
+
+.water {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 55%;
+    background: linear-gradient(#72c7f3, #2699d5);
+}
+
+.meniscus {
+    position: absolute;
+    top: -8px;
+    left: 12px;
+    right: 12px;
+    height: 15px;
+    border-bottom: 3px solid #0878d1;
+    border-radius: 50%;
+}
+
+/* =========================
+   PENDULUM
+========================= */
+
+.pendulum-area {
+    height: 350px;
+    position: relative;
+    background: #f7fbff;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.pivot {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    width: 15px;
+    height: 15px;
+    background: #163b63;
+    border-radius: 50%;
+}
+
+.pendulum-string {
+    position: absolute;
+    top: 43px;
+    left: calc(50% + 6px);
+    width: 3px;
+    height: 200px;
+    background: #52687c;
+    transform-origin: top;
+    animation: swing 2.5s ease-in-out infinite;
+}
+
+.pendulum-bob {
+    position: absolute;
+    bottom: -20px;
+    left: -22px;
+    width: 45px;
+    height: 45px;
+    background: #0878d1;
+    border-radius: 50%;
+}
+
+@keyframes swing {
+
+    0%,100% {
+        transform: rotate(-28deg);
+    }
+
+    50% {
+        transform: rotate(28deg);
+    }
+
+}
+
+/* =========================
+   VECTOR DIAGRAM
+========================= */
+
+.vector-area {
+    height: 330px;
+    position: relative;
+    background: #f7fbff;
+    border: 1px solid #dce8f2;
+    border-radius: 15px;
+}
+
+.vector {
+    position: absolute;
+    height: 5px;
+    transform-origin: left center;
+}
+
+.vector::after {
+    content: "";
+    position: absolute;
+    right: -5px;
+    top: -7px;
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+    border-left: 15px solid currentColor;
+}
+
+.v1 {
+    left: 15%;
+    top: 72%;
+    width: 220px;
+    background: #2e9d62;
+    color: #2e9d62;
+    transform: rotate(-35deg);
+}
+
+.v2 {
+    left: 15%;
+    top: 72%;
+    width: 190px;
+    background: #e45b5b;
+    color: #e45b5b;
+    transform: rotate(-5deg);
+}
+
+.vr {
+    left: 15%;
+    top: 72%;
+    width: 280px;
+    background: #f0a500;
+    color: #f0a500;
+    transform: rotate(-21deg);
+}
+
+/* =========================
+   QUIZ
+========================= */
+
+.quiz-option {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: white;
+    color: #243447;
+    border: 1px solid #cddde9;
+    margin: 8px 0;
+}
+
+.quiz-option:hover {
+    background: #eaf5ff;
+    color: #1554a3;
+}
+
+.quiz-result {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* =========================
+   PLAYGROUND
+========================= */
+
+.playground {
+    background: linear-gradient(135deg, #eaf6ff, #f8fbff);
+    border: 2px solid #b9dcf5;
+    border-radius: 22px;
+    padding: 30px;
+}
+
+.play-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+    gap: 18px;
+}
+
+.game {
+    background: white;
+    border: 1px solid #d7e5ef;
+    padding: 20px;
+    border-radius: 15px;
+    transition: .2s;
+}
+
+.game:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(20,80,130,0.1);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #163b63;
+    color: white;
+    text-align: center;
+    padding: 35px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:850px) {
+
+    .layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        position: relative;
+        top: 0;
+    }
+
+    .sidebar a {
+        display: inline-block;
+        margin: 3px;
+    }
+
+}
+
+@media(max-width:600px) {
+
+    .hero {
+        padding: 45px 15px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 27px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+}
+
 </style>
 </head>
+
+
 <body>
 
-<div class="top"><div class="nav">
-<div class="logo">⚛ Physics<span>AI</span> 5054</div>
-<a href="index.html">← Back to Chapters</a>
-</div></div>
 
-<header class="hero">
-<div class="tag">CAMBRIDGE O LEVEL PHYSICS 5054</div>
-<h1>Physical Quantities &<br><span>Measurement Techniques</span></h1>
-<p>Learn how physicists measure the physical world — accurately, precisely and scientifically.</p>
+<!-- HEADER -->
+
+<header>
+
+<div class="header-inner">
+
+<div class="logo">
+⚛ Physics<span>AI</span> 5054
+</div>
+
+<a class="back" href="index.html">
+← Back to Chapters
+</a>
+
+</div>
+
 </header>
 
-<div class="wrap">
-<div class="progress">
-<div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px"><span>Chapter progress</span><span id="pct">0%</span></div>
-<div class="bar"><div class="fill" id="fill"></div></div>
+
+<!-- HERO -->
+
+<div class="hero">
+
+<div class="tag">
+CAMBRIDGE O LEVEL PHYSICS 5054
 </div>
 
-<section id="objectives">
-<h2>🎯 Learning Objectives</h2>
-<div class="grid">
-<div class="mini">📏 Measure lengths with appropriate instruments and precision.</div>
-<div class="mini">🧪 Measure liquid and solid volumes accurately.</div>
-<div class="mini">⏱️ Measure short time intervals using repeated measurements.</div>
-<div class="mini">🔢 Use SI units and prefixes correctly.</div>
-<div class="mini">🔵 Distinguish scalars from vectors.</div>
-<div class="mini">➡️ Determine resultants of perpendicular vectors.</div>
-</div>
-</section>
+<h1>
+Physical Quantities &<br>
+<span>Measurement Techniques</span>
+</h1>
 
-<section id="units">
-<h2>1. Physical Quantities & SI Units</h2>
-<div class="card">
-<p>A <strong>physical quantity</strong> is a measurable property expressed by a numerical value and a unit.</p>
-<table>
-<tr><th>Quantity</th><th>SI unit</th><th>Symbol</th></tr>
-<tr><td>Length</td><td>metre</td><td>m</td></tr>
-<tr><td>Mass</td><td>kilogram</td><td>kg</td></tr>
-<tr><td>Time</td><td>second</td><td>s</td></tr>
-<tr><td>Temperature</td><td>kelvin</td><td>K</td></tr>
-<tr><td>Electric current</td><td>ampere</td><td>A</td></tr>
-</table>
-<div class="note"><strong>Exam tip:</strong> Always write the unit with your numerical answer. A number without a unit may be incomplete.</div>
+<p>
+Learn how physicists measure the physical world accurately,
+select appropriate instruments and analyse measurements.
+</p>
+
 </div>
 
-<div class="card">
-<h3>SI Prefixes</h3>
-<table>
-<tr><th>Prefix</th><th>Symbol</th><th>Factor</th></tr>
-<tr><td>micro</td><td>μ</td><td>10⁻⁶</td></tr>
-<tr><td>milli</td><td>m</td><td>10⁻³</td></tr>
-<tr><td>centi</td><td>c</td><td>10⁻²</td></tr>
-<tr><td>deci</td><td>d</td><td>10⁻¹</td></tr>
-<tr><td>kilo</td><td>k</td><td>10³</td></tr>
-<tr><td>mega</td><td>M</td><td>10⁶</td></tr>
-<tr><td>giga</td><td>G</td><td>10⁹</td></tr>
-</table>
-</div>
 
-<div class="card">
-<h3>Quick Check</h3>
-<p><strong>Question:</strong> Convert 3.5 cm into metres.</p>
-<button onclick="toggle('a1')">Show Answer</button>
-<div class="answer" id="a1"><strong>Answer:</strong> 3.5 cm = 3.5 × 10⁻² m = <strong>0.035 m</strong>.</div>
-</div>
-</section>
+<div class="page">
 
-<section id="length">
-<h2>2. Measuring Length</h2>
-<div class="card">
-<p>Choose an instrument according to the size of the object and the precision required.</p>
-<table>
-<tr><th>Instrument</th><th>Suitable use</th></tr>
-<tr><td>Measuring tape</td><td>Long distances, curved or flexible objects</td></tr>
-<tr><td>Metre rule</td><td>Ordinary lengths such as rods and books</td></tr>
-<tr><td>Vernier calipers</td><td>External diameter, internal diameter and depth</td></tr>
-<tr><td>Micrometer screw gauge</td><td>Very small thicknesses and diameters</td></tr>
-</table>
-</div>
+<div class="layout">
 
-<figure>
-<svg viewBox="0 0 900 170" role="img" aria-label="Ruler measuring a length">
-<rect x="55" y="55" width="790" height="70" rx="8" fill="#d9c17d" stroke="#927b39" stroke-width="4"/>
-<g stroke="#222" stroke-width="2">
-<line x1="80" y1="65" x2="80" y2="110"/><line x1="160" y1="65" x2="160" y2="110"/>
-<line x1="240" y1="65" x2="240" y2="110"/><line x1="320" y1="65" x2="320" y2="110"/>
-<line x1="400" y1="65" x2="400" y2="110"/><line x1="480" y1="65" x2="480" y2="110"/>
-<line x1="560" y1="65" x2="560" y2="110"/><line x1="640" y1="65" x2="640" y2="110"/>
-<line x1="720" y1="65" x2="720" y2="110"/><line x1="800" y1="65" x2="800" y2="110"/>
-</g>
-<g font-size="18" fill="#111" text-anchor="middle"><text x="80" y="145">0</text><text x="160" y="145">1</text><text x="240" y="145">2</text><text x="320" y="145">3</text><text x="400" y="145">4</text><text x="480" y="145">5</text><text x="560" y="145">6</text><text x="640" y="145">7</text><text x="720" y="145">8</text><text x="800" y="145">9 cm</text></g>
-<line x1="160" y1="35" x2="720" y2="35" stroke="#ff7676" stroke-width="4"/><polygon points="160,35 175,27 175,43" fill="#ff7676"/><polygon points="720,35 705,27 705,43" fill="#ff7676"/>
-<text x="440" y="25" fill="#ff9a9a" font-size="20" text-anchor="middle">Length = 7.0 cm</text>
-</svg>
-<figcaption>Example of reading a ruler. Read the scale at eye level and record an appropriate precision.</figcaption>
-</figure>
 
-<div class="card">
-<h3>Parallax Error</h3>
-<p>Parallax error occurs when the scale is viewed from an angle. The apparent position of the mark changes with the observer's eye position.</p>
-<div class="note"><strong>To avoid parallax:</strong> Position your eye directly in line with the mark being read, so the line of sight is perpendicular to the scale.</div>
-</div>
+<!-- SIDEBAR -->
 
-<figure>
-<svg viewBox="0 0 900 230">
-<g font-family="Segoe UI,Arial">
-<text x="150" y="30" fill="#52d6a0" font-size="20" text-anchor="middle">CORRECT</text>
-<text x="450" y="30" fill="#ff7676" font-size="20" text-anchor="middle">TOO HIGH</text>
-<text x="750" y="30" fill="#ff7676" font-size="20" text-anchor="middle">TOO LOW</text>
-<g transform="translate(70,70)"><ellipse cx="80" cy="25" rx="28" ry="18" fill="none" stroke="#eaf2ff" stroke-width="4"/><circle cx="80" cy="25" r="7" fill="#49a1ff"/><line x1="80" y1="45" x2="80" y2="130" stroke="#52d6a0" stroke-width="3" stroke-dasharray="7 6"/><rect x="0" y="130" width="160" height="40" fill="#b8c4d0"/><line x1="80" y1="130" x2="80" y2="170" stroke="#222" stroke-width="4"/></g>
-<g transform="translate(370,70)"><ellipse cx="80" cy="0" rx="28" ry="18" fill="none" stroke="#eaf2ff" stroke-width="4"/><circle cx="80" cy="0" r="7" fill="#49a1ff"/><line x1="80" y1="18" x2="110" y2="130" stroke="#ff7676" stroke-width="3" stroke-dasharray="7 6"/><rect x="0" y="130" width="160" height="40" fill="#b8c4d0"/><line x1="110" y1="130" x2="110" y2="170" stroke="#222" stroke-width="4"/></g>
-<g transform="translate(670,70)"><ellipse cx="80" cy="65" rx="28" ry="18" fill="none" stroke="#eaf2ff" stroke-width="4"/><circle cx="80" cy="65" r="7" fill="#49a1ff"/><line x1="80" y1="83" x2="50" y2="130" stroke="#ff7676" stroke-width="3" stroke-dasharray="7 6"/><rect x="0" y="130" width="160" height="40" fill="#b8c4d0"/><line x1="50" y1="130" x2="50" y2="170" stroke="#222" stroke-width="4"/></g>
-</g>
-</svg>
-<figcaption>Correct eye position avoids parallax error. Viewing from above or below can produce an incorrect reading.</figcaption>
-</figure>
+<nav class="sidebar">
 
-<div class="card">
-<h3>Zero Error</h3>
-<p>An instrument has a zero error when it does not read zero when the true quantity being measured is zero. Check for zero error before taking measurements and apply the appropriate correction.</p>
-</div>
+<h3>📚 Chapter Menu</h3>
 
-<div class="card">
-<h3>Question</h3>
-<p><strong>Why should parallax error be avoided?</strong></p>
-<button onclick="toggle('a2')">Show Answer</button>
-<div class="answer" id="a2">Parallax can make the scale appear to give different readings depending on the observer's eye position, producing an incorrect measurement.</div>
-</div>
-</section>
+<a href="#units">1. SI Units</a>
 
-<section id="micrometer">
-<h2>3. Micrometer Screw Gauge</h2>
-<div class="card">
-<p>A micrometer screw gauge is used for very small measurements such as the diameter of a thin wire or the thickness of a sheet of paper.</p>
-<h3>Reading a micrometer</h3>
-<ol>
-<li>Read the <strong>main/sleeve scale</strong> visible to the left of the thimble.</li>
-<li>Read the <strong>thimble scale</strong> where it aligns with the datum line.</li>
-<li>Multiply the thimble division by the least count.</li>
-<li>Add the readings.</li>
-<li>Apply any required zero correction.</li>
-</ol>
-<div class="formula">Reading = Main scale reading + Thimble reading</div>
-<div class="note"><strong>Precaution:</strong> Use the ratchet to apply controlled pressure. Do not overtighten the spindle because the object may be deformed.</div>
-</div>
+<a href="#length">2. Length</a>
 
-<figure>
-<svg viewBox="0 0 1000 280">
-<rect x="90" y="95" width="450" height="80" rx="12" fill="#aeb9c6" stroke="#eaf2ff" stroke-width="3"/>
-<rect x="540" y="55" width="250" height="160" rx="25" fill="#68788a" stroke="#eaf2ff" stroke-width="3"/>
-<rect x="790" y="80" width="120" height="110" rx="20" fill="#4f6073" stroke="#eaf2ff" stroke-width="3"/>
-<rect x="515" y="125" width="45" height="20" fill="#e0b34e"/>
-<line x1="90" y1="135" x2="790" y2="135" stroke="#ff7676" stroke-width="3"/>
-<text x="250" y="75" fill="#70b9ff" font-size="22">Sleeve / main scale</text>
-<text x="615" y="40" fill="#70b9ff" font-size="22">Thimble</text>
-<text x="815" y="65" fill="#70b9ff" font-size="22">Ratchet</text>
-<text x="585" y="125" fill="#ff9a9a" font-size="18">Datum line</text>
-<g fill="#111"><text x="150" y="125" font-size="20">0</text><text x="250" y="125" font-size="20">5</text><text x="350" y="125" font-size="20">10</text></g>
-<g stroke="#eaf2ff" stroke-width="2"><line x1="600" y1="85" x2="600" y2="115"/><line x1="600" y1="155" x2="600" y2="185"/><line x1="630" y1="85" x2="630" y2="115"/><line x1="630" y1="155" x2="630" y2="185"/><line x1="660" y1="85" x2="660" y2="115"/><line x1="660" y1="155" x2="660" y2="185"/></g>
-</svg>
-<figcaption>Micrometer schematic: read the sleeve first, then the thimble at the datum line. The actual scale illustration should be checked against the specific instrument used.</figcaption>
-</figure>
+<a href="#parallax">3. Parallax</a>
 
-<div class="card">
-<h3>Worked Example</h3>
-<p>A micrometer has a main-scale reading of 5.00 mm and a thimble reading of 0.32 mm. Find the measurement.</p>
-<button onclick="toggle('a3')">Show Answer</button>
-<div class="answer" id="a3">Measurement = 5.00 + 0.32 = <strong>5.32 mm</strong>.</div>
-</div>
-</section>
+<a href="#micrometer">4. Micrometer</a>
 
-<section id="volume">
-<h2>4. Measuring Volume</h2>
-<div class="card">
-<p>Volume is the amount of space occupied by a substance or object.</p>
-<div class="formula">1 mL = 1 cm³</div>
-<h3>Measuring liquids</h3>
-<p>Use a measuring cylinder. Place it on a level surface and read the liquid level at eye height. For water, read the bottom of the meniscus.</p>
-</div>
+<a href="#volume">5. Volume</a>
 
-<figure>
-<div class="meniscus"><div class="water"></div></div>
-<figcaption>For water, read the bottom of the curved meniscus at eye level.</figcaption>
-</figure>
+<a href="#time">6. Time</a>
 
-<div class="card">
-<h3>Volume by displacement</h3>
-<p>For an irregular solid that sinks, record the initial water volume, completely submerge the object, and record the final volume.</p>
-<div class="formula">Volume of object = Final volume − Initial volume</div>
-<p>Ensure the object is fully submerged and avoid trapped air bubbles.</p>
-</div>
+<a href="#pendulum">7. Pendulum</a>
 
-<div class="card">
-<h3>Question</h3>
-<p>Water initially occupies 40 cm³. After an irregular solid is completely submerged, the reading is 67 cm³. Find the volume of the solid.</p>
-<button onclick="toggle('a4')">Show Answer</button>
-<div class="answer" id="a4">Volume = 67 − 40 = <strong>27 cm³</strong>.</div>
-</div>
+<a href="#vectors">8. Scalars & Vectors</a>
 
-<div class="card">
-<h3>Floating objects</h3>
-<p>A floating object cannot simply be left floating and its displacement used directly. One method is to attach it to a sinker, ensure the combination is completely submerged, and use the displacement to determine the combined volume. Subtract the known volume of the sinker to obtain the object's volume.</p>
-</div>
-</section>
+<a href="#resultants">9. Resultants</a>
 
-<section id="time">
-<h2>5. Measuring Time & the Simple Pendulum</h2>
-<div class="card">
-<p>The SI unit of time is the second (s). For short intervals, repeated measurements can reduce the relative effect of stopwatch reaction time.</p>
-<h3>Key terms</h3>
-<ul>
-<li><strong>Oscillation:</strong> one complete cycle of motion.</li>
-<li><strong>Period, T:</strong> time taken for one complete oscillation.</li>
-<li><strong>Frequency, f:</strong> number of oscillations per second, measured in hertz (Hz).</li>
-</ul>
-<div class="formula">T = Total time / Number of oscillations &nbsp;&nbsp;&nbsp; f = 1/T</div>
-</div>
+<a href="#quiz">10. Quiz</a>
 
-<div class="sim">
-<h3>⏱️ Pendulum Animation</h3>
-<div class="pendulum"><div class="pivot"></div><div class="string"><div class="bob"></div></div></div>
-<div class="simrow"><button onclick="startPendulum()">Start counting</button><button onclick="resetPendulum()">Reset</button><span class="readout" id="pendRead">Oscillations: 0</span></div>
-<p id="pendMsg">Press Start and observe one complete oscillation as the bob moves from one extreme to the other and back.</p>
-</div>
+<a href="#playground">🎮 Playground</a>
 
-<div class="card">
-<h3>Question</h3>
-<p>A student measures 25 oscillations in 20.4 s. Calculate the period.</p>
-<button onclick="toggle('a5')">Show Answer</button>
-<div class="answer" id="a5">T = 20.4 ÷ 25 = <strong>0.816 s</strong>.</div>
-</div>
+</nav>
 
-<div class="card">
-<h3>Why measure many oscillations?</h3>
-<p>Timing many oscillations gives a longer total interval, so the stopwatch reaction-time uncertainty becomes a smaller fraction of the measurement. Dividing by the number of oscillations gives an average period.</p>
-</div>
-</section>
 
-<section id="vectors">
-<h2>6. Scalars & Vectors</h2>
-<div class="card">
-<p>A <strong>scalar</strong> has magnitude only. A <strong>vector</strong> has magnitude and direction.</p>
-<table>
-<tr><th>Scalars</th><th>Vectors</th></tr>
-<tr><td>Distance</td><td>Displacement</td></tr>
-<tr><td>Speed</td><td>Velocity</td></tr>
-<tr><td>Time</td><td>Acceleration</td></tr>
-<tr><td>Mass</td><td>Force</td></tr>
-<tr><td>Energy</td><td>Weight</td></tr>
-<tr><td>Temperature</td><td>Momentum</td></tr>
-<tr><td></td><td>Electric field strength</td></tr>
-<tr><td></td><td>Gravitational field strength</td></tr>
-</table>
-</div>
+<!-- MAIN CONTENT -->
 
-<div class="card">
-<h3>Vector addition</h3>
-<p>Vectors can be represented by arrows. Arrow length represents magnitude and arrow direction represents direction. The single vector that has the same overall effect as the vectors acting together is the <strong>resultant</strong>.</p>
-<p>For vectors in the same direction, magnitudes add. For opposite directions, subtract the smaller magnitude from the larger.</p>
-</div>
+<main class="content">
 
-<figure>
-<div class="vectorbox">
-<div class="arrow a"></div><div class="arrow b"></div><div class="arrow r"></div>
-</div>
-<figcaption>Illustration of two vectors and their resultant. The head-to-tail method can be used to construct the resultant graphically.</figcaption>
-</figure>
 
-<div class="card">
-<h3>Perpendicular vectors</h3>
-<p>When two vectors act at 90°, the magnitude of the resultant can be found using Pythagoras' theorem.</p>
-<div class="formula">R = √(A² + B²)</div>
-</div>
-
-<div class="card">
-<h3>Question</h3>
-<p>Two perpendicular forces of 7 N and 8 N act on an object. Calculate the magnitude of the resultant.</p>
-<button onclick="toggle('a6')">Show Answer</button>
-<div class="answer" id="a6">R = √(7² + 8²) = √113 = <strong>10.6 N</strong> (3 s.f.).</div>
-</div>
-
-<div class="card">
-<h3>Scale diagrams</h3>
-<p>A scale diagram represents vectors using a chosen scale. For example, if 1 cm represents 1 N, a 7 N force is drawn as 7 cm. The resultant is then measured from the scale diagram.</p>
-</div>
-</section>
-
-<section id="quiz">
-<h2>🧠 Check Your Understanding</h2>
-
-<div class="card">
-<p><strong>1. Which instrument is best for measuring the diameter of a thin wire?</strong></p>
-<button class="quiz-option" onclick="quiz(this,false,'q1')">A. Measuring tape</button>
-<button class="quiz-option" onclick="quiz(this,false,'q1')">B. Metre rule</button>
-<button class="quiz-option" onclick="quiz(this,true,'q1')">C. Micrometer screw gauge</button>
-<button class="quiz-option" onclick="quiz(this,false,'q1')">D. Measuring cylinder</button>
-<div id="q1" class="quiz-result"></div>
-</div>
-
-<div class="card">
-<p><strong>2. Which is a vector quantity?</strong></p>
-<button class="quiz-option" onclick="quiz(this,false,'q2')">A. Mass</button>
-<button class="quiz-option" onclick="quiz(this,true,'q2')">B. Force</button>
-<button class="quiz-option" onclick="quiz(this,false,'q2')">C. Energy</button>
-<button class="quiz-option" onclick="quiz(this,false,'q2')">D. Temperature</button>
-<div id="q2" class="quiz-result"></div>
-</div>
-
-<div class="card">
-<p><strong>3. Why time several pendulum oscillations?</strong></p>
-<button class="quiz-option" onclick="quiz(this,true,'q3')">A. To reduce the relative effect of reaction-time error</button>
-<button class="quiz-option" onclick="quiz(this,false,'q3')">B. To increase the mass of the bob</button>
-<button class="quiz-option" onclick="quiz(this,false,'q3')">C. To change the frequency</button>
-<div id="q3" class="quiz-result"></div>
-</div>
-</section>
-
-<section id="playground">
-<div class="play">
-<h2>🎮 Physics Playground</h2>
-<p>Challenge yourself after completing the chapter.</p>
-<div class="grid">
-<div class="mini"><h3>📏 Measurement Detective</h3><p>Choose the most appropriate measuring instrument for a mystery object.</p></div>
-<div class="mini"><h3>🔩 Micrometer Master</h3><p>Read virtual micrometer scales and identify the measurement.</p></div>
-<div class="mini"><h3>🧪 Volume Challenge</h3><p>Use displacement readings to determine the volume of unknown objects.</p></div>
-<div class="mini"><h3>⏱️ Pendulum Race</h3><p>Time repeated oscillations and calculate period and frequency.</p></div>
-<div class="mini"><h3>➡️ Vector Builder</h3><p>Combine forces and predict the direction of the resultant.</p></div>
-<div class="mini"><h3>🧩 Measurement Mystery</h3><p>Solve a final investigation using measurement, uncertainty and vectors.</p></div>
-</div>
-</div>
-</section>
+<!-- OBJECTIVES -->
 
 <section>
+
+<h2>🎯 Learning Objectives</h2>
+
 <div class="card">
-<h2>🏆 Final Challenge</h2>
-<p>You have a thin wire, a micrometer screw gauge and a stopwatch. Explain how you would obtain a reliable value for the wire's diameter and reduce measurement uncertainty.</p>
-<button onclick="toggle('final')">Show Suggested Answer</button>
-<div class="answer" id="final">
-Use the micrometer and check for zero error first. Measure the diameter at several different positions along the wire. At each position, use the ratchet to apply controlled pressure and avoid deforming the wire. Record the readings and calculate a mean. Avoid parallax when reading the scale. Repeated measurements help reveal random variation and make the final value more reliable.
+
+<p>
+By the end of this chapter, you should be able to:
+</p>
+
+<ul>
+
+<li>Measure lengths using appropriate instruments.</li>
+
+<li>Read scales with suitable precision.</li>
+
+<li>Explain and avoid parallax error.</li>
+
+<li>Identify and correct zero error.</li>
+
+<li>Read a micrometer screw gauge.</li>
+
+<li>Measure liquid and solid volumes.</li>
+
+<li>Measure short time intervals accurately.</li>
+
+<li>Calculate the period of a pendulum.</li>
+
+<li>Distinguish between scalar and vector quantities.</li>
+
+<li>Find the resultant of two perpendicular vectors.</li>
+
+</ul>
+
 </div>
-</div>
+
 </section>
 
+
+<!-- SI UNITS -->
+
+<section id="units">
+
+<h2>1. SI Base Units</h2>
+
+<div class="card">
+
+<p>
+A physical quantity consists of a numerical value and a unit.
+The International System of Units (SI) provides a standard system
+used by scientists worldwide.
+</p>
+
+<table>
+
+<tr>
+<th>Quantity</th>
+<th>SI Unit</th>
+<th>Symbol</th>
+</tr>
+
+<tr>
+<td>Length</td>
+<td>metre</td>
+<td>m</td>
+</tr>
+
+<tr>
+<td>Mass</td>
+<td>kilogram</td>
+<td>kg</td>
+</tr>
+
+<tr>
+<td>Time</td>
+<td>second</td>
+<td>s</td>
+</tr>
+
+<tr>
+<td>Temperature</td>
+<td>kelvin</td>
+<td>K</td>
+</tr>
+
+<tr>
+<td>Electric current</td>
+<td>ampere</td>
+<td>A</td>
+</tr>
+
+</table>
+
+<div class="exam-tip">
+
+<strong>Exam Tip:</strong>
+
+Always include the correct unit in your final answer.
+
 </div>
 
+</div>
+
+
+<div class="card">
+
+<h3>SI Prefixes</h3>
+
+<table>
+
+<tr>
+<th>Prefix</th>
+<th>Symbol</th>
+<th>Factor</th>
+</tr>
+
+<tr>
+<td>micro</td>
+<td>μ</td>
+<td>10⁻⁶</td>
+</tr>
+
+<tr>
+<td>milli</td>
+<td>m</td>
+<td>10⁻³</td>
+</tr>
+
+<tr>
+<td>centi</td>
+<td>c</td>
+<td>10⁻²</td>
+</tr>
+
+<tr>
+<td>deci</td>
+<td>d</td>
+<td>10⁻¹</td>
+</tr>
+
+<tr>
+<td>kilo</td>
+<td>k</td>
+<td>10³</td>
+</tr>
+
+<tr>
+<td>mega</td>
+<td>M</td>
+<td>10⁶</td>
+</tr>
+
+<tr>
+<td>giga</td>
+<td>G</td>
+<td>10⁹</td>
+</tr>
+
+</table>
+
+</div>
+
+
+<div class="question">
+
+<strong>Question 1</strong>
+
+<p>
+Convert 3.5 cm into metres.
+</p>
+
+<button onclick="showAnswer('a1')">
+Show Answer
+</button>
+
+<div class="answer" id="a1">
+
+3.5 cm = 3.5 × 10⁻² m
+
+<br><br>
+
+<strong>Answer = 0.035 m</strong>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- LENGTH -->
+
+<section id="length">
+
+<h2>2. Measuring Length</h2>
+
+<div class="card">
+
+<p>
+The instrument selected depends on the size of the object and the
+precision required.
+</p>
+
+<table>
+
+<tr>
+<th>Instrument</th>
+<th>Typical Use</th>
+</tr>
+
+<tr>
+<td>Measuring tape</td>
+<td>Long distances and flexible objects</td>
+</tr>
+
+<tr>
+<td>Metre rule</td>
+<td>Ordinary lengths</td>
+</tr>
+
+<tr>
+<td>Vernier calipers</td>
+<td>External and internal diameters and depths</td>
+</tr>
+
+<tr>
+<td>Micrometer screw gauge</td>
+<td>Very small thicknesses and diameters</td>
+</tr>
+
+</table>
+
+</div>
+
+
+<div class="diagram">
+
+<div class="diagram-title">
+📏 Reading a Metre Rule
+</div>
+
+<svg viewBox="0 0 900 180" width="100%">
+
+<rect x="50" y="65"
+width="800"
+height="70"
+rx="6"
+fill="#f2d27a"
+stroke="#9c7b2d"
+stroke-width="4"/>
+
+<g stroke="#222">
+
+<line x1="100" y1="65" x2="100" y2="115"/>
+<line x1="200" y1="65" x2="200" y2="115"/>
+<line x1="300" y1="65" x2="300" y2="115"/>
+<line x1="400" y1="65" x2="400" y2="115"/>
+<line x1="500" y1="65" x2="500" y2="115"/>
+<line x1="600" y1="65" x2="600" y2="115"/>
+<line x1="700" y1="65" x2="700" y2="115"/>
+<line x1="800" y1="65" x2="800" y2="115"/>
+
+</g>
+
+<line x1="200" y1="35"
+x2="700" y2="35"
+stroke="#e45b5b"
+stroke-width="4"/>
+
+<text x="450"
+y="25"
+text-anchor="middle"
+fill="#c44545"
+font-size="20">
+
+Length = 5.0 cm
+
+</text>
+
+</svg>
+
+<p>
+Read the scale at eye level and record the measurement to an
+appropriate precision.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- PARALLAX -->
+
+<section id="parallax">
+
+<h2>3. Parallax Error</h2>
+
+<div class="card">
+
+<p>
+Parallax error occurs when the position of an object or scale mark
+appears to change because it is viewed from different angles.
+</p>
+
+<div class="note">
+
+<strong>To avoid parallax error:</strong>
+
+The eye should be directly in line with the reading being taken.
+The line of sight should be perpendicular to the scale.
+
+</div>
+
+</div>
+
+
+<div class="diagram">
+
+<div class="diagram-title">
+👁️ Correct and Incorrect Eye Positions
+</div>
+
+<svg viewBox="0 0 900 300" width="100%">
+
+<!-- scale -->
+
+<line x1="150"
+y1="220"
+x2="750"
+y2="220"
+stroke="#163b63"
+stroke-width="8"/>
+
+<!-- correct eye -->
+
+<circle cx="450"
+cy="70"
+r="25"
+fill="#0878d1"/>
+
+<line x1="450"
+y1="95"
+x2="450"
+y2="220"
+stroke="#2e9d62"
+stroke-width="4"
+stroke-dasharray="10 8"/>
+
+<text x="450"
+y="45"
+text-anchor="middle"
+fill="#2e9d62"
+font-size="22">
+
+CORRECT
+
+</text>
+
+<!-- high eye -->
+
+<circle cx="180"
+cy="70"
+r="25"
+fill="#e45b5b"/>
+
+<line x1="205"
+y1="80"
+x2="450"
+y2="220"
+stroke="#e45b5b"
+stroke-width="4"
+stroke-dasharray="10 8"/>
+
+<text x="180"
+y="40"
+text-anchor="middle"
+fill="#c44545"
+font-size="20">
+
+WRONG
+
+</text>
+
+<!-- low eye -->
+
+<circle cx="720"
+cy="100"
+r="25"
+fill="#e45b5b"/>
+
+<line x1="695"
+y1="110"
+x2="450"
+y2="220"
+stroke="#e45b5b"
+stroke-width="4"
+stroke-dasharray="10 8"/>
+
+<text x="720"
+y="150"
+text-anchor="middle"
+fill="#c44545"
+font-size="20">
+
+WRONG
+
+</text>
+
+</svg>
+
+</div>
+
+
+<div class="question">
+
+<strong>Question 2</strong>
+
+<p>
+Why should parallax error be avoided?
+</p>
+
+<button onclick="showAnswer('a2')">
+Show Answer
+</button>
+
+<div class="answer" id="a2">
+
+Parallax error can cause the scale reading to appear different
+depending on the observer's eye position, producing an inaccurate
+measurement.
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- MICROMETER -->
+
+<section id="micrometer">
+
+<h2>4. Micrometer Screw Gauge</h2>
+
+<div class="card">
+
+<p>
+A micrometer screw gauge is suitable for measuring very small
+dimensions, such as the diameter of a thin wire or the thickness
+of a sheet of paper.
+</p>
+
+<h3>Precautions</h3>
+
+<ol>
+
+<li>
+Check for zero error before taking measurements.
+</li>
+
+<li>
+Use the ratchet to apply controlled pressure.
+</li>
+
+<li>
+Do not overtighten the instrument.
+</li>
+
+<li>
+Take several readings at different positions where appropriate.
+</li>
+
+</ol>
+
+<div class="note">
+
+The ratchet prevents excessive force from being applied to the object,
+which could deform it and affect the measurement.
+
+</div>
+
+</div>
+
+
+<div class="diagram">
+
+<div class="diagram-title">
+🔩 Parts of a Micrometer Screw Gauge
+</div>
+
+<svg viewBox="0 0 1000 300" width="100%">
+
+<!-- frame -->
+
+<path d="M180 210
+L180 90
+Q180 40 240 40
+L750 40
+Q820 40 820 110
+L820 210"
+fill="none"
+stroke="#60798c"
+stroke-width="35"/>
+
+<!-- anvil -->
+
+<rect x="235"
+y="110"
+width="30"
+height="100"
+fill="#163b63"/>
+
+<!-- spindle -->
+
+<rect x="265"
+y="145"
+width="300"
+height="25"
+fill="#0878d1"/>
+
+<!-- thimble -->
+
+<rect x="565"
+y="100"
+width="170"
+height="120"
+rx="25"
+fill="#8ca5b8"/>
+
+<!-- ratchet -->
+
+<circle cx="790"
+cy="160"
+r="45"
+fill="#52687c"/>
+
+<!-- labels -->
+
+<text x="200"
+y="255"
+fill="#1554a3"
+font-size="20">
+
+Frame
+
+</text>
+
+<text x="225"
+y="90"
+fill="#1554a3"
+font-size="20">
+
+Anvil
+
+</text>
+
+<text x="370"
+y="135"
+fill="#1554a3"
+font-size="20">
+
+Spindle
+
+</text>
+
+<text x="610"
+y="90"
+fill="#1554a3"
+font-size="20">
+
+Thimble
+
+</text>
+
+<text x="755"
+y="240"
+fill="#1554a3"
+font-size="20">
+
+Ratchet
+
+</text>
+
+</svg>
+
+</div>
+
+
+<div class="card">
+
+<h3>Reading a Micrometer</h3>
+
+<ol>
+
+<li>Read the visible main scale on the sleeve.</li>
+
+<li>Read the thimble division aligned with the datum line.</li>
+
+<li>Add the two readings.</li>
+
+<li>Apply zero correction if necessary.</li>
+
+</ol>
+
+<div class="formula">
+
+Measurement = Main scale reading + Thimble reading
+
+</div>
+
+</div>
+
+
+<div class="question">
+
+<strong>Question 3</strong>
+
+<p>
+The main scale reads 5.00 mm and the thimble reads 0.32 mm.
+Find the measurement.
+</p>
+
+<button onclick="showAnswer('a3')">
+Show Answer
+</button>
+
+<div class="answer" id="a3">
+
+Measurement = 5.00 + 0.32
+
+<br><br>
+
+<strong>Answer = 5.32 mm</strong>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- VOLUME -->
+
+<section id="volume">
+
+<h2>5. Volume</h2>
+
+<div class="card">
+
+<p>
+Volume is the amount of space occupied by an object or substance.
+</p>
+
+<div class="formula">
+
+1 mL = 1 cm³
+
+</div>
+
+<h3>Measuring Liquid Volume</h3>
+
+<ul>
+
+<li>Place the measuring cylinder on a level surface.</li>
+
+<li>Position your eye at the level of the liquid.</li>
+
+<li>Read the bottom of the meniscus for water.</li>
+
+<li>Record the reading with appropriate precision.</li>
+
+</ul>
+
+</div>
+
+
+<div class="diagram">
+
+<div class="diagram-title">
+🧪 Reading a Measuring Cylinder
+</div>
+
+<div class="cylinder">
+
+<div class="water">
+
+<div class="meniscus"></div>
+
+</div>
+
+</div>
+
+<p>
+Read the bottom of the meniscus at eye level.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>Volume of an Irregular Solid</h3>
+
+<p>
+The volume of an irregular solid that sinks in water can be found
+using the displacement method.
+</p>
+
+<div class="formula">
+
+Volume = Final volume − Initial volume
+
+</div>
+
+<p>
+The object must be completely submerged and air bubbles should
+be avoided.
+</p>
+
+</div>
+
+
+<div class="question">
+
+<strong>Question 4</strong>
+
+<p>
+The initial water level is 40 cm³. After an irregular solid is
+completely submerged, the reading is 67 cm³. Find the volume
+of the solid.
+</p>
+
+<button onclick="showAnswer('a4')">
+Show Answer
+</button>
+
+<div class="answer" id="a4">
+
+Volume = 67 − 40
+
+<br><br>
+
+<strong>Answer = 27 cm³</strong>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- TIME -->
+
+<section id="time">
+
+<h2>6. Measuring Time</h2>
+
+<div class="card">
+
+<p>
+The SI unit of time is the second (s).
+Time intervals can be measured using clocks, stopwatches and
+digital timers.
+</p>
+
+<p>
+For very short intervals, it is often more accurate to measure
+several repeated events and calculate the average time.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- PENDULUM -->
+
+<section id="pendulum">
+
+<h2>7. The Simple Pendulum</h2>
+
+<div class="card">
+
+<h3>Important Terms</h3>
+
+<ul>
+
+<li>
+<strong>Oscillation:</strong>
+One complete cycle of motion.
+</li>
+
+<li>
+<strong>Period (T):</strong>
+Time taken for one complete oscillation.
+</li>
+
+<li>
+<strong>Frequency (f):</strong>
+Number of oscillations per second.
+</li>
+
+</ul>
+
+<div class="formula">
+
+T = Total time ÷ Number of oscillations
+
+<br><br>
+
+f = 1 / T
+
+</div>
+
+</div>
+
+
+<div class="diagram">
+
+<div class="diagram-title">
+🕰️ Simple Pendulum Animation
+</div>
+
+<div class="pendulum-area">
+
+<div class="pivot"></div>
+
+<div class="pendulum-string">
+
+<div class="pendulum-bob"></div>
+
+</div>
+
+</div>
+
+<p>
+One complete oscillation is one complete cycle of the bob's motion.
+</p>
+
+</div>
+
+
+<div class="question">
+
+<strong>Question 5</strong>
+
+<p>
+A student measures the time for 25 oscillations as 20.4 s.
+Calculate the period.
+</p>
+
+<button onclick="showAnswer('a5')">
+Show Answer
+</button>
+
+<div class="answer" id="a5">
+
+T = 20.4 ÷ 25
+
+<br><br>
+
+<strong>Answer = 0.816 s</strong>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SCALARS VECTORS -->
+
+<section id="vectors">
+
+<h2>8. Scalars and Vectors</h2>
+
+<div class="card">
+
+<p>
+A <strong>scalar quantity</strong> has magnitude only.
+A <strong>vector quantity</strong> has both magnitude and direction.
+</p>
+
+<table>
+
+<tr>
+<th>Scalars</th>
+<th>Vectors</th>
+</tr>
+
+<tr>
+<td>Distance</td>
+<td>Displacement</td>
+</tr>
+
+<tr>
+<td>Speed</td>
+<td>Velocity</td>
+</tr>
+
+<tr>
+<td>Time</td>
+<td>Force</td>
+</tr>
+
+<tr>
+<td>Mass</td>
+<td>Weight</td>
+</tr>
+
+<tr>
+<td>Energy</td>
+<td>Acceleration</td>
+</tr>
+
+<tr>
+<td>Temperature</td>
+<td>Momentum</td>
+</tr>
+
+<tr>
+<td></td>
+<td>Electric field strength</td>
+</tr>
+
+<tr>
+<td></td>
+<td>Gravitational field strength</td>
+</tr>
+
+</table>
+
+</div>
+
+</section>
+
+
+<!-- RESULTANTS -->
+
+<section id="resultants">
+
+<h2>9. Addition of Vectors</h2>
+
+<div class="card">
+
+<p>
+The resultant is a single vector that has the same overall effect
+as the vectors acting together.
+</p>
+
+<h3>Vectors in the Same Direction</h3>
+
+<p>
+Add their magnitudes.
+</p>
+
+<h3>Vectors in Opposite Directions</h3>
+
+<p>
+Subtract the smaller magnitude from the larger.
+</p>
+
+</div>
+
+
+<div class="diagram">
+
+<div class="diagram-title">
+➡️ Vector Resultant
+</div>
+
+<div class="vector-area">
+
+<div class="vector v1"></div>
+
+<div class="vector v2"></div>
+
+<div class="vector vr"></div>
+
+</div>
+
+<p>
+The resultant vector represents the combined effect of the two
+original vectors.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>Perpendicular Vectors</h3>
+
+<p>
+When two vectors act at right angles, the magnitude of their
+resultant can be calculated using Pythagoras' theorem.
+</p>
+
+<div class="formula">
+
+R = √(A² + B²)
+
+</div>
+
+</div>
+
+
+<div class="question">
+
+<strong>Question 6</strong>
+
+<p>
+Two perpendicular forces of 7 N and 8 N act on an object.
+Calculate the magnitude of the resultant.
+</p>
+
+<button onclick="showAnswer('a6')">
+Show Answer
+</button>
+
+<div class="answer" id="a6">
+
+R = √(7² + 8²)
+
+<br><br>
+
+R = √113
+
+<br><br>
+
+<strong>Answer = 10.6 N</strong>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- QUIZ -->
+
+<section id="quiz">
+
+<h2>🧠 Quick Quiz</h2>
+
+
+<div class="question">
+
+<p>
+<strong>1. Which instrument is most suitable for measuring
+the diameter of a thin wire?</strong>
+</p>
+
+<button class="quiz-option"
+onclick="quiz(this,false,'q1')">
+
+A. Measuring tape
+
+</button>
+
+<button class="quiz-option"
+onclick="quiz(this,false,'q1')">
+
+B. Metre rule
+
+</button>
+
+<button class="quiz-option"
+onclick="quiz(this,true,'q1')">
+
+C. Micrometer screw gauge
+
+</button>
+
+<button class="quiz-option"
+onclick="quiz(this,false,'q1')">
+
+D. Measuring cylinder
+
+</button>
+
+<div id="q1"
+class="quiz-result">
+</div>
+
+</div>
+
+
+<div class="question">
+
+<p>
+<strong>2. Which of the following is a vector quantity?</strong>
+</p>
+
+<button class="quiz-option"
+onclick="quiz(this,false,'q2')">
+
+A. Mass
+
+</button>
+
+<button class="quiz-option"
+onclick="quiz(this,true,'q2')">
+
+B. Force
+
+</button>
+
+<button class="quiz-option"
+onclick="quiz(this,false,'q2')">
+
+C. Energy
+
+</button>
+
+<button class="quiz-option"
+onclick="quiz(this,false,'q2')">
+
+D. Temperature
+
+</button>
+
+<div id="q2"
+class="quiz-result">
+</div>
+
+</div>
+
+
+<div class="question">
+
+<p>
+<strong>3. Why do we time several pendulum oscillations?</strong>
+</p>
+
+<button class="quiz-option"
+onclick="quiz(this,true,'q3')">
+
+A. To reduce the relative effect of reaction-time error
+
+</button>
+
+<button class="quiz-option"
+onclick="quiz(this,false,'q3')">
+
+B. To increase the mass of the bob
+
+</button>
+
+<button class="quiz-option"
+onclick="quiz(this,false,'q3')">
+
+C. To change the frequency
+
+</button>
+
+<div id="q3"
+class="quiz-result">
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PLAYGROUND -->
+
+<section id="playground">
+
+<div class="playground">
+
+<h2>🎮 Physics Playground</h2>
+
+<p>
+Test your understanding through interactive challenges.
+</p>
+
+
+<div class="play-grid">
+
+
+<div class="game">
+
+<h3>📏 Measurement Detective</h3>
+
+<p>
+Choose the most suitable instrument for different objects.
+</p>
+
+<button>
+Start Game
+</button>
+
+</div>
+
+
+<div class="game">
+
+<h3>🔩 Micrometer Master</h3>
+
+<p>
+Read virtual micrometer measurements and identify the answer.
+</p>
+
+<button>
+Play
+</button>
+
+</div>
+
+
+<div class="game">
+
+<h3>🧪 Volume Challenge</h3>
+
+<p>
+Calculate the volume of irregular objects using displacement.
+</p>
+
+<button>
+Start Challenge
+</button>
+
+</div>
+
+
+<div class="game">
+
+<h3>⏱️ Pendulum Race</h3>
+
+<p>
+Measure repeated oscillations and calculate the period.
+</p>
+
+<button>
+Start
+</button>
+
+</div>
+
+
+<div class="game">
+
+<h3>➡️ Vector Builder</h3>
+
+<p>
+Combine forces and predict the direction of the resultant.
+</p>
+
+<button>
+Play
+</button>
+
+</div>
+
+
+<div class="game">
+
+<h3>🧩 Measurement Mystery</h3>
+
+<p>
+Solve a complete investigation using measurement techniques.
+</p>
+
+<button>
+Solve Mystery
+</button>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FINAL CHALLENGE -->
+
+<section>
+
+<h2>🏆 Final Challenge</h2>
+
+<div class="question">
+
+<p>
+You are given a thin wire and a micrometer screw gauge.
+Describe how you would obtain a reliable value for the diameter
+of the wire.
+</p>
+
+<button onclick="showAnswer('finalAnswer')">
+
+Show Suggested Answer
+
+</button>
+
+<div class="answer"
+id="finalAnswer">
+
+First check the micrometer for zero error.
+
+Measure the diameter at several different positions along the wire.
+At each position, use the ratchet to apply controlled pressure
+and avoid deforming the wire.
+
+Record all measurements and calculate a mean value.
+
+Taking several measurements reduces the effect of random errors
+and gives a more reliable estimate of the wire's diameter.
+
+</div>
+
+</div>
+
+</section>
+
+
+</main>
+
+</div>
+
+</div>
+
+
 <footer>
-<strong>PhysicsAI 5054</strong><br>
+
+<strong>PhysicsAI 5054</strong>
+
+<br>
+
 Learn • Explore • Understand
+
 </footer>
 
+
 <script>
-function toggle(id){document.getElementById(id).classList.toggle('show')}
-function quiz(btn,correct,id){
-const r=document.getElementById(id);
-if(correct){r.textContent='✅ Correct!';r.style.color='#52d6a0'}
-else{r.textContent='❌ Not quite. Try again.';r.style.color='#ff8f8f'}
+
+/* =========================
+   SHOW ANSWER
+========================= */
+
+function showAnswer(id) {
+
+    const answer = document.getElementById(id);
+
+    answer.classList.toggle("show");
+
 }
-let pendTimer=null, pendCount=0;
-function startPendulum(){
-if(pendTimer)return;
-pendTimer=setInterval(()=>{pendCount++;document.getElementById('pendRead').textContent='Oscillations: '+pendCount},2200);
-document.getElementById('pendMsg').textContent='The animation is running. One complete cycle is from one extreme back to the same extreme.';
+
+
+/* =========================
+   QUIZ
+========================= */
+
+function quiz(button, correct, resultID) {
+
+    const result =
+    document.getElementById(resultID);
+
+    if(correct) {
+
+        result.innerHTML =
+        "✅ Correct! Well done.";
+
+        result.style.color =
+        "#2e9d62";
+
+    } else {
+
+        result.innerHTML =
+        "❌ Not quite. Try again.";
+
+        result.style.color =
+        "#d94b4b";
+
+    }
+
 }
-function resetPendulum(){clearInterval(pendTimer);pendTimer=null;pendCount=0;document.getElementById('pendRead').textContent='Oscillations: 0';document.getElementById('pendMsg').textContent='Press Start and observe one complete oscillation.'}
-const sections=[...document.querySelectorAll('section')];
-window.addEventListener('scroll',()=>{
-let seen=0;
-sections.forEach(s=>{if(window.scrollY+window.innerHeight*.65>=s.offsetTop)seen++});
-let pct=Math.min(100,Math.round(seen/sections.length*100));
-document.getElementById('fill').style.width=pct+'%';
-document.getElementById('pct').textContent=pct+'%';
-});
+
 </script>
+
+
 </body>
+
 </html>
