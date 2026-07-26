@@ -1,5 +1,5 @@
+```html
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -9,29 +9,19 @@
 
 <style>
 
-/* =========================================================
-   PHYSICSAI 5054 — MOTION
-   Interactive Cambridge O Level Physics Chapter
-   ========================================================= */
-
 :root{
-    --navy:#102a43;
-    --blue:#1976d2;
-    --cyan:#00b8d9;
-    --orange:#ff7043;
-    --green:#16a085;
+    --blue:#2575fc;
+    --dark-blue:#173b8f;
+    --cyan:#4cc9f0;
+    --green:#08a878;
+    --orange:#ff7a18;
     --purple:#7c4dff;
-    --yellow:#ffca28;
-
-    --bg:#f4f8fc;
+    --red:#e63946;
+    --ink:#172033;
+    --soft:#5d6b82;
+    --light:#f5f8fc;
     --card:#ffffff;
-    --soft:#edf4fb;
-    --text:#172033;
-    --muted:#64748b;
-    --line:#dce6f0;
-
-    --shadow:0 12px 35px rgba(16,42,67,.08);
-    --radius:20px;
+    --line:#e2e8f0;
 }
 
 *{
@@ -46,18 +36,18 @@ html{
 
 body{
     font-family:"Segoe UI",Arial,sans-serif;
-    background:var(--bg);
-    color:var(--text);
-    line-height:1.65;
+    background:#f5f8fc;
+    color:var(--ink);
+    line-height:1.6;
 }
 
-/* ================= NAVIGATION ================= */
+/* NAVIGATION */
 
 nav{
     position:sticky;
     top:0;
     z-index:1000;
-    background:rgba(255,255,255,.94);
+    background:rgba(255,255,255,.96);
     backdrop-filter:blur(12px);
     border-bottom:1px solid var(--line);
 }
@@ -72,9 +62,9 @@ nav{
 }
 
 .logo{
+    font-size:20px;
     font-weight:800;
-    color:var(--navy);
-    font-size:18px;
+    color:var(--dark-blue);
 }
 
 .logo span{
@@ -88,7 +78,7 @@ nav{
 
 .nav-links a{
     text-decoration:none;
-    color:var(--muted);
+    color:var(--soft);
     font-size:14px;
     font-weight:700;
 }
@@ -97,49 +87,40 @@ nav{
     color:var(--blue);
 }
 
-/* ================= HERO ================= */
+/* HERO */
 
 .hero{
     background:
-        radial-gradient(circle at 85% 20%,rgba(25,118,210,.18),transparent 30%),
-        radial-gradient(circle at 10% 90%,rgba(0,184,217,.13),transparent 28%),
+        radial-gradient(circle at 85% 15%,rgba(76,201,240,.25),transparent 30%),
+        radial-gradient(circle at 10% 90%,rgba(37,117,252,.15),transparent 35%),
         linear-gradient(135deg,#ffffff,#eef6ff);
-
-    padding:75px 22px 65px;
+    padding:70px 22px 80px;
 }
 
 .hero-inner{
     max-width:1100px;
     margin:auto;
+    text-align:center;
 }
 
-.kicker{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    color:var(--blue);
-    background:#e6f1ff;
-    padding:7px 14px;
+.tag{
+    display:inline-block;
+    background:#e8f1ff;
+    color:#1d5bd1;
+    padding:7px 15px;
     border-radius:30px;
     font-size:12px;
     font-weight:800;
     letter-spacing:.05em;
-}
-
-.kicker::before{
-    content:"";
-    width:8px;
-    height:8px;
-    border-radius:50%;
-    background:var(--orange);
+    margin-bottom:18px;
 }
 
 .hero h1{
-    font-size:clamp(50px,8vw,86px);
-    line-height:.95;
-    letter-spacing:-4px;
-    margin:18px 0;
-    color:var(--navy);
+    font-size:clamp(48px,8vw,80px);
+    line-height:1;
+    letter-spacing:-3px;
+    color:var(--dark-blue);
+    margin-bottom:18px;
 }
 
 .hero h1 span{
@@ -148,526 +129,437 @@ nav{
 
 .hero p{
     max-width:700px;
-    font-size:20px;
-    color:var(--muted);
+    margin:auto;
+    color:var(--soft);
+    font-size:19px;
 }
 
 .hero-buttons{
+    margin-top:28px;
     display:flex;
+    justify-content:center;
     gap:12px;
     flex-wrap:wrap;
-    margin-top:28px;
 }
 
 .btn{
-    display:inline-block;
-    padding:12px 20px;
+    padding:12px 22px;
     border-radius:10px;
     text-decoration:none;
     font-weight:800;
-    cursor:pointer;
-    border:none;
+    display:inline-block;
 }
 
 .btn-primary{
     background:var(--blue);
     color:white;
+    box-shadow:0 8px 20px rgba(37,117,252,.25);
 }
 
 .btn-secondary{
     background:white;
     color:var(--blue);
-    border:1px solid var(--line);
+    border:1px solid #d9e3f0;
 }
 
-/* ================= LAYOUT ================= */
+/* MAIN */
 
-.container{
-    max-width:1000px;
+main{
+    max-width:1100px;
     margin:auto;
-    padding:0 22px;
+    padding:30px 22px 100px;
 }
 
 section{
-    padding:65px 0;
+    margin:70px 0;
 }
 
-.section-label{
+.section-title{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.section-title .eyebrow{
     color:var(--blue);
-    font-size:12px;
-    font-weight:900;
     text-transform:uppercase;
+    font-size:12px;
+    font-weight:800;
     letter-spacing:.1em;
-    margin-bottom:6px;
 }
 
-h2{
+.section-title h2{
     font-size:38px;
-    line-height:1.15;
-    color:var(--navy);
-    margin-bottom:15px;
+    color:var(--dark-blue);
+    margin:5px 0;
 }
 
-.lead{
-    color:var(--muted);
-    font-size:18px;
-    max-width:700px;
+.section-title p{
+    color:var(--soft);
 }
 
-/* ================= CONCEPT CARDS ================= */
+/* CONCEPT CARDS */
 
 .concept-grid{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-    margin-top:35px;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:20px;
 }
 
-.concept{
+.concept-card{
     background:white;
     border:1px solid var(--line);
-    border-radius:var(--radius);
+    border-radius:18px;
     padding:25px;
-    box-shadow:var(--shadow);
+    box-shadow:0 8px 25px rgba(40,70,110,.05);
+    transition:.25s;
+}
+
+.concept-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 15px 35px rgba(37,117,252,.12);
 }
 
 .concept-icon{
-    font-size:35px;
+    font-size:38px;
     margin-bottom:12px;
 }
 
-.concept h3{
-    color:var(--navy);
+.concept-card h3{
+    color:var(--dark-blue);
     margin-bottom:8px;
 }
 
-.concept p{
-    color:var(--muted);
-    font-size:15px;
+.concept-card p{
+    color:var(--soft);
 }
 
-/* ================= ANIMATED ROAD ================= */
+/* FORMULA */
 
-.motion-lab{
-    background:var(--navy);
-    color:white;
-    border-radius:25px;
+.formula{
+    margin:25px 0;
+    background:#eef6ff;
+    border-left:5px solid var(--blue);
+    padding:18px 22px;
+    border-radius:0 12px 12px 0;
+    text-align:center;
+    font-size:22px;
+    font-weight:800;
+    color:var(--dark-blue);
+}
+
+/* INTERACTIVE MOTION LAB */
+
+.lab{
+    background:white;
+    border:1px solid var(--line);
+    border-radius:24px;
     padding:30px;
-    margin-top:35px;
-    overflow:hidden;
-    box-shadow:0 20px 50px rgba(16,42,67,.2);
-}
-
-.lab-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:20px;
-    flex-wrap:wrap;
-}
-
-.lab-top h3{
-    font-size:24px;
-}
-
-.live-speed{
-    font-family:monospace;
-    font-size:26px;
-    font-weight:bold;
-    color:#7dd3fc;
-}
-
-.road{
-    position:relative;
-    height:120px;
-    margin:30px 0 20px;
-    background:#263b50;
-    border-radius:15px;
-    overflow:hidden;
-}
-
-.road-line{
-    position:absolute;
-    left:0;
-    right:0;
-    top:58px;
-    height:5px;
-    background:repeating-linear-gradient(
-        90deg,
-        white 0 45px,
-        transparent 45px 85px
-    );
-    opacity:.8;
-}
-
-.car{
-    position:absolute;
-    left:10px;
-    bottom:35px;
-    font-size:40px;
-    transition:left .1s linear;
-}
-
-.distance-marker{
-    position:absolute;
-    bottom:8px;
-    left:10px;
-    right:10px;
-    height:1px;
-    background:#7dd3fc;
+    box-shadow:0 12px 35px rgba(40,70,110,.08);
 }
 
 .lab-controls{
     display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:18px;
+    margin-bottom:25px;
+}
+
+.control{
+    background:#f7faff;
+    padding:18px;
+    border-radius:14px;
 }
 
 .control label{
-    display:flex;
-    justify-content:space-between;
+    display:block;
     font-size:13px;
-    color:#cbd5e1;
+    font-weight:800;
+    color:var(--soft);
+    margin-bottom:8px;
 }
 
-input[type=range]{
+.control input[type=range]{
     width:100%;
-    accent-color:#38bdf8;
-    margin-top:8px;
 }
 
-/* ================= FORMULA ================= */
-
-.formula{
-    background:white;
-    border-left:5px solid var(--blue);
-    padding:20px 24px;
-    border-radius:0 15px 15px 0;
-    box-shadow:var(--shadow);
-    margin:25px 0;
-    font-family:monospace;
+.control-value{
     font-size:20px;
-}
-
-.formula small{
-    display:block;
-    color:var(--muted);
-    font-family:"Segoe UI",Arial,sans-serif;
-    font-size:13px;
-    margin-bottom:7px;
-}
-
-/* ================= CALCULATOR ================= */
-
-.calculator{
-    background:white;
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:28px;
-    box-shadow:var(--shadow);
-    margin-top:30px;
-}
-
-.calc-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:18px;
-}
-
-.calc-field label{
-    display:block;
-    font-size:12px;
     font-weight:800;
-    color:var(--muted);
-    text-transform:uppercase;
-    margin-bottom:5px;
-}
-
-.calc-field input{
-    width:100%;
-    padding:12px;
-    border:1px solid var(--line);
-    border-radius:9px;
-    font-size:18px;
-}
-
-.calc-result{
-    margin-top:22px;
-    background:#e9f7ff;
     color:var(--blue);
-    padding:18px;
-    border-radius:12px;
-    font-size:24px;
-    font-weight:800;
+}
+
+.track{
+    height:110px;
+    position:relative;
+    overflow:hidden;
+    background:
+        linear-gradient(to bottom,#dff3ff 0 45%,#7ac943 45% 100%);
+    border-radius:16px;
+    border:2px solid #cbdceb;
+}
+
+.road{
+    position:absolute;
+    bottom:0;
+    left:0;
+    right:0;
+    height:45%;
+    background:#596579;
+}
+
+.road-line{
+    position:absolute;
+    top:50%;
+    left:0;
+    right:0;
+    border-top:4px dashed white;
+}
+
+.car{
+    position:absolute;
+    bottom:38px;
+    left:20px;
+    font-size:42px;
+    transition:left .15s linear;
+}
+
+.lab-readout{
+    display:flex;
+    justify-content:center;
+    gap:35px;
+    flex-wrap:wrap;
+    margin-top:22px;
+}
+
+.readout{
     text-align:center;
 }
 
-/* ================= GRAPH ================= */
+.readout strong{
+    display:block;
+    font-size:28px;
+    color:var(--dark-blue);
+}
+
+.readout span{
+    font-size:12px;
+    color:var(--soft);
+}
+
+/* GRAPH */
 
 .graph-card{
     background:white;
-    border:1px solid var(--line);
-    border-radius:var(--radius);
     padding:25px;
-    margin-top:30px;
-    box-shadow:var(--shadow);
+    border-radius:20px;
+    border:1px solid var(--line);
+    margin-top:25px;
 }
 
 canvas{
     width:100%;
-    height:300px;
+    height:280px;
     display:block;
     background:#fbfdff;
     border-radius:12px;
 }
 
-.graph-controls{
-    display:flex;
-    gap:15px;
-    flex-wrap:wrap;
-    margin-top:20px;
-}
+/* DISTANCE DISPLACEMENT */
 
-.graph-controls button{
-    padding:10px 16px;
-    border-radius:9px;
-    border:1px solid var(--line);
+.route-box{
     background:white;
-    cursor:pointer;
-    font-weight:700;
+    padding:28px;
+    border-radius:20px;
+    border:1px solid var(--line);
 }
 
-.graph-controls button:hover{
+.route{
+    height:180px;
+    position:relative;
+    background:#eef6ff;
+    border-radius:15px;
+    overflow:hidden;
+    margin:20px 0;
+}
+
+.route-line{
+    position:absolute;
+    left:10%;
+    right:10%;
+    top:50%;
+    border-top:4px solid var(--blue);
+}
+
+.marker{
+    position:absolute;
+    top:calc(50% - 18px);
+    font-size:32px;
+    left:10%;
+    transition:left .3s;
+}
+
+.route-controls{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.route-controls button,
+.game button,
+.quiz button,
+.challenge button{
+    border:none;
     background:var(--blue);
     color:white;
-}
-
-/* ================= INSIGHT ================= */
-
-.insight{
-    margin-top:25px;
-    background:linear-gradient(135deg,#fff7ed,#fff);
-    border:1px solid #fed7aa;
-    border-radius:15px;
-    padding:22px;
-}
-
-.insight strong{
-    color:var(--orange);
-}
-
-/* ================= QUESTION ================= */
-
-.question{
-    background:white;
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:25px;
-    margin-top:22px;
-    box-shadow:var(--shadow);
-}
-
-.question-number{
-    color:var(--blue);
-    font-size:12px;
-    font-weight:900;
-    text-transform:uppercase;
-}
-
-.question h3{
-    margin:7px 0 18px;
-}
-
-.answer-row{
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-}
-
-.answer-row input{
-    padding:11px;
-    border:1px solid var(--line);
-    border-radius:8px;
-    width:150px;
-}
-
-.check{
-    background:var(--navy);
-    color:white;
-    border:none;
-    border-radius:8px;
-    padding:11px 18px;
-    cursor:pointer;
-    font-weight:800;
-}
-
-.feedback{
-    display:none;
-    margin-top:15px;
-    padding:12px;
+    padding:10px 17px;
     border-radius:9px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.route-controls button:hover,
+.game button:hover,
+.quiz button:hover,
+.challenge button:hover{
+    background:var(--dark-blue);
+}
+
+.route-result{
+    margin-top:15px;
+    font-weight:700;
+    color:var(--dark-blue);
+}
+
+/* PLAYGROUND */
+
+.playground{
+    background:linear-gradient(135deg,#173b8f,#2575fc);
+    color:white;
+    padding:40px 30px;
+    border-radius:28px;
+    box-shadow:0 20px 50px rgba(37,117,252,.25);
+}
+
+.playground .section-title h2,
+.playground .section-title p,
+.playground .section-title .eyebrow{
+    color:white;
+}
+
+.playground-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:20px;
+}
+
+.game,
+.quiz,
+.challenge{
+    background:white;
+    color:var(--ink);
+    padding:24px;
+    border-radius:18px;
+}
+
+.game h3,
+.quiz h3,
+.challenge h3{
+    color:var(--dark-blue);
+    margin-bottom:8px;
+}
+
+.game p,
+.quiz p,
+.challenge p{
+    color:var(--soft);
+    font-size:14px;
+    margin-bottom:15px;
+}
+
+/* GAME 1 */
+
+.speed-game-track{
+    height:70px;
+    background:#edf2f7;
+    border-radius:12px;
+    position:relative;
+    margin:15px 0;
+    overflow:hidden;
+}
+
+.runner{
+    position:absolute;
+    left:5px;
+    top:13px;
+    font-size:36px;
+    transition:left .3s;
+}
+
+/* QUIZ */
+
+.option{
+    display:block;
+    width:100%;
+    margin:7px 0;
+    padding:10px;
+    border:1px solid #dbe3ed;
+    background:#f8fafc;
+    border-radius:8px;
+    cursor:pointer;
+    text-align:left;
+}
+
+.option:hover{
+    border-color:var(--blue);
+}
+
+.quiz-feedback{
+    margin-top:10px;
     font-weight:700;
 }
 
-.feedback.show{
-    display:block;
+/* CHALLENGE */
+
+.challenge input{
+    width:100%;
+    padding:10px;
+    border:1px solid #d8e0ea;
+    border-radius:8px;
+    margin:8px 0 12px;
 }
 
-.correct{
-    background:#dcfce7;
-    color:#166534;
-}
+/* PROGRESS */
 
-.wrong{
-    background:#fee2e2;
-    color:#991b1b;
-}
-
-/* ================= ACCELERATION ================= */
-
-.accel-lab{
-    background:linear-gradient(135deg,#eef2ff,#ffffff);
-    border:1px solid #dbeafe;
-    border-radius:var(--radius);
-    padding:28px;
-    margin-top:30px;
-}
-
-.accel-number{
-    font-size:45px;
-    font-weight:900;
-    color:var(--purple);
-    text-align:center;
-}
-
-.accel-car-area{
-    height:90px;
-    position:relative;
-    background:#e5e7eb;
-    border-radius:12px;
-    margin:20px 0;
-    overflow:hidden;
-}
-
-.accel-car{
-    position:absolute;
-    left:0;
-    top:25px;
-    font-size:35px;
-}
-
-/* ================= VT GRAPH ================= */
-
-.graph-explanation{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:18px;
-    margin-top:25px;
-}
-
-.mini-card{
+.progress{
     background:white;
-    padding:22px;
-    border-radius:15px;
+    padding:25px;
+    border-radius:18px;
     border:1px solid var(--line);
-}
-
-.mini-card h3{
-    margin-bottom:8px;
-    color:var(--navy);
-}
-
-.mini-card p{
-    color:var(--muted);
-}
-
-/* ================= FALLING OBJECT ================= */
-
-.fall-lab{
-    background:#102a43;
-    border-radius:25px;
-    padding:30px;
-    color:white;
     margin-top:30px;
 }
 
-.fall-area{
-    height:280px;
-    position:relative;
-    margin:25px auto;
-    max-width:400px;
-    background:linear-gradient(#dff3ff,#ffffff);
-    border-radius:15px;
-    overflow:hidden;
-}
-
-.tube{
-    position:absolute;
-    width:150px;
-    height:240px;
-    left:50%;
-    top:20px;
-    transform:translateX(-50%);
-    border:4px solid #94a3b8;
+.progress-bar{
+    height:12px;
+    background:#e7edf5;
     border-radius:20px;
+    overflow:hidden;
+    margin-top:12px;
 }
 
-.coin,
-.feather{
-    position:absolute;
-    left:45px;
-    top:15px;
-    font-size:28px;
+.progress-fill{
+    width:0%;
+    height:100%;
+    background:linear-gradient(90deg,var(--blue),var(--cyan));
+    transition:.4s;
 }
 
-.feather{
-    left:85px;
-}
-
-.fall-buttons{
-    display:flex;
-    gap:10px;
-    justify-content:center;
-    flex-wrap:wrap;
-}
-
-.fall-buttons button{
-    padding:11px 16px;
-    border-radius:9px;
-    border:none;
-    cursor:pointer;
-    font-weight:800;
-}
-
-/* ================= SUMMARY ================= */
-
-.summary{
-    background:linear-gradient(135deg,#173b8f,#1976d2);
-    color:white;
-    border-radius:25px;
-    padding:35px;
-}
-
-.summary h2{
-    color:white;
-}
-
-.summary ul{
-    margin:20px 0 0 20px;
-}
-
-.summary li{
-    margin:8px 0;
-}
-
-/* ================= FOOTER ================= */
+/* FOOTER */
 
 footer{
-    background:var(--navy);
-    color:#cbd5e1;
+    background:#14213d;
+    color:#b8c3d5;
     text-align:center;
-    padding:40px 22px;
-    margin-top:50px;
+    padding:35px 20px;
 }
 
 footer strong{
@@ -675,7 +567,7 @@ footer strong{
     font-size:20px;
 }
 
-/* ================= MOBILE ================= */
+/* MOBILE */
 
 @media(max-width:700px){
 
@@ -683,83 +575,82 @@ footer strong{
         display:none;
     }
 
-    .concept-grid,
-    .calc-grid,
-    .lab-controls,
-    .graph-explanation{
-        grid-template-columns:1fr;
+    .hero{
+        padding:55px 18px 65px;
     }
 
     .hero h1{
         letter-spacing:-2px;
     }
 
-    h2{
-        font-size:31px;
+    main{
+        padding-left:16px;
+        padding-right:16px;
     }
 
-    .motion-lab,
-    .fall-lab{
-        padding:22px;
+    section{
+        margin:50px 0;
     }
+
+    .lab,
+    .playground{
+        padding:22px 18px;
+    }
+
 }
 
 </style>
-
 </head>
 
 <body>
 
-<!-- ================= NAVIGATION ================= -->
+<!-- NAVIGATION -->
 
 <nav>
 <div class="nav-inner">
 
 <div class="logo">
-PhysicsAI <span>5054</span>
+Physics with <span>Mr Nabeel</span>
 </div>
 
 <div class="nav-links">
-<a href="#speed">Speed</a>
-<a href="#velocity">Velocity</a>
-<a href="#acceleration">Acceleration</a>
-<a href="#graphs">Graphs</a>
-<a href="#gravity">Gravity</a>
-<a href="#challenge">Challenge</a>
+<a href="index.html">Home</a>
+<a href="#concepts">Concepts</a>
+<a href="#lab">Motion Lab</a>
+<a href="#playground">Playground</a>
 </div>
 
 </div>
 </nav>
 
-<!-- ================= HERO ================= -->
+
+<!-- HERO -->
 
 <header class="hero">
 
 <div class="hero-inner">
 
-<div class="kicker">
-Cambridge O Level Physics 5054 · Chapter 3
+<div class="tag">
+PHYSICSAI 5054 • CAMBRIDGE O LEVEL PHYSICS
 </div>
 
 <h1>
-Motion is<br>
-<span>Physics in Action.</span>
+Motion is <span>everywhere.</span>
 </h1>
 
 <p>
-Everything around you is moving. Cars accelerate. Runners slow down.
-Planets orbit stars. A falling object speeds up.
-In this chapter, you will learn how physicists describe and analyse motion.
+From a racing car to a falling object, Physics helps us
+describe and understand how things move.
 </p>
 
 <div class="hero-buttons">
 
-<a href="#speed" class="btn btn-primary">
-Start Exploring ↓
+<a href="#concepts" class="btn btn-primary">
+Start Learning
 </a>
 
-<a href="#challenge" class="btn btn-secondary">
-Jump to Challenge
+<a href="#playground" class="btn btn-secondary">
+🎮 Enter Motion Playground
 </a>
 
 </div>
@@ -768,310 +659,305 @@ Jump to Challenge
 
 </header>
 
-<!-- ================= SECTION 1 ================= -->
 
-<section id="speed">
+<main>
 
-<div class="container">
 
-<div class="section-label">
-01 · The Big Idea
+<!-- CONCEPTS -->
+
+<section id="concepts">
+
+<div class="section-title">
+
+<div class="eyebrow">01 • Core Concepts</div>
+
+<h2>Let's Understand Motion</h2>
+
+<p>
+Before using equations, let's understand what the quantities mean.
+</p>
+
 </div>
 
-<h2>
-How do we describe motion?
-</h2>
-
-<p class="lead">
-To describe motion, we need to know how far something moves,
-how long it takes and how its motion changes.
-</p>
 
 <div class="concept-grid">
 
-<div class="concept">
-<div class="concept-icon">📏</div>
+<div class="concept-card">
+
+<div class="concept-icon">📍</div>
+
 <h3>Distance</h3>
+
 <p>
-The total length of the path travelled by an object.
-Distance is a scalar quantity.
+Distance is the total length of the path travelled by an object.
+It is a scalar quantity.
 </p>
+
 </div>
 
-<div class="concept">
-<div class="concept-icon">🏎️</div>
+
+<div class="concept-card">
+
+<div class="concept-icon">🧭</div>
+
+<h3>Displacement</h3>
+
+<p>
+Displacement is the distance moved in a particular direction
+from the starting point.
+</p>
+
+</div>
+
+
+<div class="concept-card">
+
+<div class="concept-icon">🏃</div>
+
 <h3>Speed</h3>
+
 <p>
-How quickly distance is covered.
-Speed tells us how fast an object is moving.
+Speed tells us how quickly distance is covered.
 </p>
+
+<div class="formula">
+speed = distance ÷ time
 </div>
 
-<div class="concept">
-<div class="concept-icon">⏱️</div>
-<h3>Time</h3>
+</div>
+
+
+<div class="concept-card">
+
+<div class="concept-icon">🚀</div>
+
+<h3>Velocity</h3>
+
 <p>
-The duration taken for an event or for an object
-to travel a certain distance.
+Velocity is speed in a particular direction.
+It is a vector quantity.
 </p>
+
+</div>
+
+
+<div class="concept-card">
+
+<div class="concept-icon">⚡</div>
+
+<h3>Acceleration</h3>
+
+<p>
+Acceleration is the rate of change of velocity.
+</p>
+
+<div class="formula">
+a = change in velocity ÷ time
 </div>
 
 </div>
 
-<!-- ANIMATED SPEED LAB -->
-
-<div class="motion-lab">
-
-<div class="lab-top">
-
-<h3>🚗 Interactive Speed Lab</h3>
-
-<div class="live-speed">
-<span id="liveSpeed">10.0</span> m/s
 </div>
 
+</section>
+
+
+<!-- MOTION LAB -->
+
+<section id="lab">
+
+<div class="section-title">
+
+<div class="eyebrow">02 • Interactive Laboratory</div>
+
+<h2>🚗 Motion Lab</h2>
+
+<p>
+Change the speed and acceleration. Watch the vehicle respond.
+</p>
+
 </div>
 
-<div class="road">
 
-<div class="road-line"></div>
-
-<div class="car" id="car">
-🚗
-</div>
-
-<div class="distance-marker"></div>
-
-</div>
+<div class="lab">
 
 <div class="lab-controls">
 
 <div class="control">
 
-<label>
-Distance
-<span><span id="distanceValue">100</span> m</span>
-</label>
+<label>Speed</label>
 
-<input
-type="range"
-id="distanceSlider"
-min="20"
-max="200"
-value="100"
+<input type="range" id="speedSlider"
+min="0" max="100" value="40">
 
->
+<div class="control-value">
+<span id="speedValue">40</span> m/s
+</div>
 
 </div>
+
 
 <div class="control">
 
-<label>
-Time
-<span><span id="timeValue">10</span> s</span>
-</label>
+<label>Acceleration</label>
 
-<input
-type="range"
-id="timeSlider"
-min="2"
-max="30"
-value="10"
+<input type="range" id="accSlider"
+min="-10" max="10" value="0">
 
->
-
+<div class="control-value">
+<span id="accValue">0</span> m/s²
 </div>
 
 </div>
 
 </div>
 
-<div class="formula">
 
-<small>Key equation</small>
+<div class="track">
 
-speed = distance ÷ time
+<div class="road">
+<div class="road-line"></div>
+</div>
+
+<div class="car" id="car">🚗</div>
 
 </div>
 
-<div class="calculator">
 
-<h3>🧮 Try the calculation</h3>
+<div class="lab-readout">
 
-<br>
-
-<div class="calc-grid">
-
-<div class="calc-field">
-
-<label>Distance / m</label>
-
-<input
-type="number"
-id="calcDistance"
-value="100"
-
->
-
+<div class="readout">
+<strong id="labSpeed">40</strong>
+<span>Current speed / m/s</span>
 </div>
 
-<div class="calc-field">
-
-<label>Time / s</label>
-
-<input
-type="number"
-id="calcTime"
-value="10"
-
->
+<div class="readout">
+<strong id="labAcceleration">0</strong>
+<span>Acceleration / m/s²</span>
+</div>
 
 </div>
 
 </div>
 
-<div class="calc-result">
 
-Speed = <span id="calcSpeed">10.00</span> m/s
+<div class="graph-card">
 
+<h3>📈 What does the motion look like?</h3>
+
+<p style="color:#5d6b82;margin:8px 0 15px;">
+The graph changes as you change the acceleration.
+</p>
+
+<canvas id="motionCanvas" width="900" height="280"></canvas>
+
+</div>
+
+</section>
+
+
+<!-- DISTANCE AND DISPLACEMENT -->
+
+<section>
+
+<div class="section-title">
+
+<div class="eyebrow">03 • Explore</div>
+
+<h2>Distance vs Displacement</h2>
+
+<p>
+Take a journey and see why distance and displacement are different.
+</p>
+
+</div>
+
+
+<div class="route-box">
+
+<p>
+Imagine you start at the left side of the track.
+Move to the right and then return to your starting point.
+</p>
+
+<div class="route">
+
+<div class="route-line"></div>
+
+<div class="marker" id="marker">
+🏃
 </div>
 
 </div>
 
-<div class="question">
+<div class="route-controls">
 
-<div class="question-number">
-Quick Check 01
-</div>
+<button onclick="goTo(50)">
+Move halfway
+</button>
 
-<h3>
-A cyclist travels 150 m in 10 s.
-What is the average speed?
-</h3>
+<button onclick="goTo(100)">
+Go to the end
+</button>
 
-<div class="answer-row">
-
-<input
-type="number"
-id="q1"
-placeholder="Your answer"
-
->
-
-<span>m/s</span>
-
-<button
-class="check"
-onclick="checkQ1()"
-
->
-
-Check </button>
+<button onclick="goTo(0)">
+Return to start
+</button>
 
 </div>
 
-<div
-class="feedback"
-id="feedback1"
-></div>
-
+<div class="route-result" id="routeResult">
+Starting point: distance = 0 m, displacement = 0 m
 </div>
 
 </div>
 
 </section>
 
-<!-- ================= VELOCITY ================= -->
 
-<section id="velocity">
+<!-- GRAPH IDEAS -->
 
-<div class="container">
+<section>
 
-<div class="section-label">
-02 · Speed vs Velocity
+<div class="section-title">
+
+<div class="eyebrow">04 • Graphs</div>
+
+<h2>Reading Motion Graphs</h2>
+
+<p>
+Graphs allow us to describe motion visually.
+</p>
+
 </div>
 
-<h2>
-Speed and velocity are not the same.
-</h2>
-
-<p class="lead">
-Speed tells us how fast something moves.
-Velocity tells us how fast it moves <strong>and in which direction</strong>.
-</p>
 
 <div class="concept-grid">
 
-<div class="concept">
-<div class="concept-icon">➡️</div>
-<h3>Velocity</h3>
+<div class="concept-card">
+
+<div class="concept-icon">📏</div>
+
+<h3>Distance–Time Graph</h3>
+
 <p>
-Velocity is speed in a specified direction.
-It is a vector quantity.
+The gradient of a distance–time graph gives the speed.
+A steeper line means greater speed.
 </p>
+
 </div>
 
-<div class="concept">
-<div class="concept-icon">🔄</div>
-<h3>Direction matters</h3>
+
+<div class="concept-card">
+
+<div class="concept-icon">📈</div>
+
+<h3>Velocity–Time Graph</h3>
+
 <p>
-Two objects can have the same speed but different velocities
-if they move in different directions.
+The gradient gives acceleration.
+The area under the graph gives distance travelled.
 </p>
-</div>
-
-<div class="concept">
-<div class="concept-icon">🎯</div>
-<h3>Displacement</h3>
-<p>
-Displacement is the distance travelled in a specified direction
-from the starting point.
-</p>
-</div>
-
-</div>
-
-<div class="formula">
-
-<small>Remember</small>
-
-velocity = displacement ÷ time
-
-</div>
-
-<div class="question">
-
-<div class="question-number">
-Quick Check 02
-</div>
-
-<h3>
-What is the SI unit of velocity?
-</h3>
-
-<div class="answer-row">
-
-<input
-type="text"
-id="q2"
-placeholder="e.g. m/s"
-
->
-
-<button
-class="check"
-onclick="checkQ2()"
-
->
-
-Check </button>
-
-</div>
-
-<div
-class="feedback"
-id="feedback2"
-></div>
 
 </div>
 
@@ -1079,493 +965,201 @@ id="feedback2"
 
 </section>
 
-<!-- ================= ACCELERATION ================= -->
 
-<section id="acceleration">
+<!-- PLAYGROUND -->
 
-<div class="container">
+<section id="playground" class="playground">
 
-<div class="section-label">
-03 · Acceleration
-</div>
+<div class="section-title">
 
-<h2>
-How quickly is velocity changing?
-</h2>
+<div class="eyebrow">05 • Motion Playground</div>
 
-<p class="lead">
-Acceleration measures how quickly velocity changes with time.
-An object accelerates whenever its velocity changes.
+<h2>🎮 Play. Think. Challenge Yourself.</h2>
+
+<p>
+Physics becomes easier when you experiment with it.
 </p>
 
-<div class="formula">
-
-<small>Key equation</small>
-
-acceleration = change in velocity ÷ time taken
-
-<br><br>
-
-a = (v − u) ÷ t
-
 </div>
 
-<div class="accel-lab">
 
-<h3>
-🎚️ Explore acceleration
-</h3>
+<div class="playground-grid">
 
-<br>
 
-<div class="accel-number">
-<span id="accelDisplay">2.0</span> m/s²
-</div>
+<!-- GAME -->
 
-<div class="accel-car-area">
+<div class="game">
 
-<div
-class="accel-car"
-id="accelCar"
->
-🏎️
-</div>
+<h3>🏁 Game 1: Speed Race</h3>
 
-</div>
-
-<label>
-Acceleration:
-<span id="accelValue">2.0</span> m/s²
-</label>
+<p>
+Move the runner to the finish line.
+The higher the speed, the faster you move.
+</p>
 
 <input
 type="range"
-id="accelSlider"
-min="0"
-max="5"
-step="0.1"
-value="2"
-
+id="raceSpeed"
+min="1"
+max="10"
+value="5"
+style="width:100%;"
 >
 
-</div>
+<div class="speed-game-track">
 
-<div class="question">
-
-<div class="question-number">
-Quick Check 03
-</div>
-
-<h3>
-A car's velocity increases from 10 m/s to 30 m/s
-in 5 s. Calculate its acceleration.
-</h3>
-
-<div class="answer-row">
-
-<input
-type="number"
-id="q3"
-placeholder="Your answer"
-
->
-
-<span>m/s²</span>
-
-<button
-class="check"
-onclick="checkQ3()"
-
->
-
-Check </button>
-
-</div>
-
-<div
-class="feedback"
-id="feedback3"
-></div>
-
+<div class="runner" id="runner">
+🏃
 </div>
 
 </div>
 
-</section>
+<button onclick="race()">Run!</button>
 
-<!-- ================= GRAPHS ================= -->
-
-<section id="graphs">
-
-<div class="container">
-
-<div class="section-label">
-04 · Motion Graphs
-</div>
-
-<h2>
-Graphs tell the story of motion.
-</h2>
-
-<p class="lead">
-A graph allows us to see how an object's motion changes over time.
-The gradient of a graph can give us important information.
-</p>
-
-<!-- DISTANCE TIME -->
-
-<div class="graph-card">
-
-<h3>
-📈 Distance–Time Graph
-</h3>
-
-<br>
-
-<canvas id="distanceGraph"></canvas>
-
-<div class="graph-controls">
-
-<button onclick="animateDistanceGraph()">
-▶ Animate Motion
-</button>
-
-<button onclick="resetDistanceGraph()">
-↺ Reset
-</button>
+<p id="raceResult"></p>
 
 </div>
 
-<div class="insight">
 
-<strong>Think:</strong>
-The gradient of a distance–time graph represents
-the <strong>speed</strong> of the object.
+<!-- QUIZ -->
 
-</div>
+<div class="quiz">
 
-</div>
-
-<!-- VELOCITY TIME -->
-
-<div class="graph-card">
-
-<h3>
-📊 Velocity–Time Graph
-</h3>
-
-<br>
-
-<canvas id="velocityGraph"></canvas>
-
-<div class="graph-controls">
-
-<button onclick="animateVelocityGraph()">
-▶ Animate Graph
-</button>
-
-<button onclick="resetVelocityGraph()">
-↺ Reset
-</button>
-
-</div>
-
-<div class="insight">
-
-<strong>Remember:</strong>
-The gradient of a velocity–time graph represents <strong>acceleration</strong>.
-
-The area under a velocity–time graph represents <strong>distance travelled</strong>.
-
-</div>
-
-</div>
-
-<div class="graph-explanation">
-
-<div class="mini-card">
-
-<h3>Gradient</h3>
+<h3>🧠 Quiz: Speed or Velocity?</h3>
 
 <p>
-For a velocity–time graph:
-<br><br>
-<strong>acceleration = change in velocity ÷ time</strong>
+A car travels at 20 m/s east.
+Which statement is correct?
 </p>
+
+<button class="option"
+onclick="quizAnswer(false)">
+Its speed is 20 m/s only.
+</button>
+
+<button class="option"
+onclick="quizAnswer(true)">
+Its velocity is 20 m/s east.
+</button>
+
+<button class="option"
+onclick="quizAnswer(false)">
+It has no direction.
+</button>
+
+<div class="quiz-feedback" id="quizFeedback"></div>
 
 </div>
 
-<div class="mini-card">
 
-<h3>Area</h3>
+<!-- PUZZLE -->
+
+<div class="quiz">
+
+<h3>🧩 Puzzle: Complete the Formula</h3>
 
 <p>
-For a velocity–time graph:
-<br><br>
-<strong>distance travelled = area under the graph</strong>
+Speed = distance ÷ ______
 </p>
 
-</div>
-
-</div>
-
-<div class="question">
-
-<div class="question-number">
-Quick Check 04
-</div>
-
-<h3>
-A body accelerates from 0 m/s to 20 m/s
-in 5 s. What is its acceleration?
-</h3>
-
-<div class="answer-row">
-
-<input
-type="number"
-id="q4"
-placeholder="Your answer"
-
->
-
-<span>m/s²</span>
-
-<button
-class="check"
-onclick="checkQ4()"
-
->
-
-Check </button>
-
-</div>
-
-<div
-class="feedback"
-id="feedback4"
-></div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ================= GRAVITY ================= -->
-
-<section id="gravity">
-
-<div class="container">
-
-<div class="section-label">
-05 · Gravity
-</div>
-
-<h2>
-What happens when objects fall?
-</h2>
-
-<p class="lead">
-In the absence of air resistance, all objects near Earth's surface
-fall with the same acceleration due to gravity.
-</p>
-
-<div class="fall-lab">
-
-<h3>
-🪶 Coin vs Feather
-</h3>
-
-<p style="color:#cbd5e1;margin-top:8px;">
-Observe what happens with air resistance and in a vacuum.
-</p>
-
-<div class="fall-area">
-
-<div class="tube">
-
-<div
-class="coin"
-id="coin"
->
-🪙
-</div>
-
-<div
-class="feather"
-id="feather"
->
-🪶
-</div>
-
-</div>
-
-</div>
-
-<div class="fall-buttons">
-
-<button onclick="dropAir()">
-Drop with Air
+<button class="option"
+onclick="puzzleAnswer(false)">
+mass
 </button>
 
-<button onclick="dropVacuum()">
-Drop in Vacuum
+<button class="option"
+onclick="puzzleAnswer(true)">
+time
 </button>
 
-<button onclick="resetFall()">
-Reset
+<button class="option"
+onclick="puzzleAnswer(false)">
+acceleration
 </button>
 
-</div>
-
-<p
-id="fallMessage"
-style="text-align:center;margin-top:20px;color:#bae6fd;"
->
-Choose an experiment above.
-</p>
+<div class="quiz-feedback" id="puzzleFeedback"></div>
 
 </div>
 
-<div class="insight">
 
-<strong>Key idea:</strong>
-Air resistance affects falling objects differently.
-In a vacuum, air resistance is absent, so the coin and feather
-fall with the same acceleration and reach the bottom together.
+<!-- CHALLENGE -->
 
-</div>
+<div class="challenge">
 
-</div>
+<h3>🏆 Challenge: Calculate!</h3>
 
-</section>
-
-<!-- ================= CHALLENGE ================= -->
-
-<section id="challenge">
-
-<div class="container">
-
-<div class="section-label">
-06 · Final Challenge
-</div>
-
-<h2>
-Can you solve this?
-</h2>
-
-<p class="lead">
-Use what you have learned about speed, velocity and acceleration.
-</p>
-
-<div class="question">
-
-<div class="question-number">
-Challenge 01
-</div>
-
-<h3>
-A car starts from rest and accelerates uniformly at
-2.5 m/s² for 8 s. Calculate its final velocity.
-</h3>
-
-<div class="formula">
-v = u + at
-</div>
-
-<div class="answer-row">
-
-<input
-type="number"
-id="q5"
-placeholder="Your answer"
-
->
-
-<span>m/s</span>
-
-<button
-class="check"
-onclick="checkQ5()"
-
->
-
-Check </button>
-
-</div>
-
-<div
-class="feedback"
-id="feedback5"
-></div>
-
-</div>
-
-<div class="question">
-
-<div class="question-number">
-Challenge 02
-</div>
-
-<h3>
-A runner travels 400 m in 50 s.
+<p>
+A cyclist travels 150 m in 10 s.
 Calculate the average speed.
-</h3>
-
-<div class="answer-row">
+</p>
 
 <input
 type="number"
-id="q6"
-placeholder="Your answer"
-
+id="challengeAnswer"
+placeholder="Enter answer in m/s"
 >
 
-<span>m/s</span>
+<button onclick="checkChallenge()">
+Check Answer
+</button>
 
-<button
-class="check"
-onclick="checkQ6()"
-
->
-
-Check </button>
+<div class="quiz-feedback" id="challengeFeedback"></div>
 
 </div>
 
-<div
-class="feedback"
-id="feedback6"
-></div>
+
+<!-- GRAPH CHALLENGE -->
+
+<div class="challenge">
+
+<h3>📈 Graph Detective</h3>
+
+<p>
+A straight horizontal line on a velocity–time graph means:
+</p>
+
+<button class="option"
+onclick="graphAnswer(false)">
+The object is accelerating.
+</button>
+
+<button class="option"
+onclick="graphAnswer(true)">
+The object has constant velocity.
+</button>
+
+<button class="option"
+onclick="graphAnswer(false)">
+The object is stationary.
+</button>
+
+<div class="quiz-feedback" id="graphFeedback"></div>
 
 </div>
 
-<div class="summary">
 
-<h2>
-🎯 Motion — What You Should Know
-</h2>
+<!-- FINAL CHALLENGE -->
 
-<ul>
+<div class="challenge">
 
-<li>Speed = distance ÷ time.</li>
+<h3>🚀 Final Motion Challenge</h3>
 
-<li>Velocity is speed in a specified direction.</li>
+<p>
+A car increases its velocity from 10 m/s to 30 m/s
+in 5 seconds. What is its acceleration?
+</p>
 
-<li>Acceleration = change in velocity ÷ time.</li>
+<input
+type="number"
+id="finalAnswer"
+placeholder="Enter acceleration"
+>
 
-<li>The gradient of a distance–time graph gives speed.</li>
+<button onclick="finalChallenge()">
+Submit
+</button>
 
-<li>The gradient of a velocity–time graph gives acceleration.</li>
-
-<li>The area under a velocity–time graph gives distance travelled.</li>
-
-<li>Objects in free fall accelerate due to gravity.</li>
-
-<li>Without air resistance, all objects fall with the same acceleration.</li>
-
-</ul>
+<div class="quiz-feedback" id="finalFeedback"></div>
 
 </div>
 
@@ -1573,623 +1167,465 @@ id="feedback6"
 
 </section>
 
-<!-- ================= FOOTER ================= -->
+
+<!-- PROGRESS -->
+
+<section>
+
+<div class="section-title">
+
+<div class="eyebrow">06 • Your Progress</div>
+
+<h2>🏆 Motion Progress</h2>
+
+<p>
+Complete activities to build your understanding of Motion.
+</p>
+
+</div>
+
+
+<div class="progress">
+
+<strong id="progressText">
+0% completed
+</strong>
+
+<div class="progress-bar">
+
+<div class="progress-fill" id="progressFill"></div>
+
+</div>
+
+</div>
+
+</section>
+
+
+</main>
+
 
 <footer>
 
 <strong>
-PhysicsAI 5054
+Physics with Mr Nabeel
 </strong>
 
 <p>
-Cambridge O Level Physics · Motion
+PhysicsAI 5054 • Cambridge O Level Physics
 </p>
 
 <p>
-Explore. Understand. Apply. Discover.
+Motion • Interactive Learning Module
 </p>
 
 </footer>
 
+
 <script>
 
-/* ================= SPEED LAB ================= */
+/* MOTION LAB */
 
-const distanceSlider =
-document.getElementById("distanceSlider");
+const speedSlider =
+document.getElementById("speedSlider");
 
-const timeSlider =
-document.getElementById("timeSlider");
+const accSlider =
+document.getElementById("accSlider");
 
-const distanceValue =
-document.getElementById("distanceValue");
+const speedValue =
+document.getElementById("speedValue");
 
-const timeValue =
-document.getElementById("timeValue");
+const accValue =
+document.getElementById("accValue");
 
-const liveSpeed =
-document.getElementById("liveSpeed");
+const labSpeed =
+document.getElementById("labSpeed");
+
+const labAcceleration =
+document.getElementById("labAcceleration");
 
 const car =
 document.getElementById("car");
 
-function updateSpeedLab(){
+let carPosition = 20;
 
-    const d =
-    Number(distanceSlider.value);
+function updateLab(){
 
-    const t =
-    Number(timeSlider.value);
+    let speed =
+    Number(speedSlider.value);
+
+    let acceleration =
+    Number(accSlider.value);
+
+    speedValue.textContent =
+    speed.toFixed(0);
+
+    accValue.textContent =
+    acceleration.toFixed(1);
+
+    labSpeed.textContent =
+    speed.toFixed(0);
+
+    labAcceleration.textContent =
+    acceleration.toFixed(1);
+
+    carPosition += speed / 100;
+
+    if(carPosition > 92){
+        carPosition = 2;
+    }
+
+    if(acceleration > 0){
+        carPosition += acceleration / 100;
+    }
+
+    if(acceleration < 0){
+        carPosition += acceleration / 100;
+    }
+
+    car.style.left =
+    carPosition + "%";
+
+    drawGraph();
+
+}
+
+speedSlider.addEventListener(
+"input",updateLab
+);
+
+accSlider.addEventListener(
+"input",updateLab
+);
+
+setInterval(updateLab,100);
+
+
+/* GRAPH */
+
+function drawGraph(){
+
+    const canvas =
+    document.getElementById("motionCanvas");
+
+    const ctx =
+    canvas.getContext("2d");
+
+    ctx.clearRect(
+        0,0,
+        canvas.width,
+        canvas.height
+    );
+
+    ctx.strokeStyle="#dce4ee";
+    ctx.lineWidth=1;
+
+    for(let x=50;x<900;x+=70){
+
+        ctx.beginPath();
+
+        ctx.moveTo(x,20);
+        ctx.lineTo(x,250);
+
+        ctx.stroke();
+
+    }
+
+    for(let y=30;y<260;y+=45){
+
+        ctx.beginPath();
+
+        ctx.moveTo(40,y);
+        ctx.lineTo(880,y);
+
+        ctx.stroke();
+
+    }
+
+    ctx.strokeStyle="#173b8f";
+    ctx.lineWidth=3;
+
+    ctx.beginPath();
+
+    ctx.moveTo(40,240);
+
+    let speed =
+    Number(speedSlider.value);
+
+    let acc =
+    Number(accSlider.value);
+
+    for(let x=40;x<880;x+=5){
+
+        let t =
+        (x-40)/840*10;
+
+        let v =
+        speed + acc*t;
+
+        let y =
+        240 - Math.max(0,
+        Math.min(80,v))*2;
+
+        ctx.lineTo(x,y);
+
+    }
+
+    ctx.stroke();
+
+}
+
+
+/* DISTANCE / DISPLACEMENT */
+
+function goTo(position){
+
+    const marker =
+    document.getElementById("marker");
+
+    marker.style.left =
+    (10 + position*.8) + "%";
+
+    let distance =
+    position;
+
+    let displacement =
+    position;
+
+    if(position===0){
+
+        document.getElementById(
+        "routeResult"
+        ).textContent =
+        "Back at the starting point: distance travelled can be greater than 0 m, but displacement = 0 m.";
+
+    }else{
+
+        document.getElementById(
+        "routeResult"
+        ).textContent =
+        "Current position: distance from start = "
+        + distance
+        + " m, displacement = "
+        + displacement
+        + " m in the forward direction.";
+
+    }
+
+}
+
+
+/* SPEED RACE */
+
+function race(){
 
     const speed =
-    d/t;
+    Number(
+        document.getElementById(
+        "raceSpeed"
+        ).value
+    );
 
-    distanceValue.textContent=d;
+    const runner =
+    document.getElementById(
+    "runner"
+    );
 
-    timeValue.textContent=t;
+    runner.style.left =
+    Math.min(
+        88,
+        speed*8
+    ) + "%";
 
-    liveSpeed.textContent=
-    speed.toFixed(1);
+    document.getElementById(
+    "raceResult"
+    ).textContent =
+    "Speed selected: "
+    + speed
+    + " units. Faster speed means the runner covers more distance in the same time.";
 
-    car.style.left=
-    Math.min(90,d/2)+"%";
-
-}
-
-distanceSlider.addEventListener(
-"input",
-updateSpeedLab
-);
-
-timeSlider.addEventListener(
-"input",
-updateSpeedLab
-);
-
-updateSpeedLab();
-
-
-/* ================= CALCULATOR ================= */
-
-const calcDistance =
-document.getElementById("calcDistance");
-
-const calcTime =
-document.getElementById("calcTime");
-
-const calcSpeed =
-document.getElementById("calcSpeed");
-
-function updateCalculator(){
-
-    const d=
-    Number(calcDistance.value);
-
-    const t=
-    Number(calcTime.value);
-
-    if(t>0){
-
-        calcSpeed.textContent=
-        (d/t).toFixed(2);
-
-    }
+    markProgress();
 
 }
 
-calcDistance.addEventListener(
-"input",
-updateCalculator
-);
 
-calcTime.addEventListener(
-"input",
-updateCalculator
-);
+/* QUIZ */
 
+function quizAnswer(correct){
 
-/* ================= ACCELERATION ================= */
+    const feedback =
+    document.getElementById(
+    "quizFeedback"
+    );
 
-const accelSlider=
-document.getElementById("accelSlider");
+    if(correct){
 
-const accelDisplay=
-document.getElementById("accelDisplay");
+        feedback.textContent =
+        "✅ Correct! Velocity includes both magnitude and direction.";
 
-const accelValue=
-document.getElementById("accelValue");
-
-const accelCar=
-document.getElementById("accelCar");
-
-accelSlider.addEventListener(
-"input",
-function(){
-
-    const a=
-    Number(this.value);
-
-    accelDisplay.textContent=
-    a.toFixed(1);
-
-    accelValue.textContent=
-    a.toFixed(1);
-
-    accelCar.style.transform=
-    "translateX("+
-    (a*40)+
-    "px)";
-
-});
-
-
-/* ================= QUESTIONS ================= */
-
-function showFeedback(id,message,correct){
-
-    const box=
-    document.getElementById(id);
-
-    box.textContent=
-    message;
-
-    box.className=
-    "feedback show "+
-    (correct?"correct":"wrong");
-
-}
-
-function checkQ1(){
-
-    const value=
-    Number(document.getElementById("q1").value);
-
-    if(Math.abs(value-15)<0.1){
-
-        showFeedback(
-        "feedback1",
-        "✓ Correct! Speed = 150 ÷ 10 = 15 m/s.",
-        true);
+        markProgress();
 
     }else{
 
-        showFeedback(
-        "feedback1",
-        "Not quite. Use speed = distance ÷ time.",
-        false);
+        feedback.textContent =
+        "❌ Not quite. Remember: velocity has magnitude AND direction.";
 
     }
 
 }
 
-function checkQ2(){
 
-    const value=
-    document.getElementById("q2").value
-    .trim()
-    .toLowerCase()
-    .replace(/\s/g,"");
+/* PUZZLE */
 
-    if(value==="m/s" || value==="m/s-1"){
+function puzzleAnswer(correct){
 
-        showFeedback(
-        "feedback2",
-        "✓ Correct! The SI unit of velocity is m/s.",
-        true);
+    const feedback =
+    document.getElementById(
+    "puzzleFeedback"
+    );
+
+    if(correct){
+
+        feedback.textContent =
+        "🎉 Correct! Speed = distance ÷ time.";
+
+        markProgress();
 
     }else{
 
-        showFeedback(
-        "feedback2",
-        "Think about the SI unit of distance divided by time.",
-        false);
+        feedback.textContent =
+        "❌ Try again. Think about how long the journey takes.";
 
     }
 
 }
 
-function checkQ3(){
 
-    const value=
-    Number(document.getElementById("q3").value);
+/* CHALLENGE */
 
-    if(Math.abs(value-4)<0.1){
+function checkChallenge(){
 
-        showFeedback(
-        "feedback3",
-        "✓ Correct! a = (30 − 10) ÷ 5 = 4 m/s².",
-        true);
+    const answer =
+    Number(
+        document.getElementById(
+        "challengeAnswer"
+        ).value
+    );
+
+    const feedback =
+    document.getElementById(
+    "challengeFeedback"
+    );
+
+    if(Math.abs(answer-15)<0.01){
+
+        feedback.textContent =
+        "🏆 Excellent! 150 ÷ 10 = 15 m/s.";
+
+        markProgress();
 
     }else{
 
-        showFeedback(
-        "feedback3",
-        "Try again. Calculate the change in velocity first.",
-        false);
+        feedback.textContent =
+        "❌ Check your calculation: speed = distance ÷ time.";
 
     }
 
 }
 
-function checkQ4(){
 
-    const value=
-    Number(document.getElementById("q4").value);
+/* GRAPH QUESTION */
 
-    if(Math.abs(value-4)<0.1){
+function graphAnswer(correct){
 
-        showFeedback(
-        "feedback4",
-        "✓ Correct! a = (20 − 0) ÷ 5 = 4 m/s².",
-        true);
+    const feedback =
+    document.getElementById(
+    "graphFeedback"
+    );
+
+    if(correct){
+
+        feedback.textContent =
+        "✅ Correct! A horizontal velocity–time line means constant velocity.";
+
+        markProgress();
 
     }else{
 
-        showFeedback(
-        "feedback4",
-        "Use acceleration = change in velocity ÷ time.",
-        false);
+        feedback.textContent =
+        "❌ Think about the gradient of a velocity–time graph.";
 
     }
 
 }
 
-function checkQ5(){
 
-    const value=
-    Number(document.getElementById("q5").value);
+/* FINAL CHALLENGE */
 
-    if(Math.abs(value-20)<0.1){
+function finalChallenge(){
 
-        showFeedback(
-        "feedback5",
-        "✓ Excellent! v = u + at = 0 + (2.5 × 8) = 20 m/s.",
-        true);
+    const answer =
+    Number(
+        document.getElementById(
+        "finalAnswer"
+        ).value
+    );
+
+    const feedback =
+    document.getElementById(
+    "finalFeedback"
+    );
+
+    if(Math.abs(answer-4)<0.01){
+
+        feedback.textContent =
+        "🚀 Brilliant! a = (30 − 10) ÷ 5 = 4 m/s².";
+
+        markProgress();
 
     }else{
 
-        showFeedback(
-        "feedback5",
-        "Remember: the car starts from rest, so u = 0.",
-        false);
-
-    }
-
-}
-
-function checkQ6(){
-
-    const value=
-    Number(document.getElementById("q6").value);
-
-    if(Math.abs(value-8)<0.1){
-
-        showFeedback(
-        "feedback6",
-        "✓ Correct! Average speed = 400 ÷ 50 = 8 m/s.",
-        true);
-
-    }else{
-
-        showFeedback(
-        "feedback6",
-        "Use average speed = total distance ÷ total time.",
-        false);
+        feedback.textContent =
+        "❌ Use: acceleration = change in velocity ÷ time.";
 
     }
 
 }
 
 
-/* ================= DISTANCE GRAPH ================= */
+/* PROGRESS */
 
-const dCanvas=
-document.getElementById("distanceGraph");
+let completed = 0;
 
-const dCtx=
-dCanvas.getContext("2d");
+function markProgress(){
 
-let dProgress=0;
+    completed =
+    Math.min(
+        6,
+        completed+1
+    );
 
-function setupCanvas(canvas){
+    let percent =
+    Math.round(
+        completed/6*100
+    );
 
-    const ratio=
-    window.devicePixelRatio || 1;
+    document.getElementById(
+    "progressFill"
+    ).style.width =
+    percent+"%";
 
-    const rect=
-    canvas.getBoundingClientRect();
-
-    canvas.width=
-    rect.width*ratio;
-
-    canvas.height=
-    300*ratio;
-
-    canvas.getContext("2d")
-    .scale(ratio,ratio);
-
-}
-
-function drawDistanceGraph(){
-
-    const w=
-    dCanvas.getBoundingClientRect().width;
-
-    const h=300;
-
-    dCtx.clearRect(0,0,w,h);
-
-    dCtx.strokeStyle="#64748b";
-
-    dCtx.lineWidth=2;
-
-    dCtx.beginPath();
-
-    dCtx.moveTo(50,20);
-
-    dCtx.lineTo(50,250);
-
-    dCtx.lineTo(w-25,250);
-
-    dCtx.stroke();
-
-    dCtx.fillStyle="#64748b";
-
-    dCtx.font="13px Segoe UI";
-
-    dCtx.fillText(
-    "distance / m",
-    10,
-    25);
-
-    dCtx.fillText(
-    "time / s",
-    w-75,
-    275);
-
-    dCtx.strokeStyle="#1976d2";
-
-    dCtx.lineWidth=4;
-
-    dCtx.beginPath();
-
-    dCtx.moveTo(50,250);
-
-    const endX=
-    50+(w-90)*dProgress;
-
-    const endY=
-    250-190*dProgress;
-
-    dCtx.lineTo(
-    endX,
-    endY);
-
-    dCtx.stroke();
+    document.getElementById(
+    "progressText"
+    ).textContent =
+    percent+"% completed";
 
 }
 
-function animateDistanceGraph(){
-
-    dProgress=0;
-
-    function step(){
-
-        dProgress+=.015;
-
-        drawDistanceGraph();
-
-        if(dProgress<1){
-
-            requestAnimationFrame(step);
-
-        }
-
-    }
-
-    step();
-
-}
-
-function resetDistanceGraph(){
-
-    dProgress=0;
-
-    drawDistanceGraph();
-
-}
-
-
-/* ================= VELOCITY GRAPH ================= */
-
-const vCanvas=
-document.getElementById("velocityGraph");
-
-const vCtx=
-vCanvas.getContext("2d");
-
-let vProgress=0;
-
-function drawVelocityGraph(){
-
-    const w=
-    vCanvas.getBoundingClientRect().width;
-
-    const h=300;
-
-    vCtx.clearRect(0,0,w,h);
-
-    vCtx.strokeStyle="#64748b";
-
-    vCtx.lineWidth=2;
-
-    vCtx.beginPath();
-
-    vCtx.moveTo(50,20);
-
-    vCtx.lineTo(50,250);
-
-    vCtx.lineTo(w-25,250);
-
-    vCtx.stroke();
-
-    vCtx.fillStyle="#64748b";
-
-    vCtx.font="13px Segoe UI";
-
-    vCtx.fillText(
-    "velocity / m/s",
-    5,
-    25);
-
-    vCtx.fillText(
-    "time / s",
-    w-75,
-    275);
-
-    vCtx.strokeStyle="#ff7043";
-
-    vCtx.lineWidth=4;
-
-    vCtx.beginPath();
-
-    vCtx.moveTo(50,250);
-
-    const endX=
-    50+(w-90)*vProgress;
-
-    const endY=
-    250-190*vProgress;
-
-    vCtx.lineTo(
-    endX,
-    endY);
-
-    vCtx.stroke();
-
-}
-
-function animateVelocityGraph(){
-
-    vProgress=0;
-
-    function step(){
-
-        vProgress+=.015;
-
-        drawVelocityGraph();
-
-        if(vProgress<1){
-
-            requestAnimationFrame(step);
-
-        }
-
-    }
-
-    step();
-
-}
-
-function resetVelocityGraph(){
-
-    vProgress=0;
-
-    drawVelocityGraph();
-
-}
-
-
-/* ================= FALLING OBJECT ================= */
-
-function resetFall(){
-
-    document.getElementById("coin")
-    .style.top="15px";
-
-    document.getElementById("feather")
-    .style.top="15px";
-
-    document.getElementById("fallMessage")
-    .textContent=
-    "Choose an experiment above.";
-
-}
-
-function dropAir(){
-
-    const coin=
-    document.getElementById("coin");
-
-    const feather=
-    document.getElementById("feather");
-
-    coin.style.transition=
-    "top 1.2s linear";
-
-    feather.style.transition=
-    "top 2.4s linear";
-
-    coin.style.top="195px";
-
-    feather.style.top="195px";
-
-    document.getElementById("fallMessage")
-    .textContent=
-    "With air present, the feather falls more slowly because of air resistance.";
-
-}
-
-function dropVacuum(){
-
-    const coin=
-    document.getElementById("coin");
-
-    const feather=
-    document.getElementById("feather");
-
-    coin.style.transition=
-    "top 1.2s linear";
-
-    feather.style.transition=
-    "top 1.2s linear";
-
-    coin.style.top="195px";
-
-    feather.style.top="195px";
-
-    document.getElementById("fallMessage")
-    .textContent=
-    "In a vacuum, both objects fall together with the same acceleration due to gravity.";
-
-}
-
-
-/* ================= INITIALISE GRAPHS ================= */
-
-window.addEventListener(
-"resize",
-function(){
-
-    setupCanvas(dCanvas);
-
-    setupCanvas(vCanvas);
-
-    drawDistanceGraph();
-
-    drawVelocityGraph();
-
-});
-
-setupCanvas(dCanvas);
-
-setupCanvas(vCanvas);
-
-drawDistanceGraph();
-
-drawVelocityGraph();
+drawGraph();
 
 </script>
 
 </body>
 </html>
+```
