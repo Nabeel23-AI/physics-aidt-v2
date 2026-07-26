@@ -4,2245 +4,1392 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>PhysicsAI 5054 | Motion</title>
+<title>Physics with Mr Nabeel | PhysicsAI 5054</title>
 
 <style>
-:root{
-    --paper:#F7F4EE;
-    --paper-2:#EEEAE1;
-    --card:#FFFDF9;
-    --ink:#252525;
-    --ink-soft:#66635D;
-    --ink-faint:#8D8981;
-    --line:#D8D2C7;
 
-    --flare:#E8541F;
-    --flare-ink:#B83E16;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    --brake:#245BD1;
-    --brake-ink:#17439B;
+html {
+    scroll-behavior: smooth;
+}
 
-    --grav:#137A56;
-    --grav-ink:#0B6042;
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f5f8fc;
+    color: #172033;
+    line-height: 1.6;
+}
 
-    --disp:Georgia, "Times New Roman", serif;
-    --body:Arial, Helvetica, sans-serif;
-    --mono:"Courier New", monospace;
+/* NAVIGATION */
 
-    --radius:14px;
+nav {
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #e5eaf2;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+.nav-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 16px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-body{
-    background:var(--paper);
-    color:var(--ink);
-    font-family:var(--body);
-    line-height:1.65;
+.logo {
+    font-size: 23px;
+    font-weight: 800;
+    color: #173b8f;
 }
 
-header.hero{
-    padding:64px 24px 40px;
-    max-width:880px;
-    margin:0 auto;
-    position:relative;
+.logo span {
+    color: #2575fc;
 }
 
-.kicker{
-    font-family:var(--mono);
-    font-size:13px;
-    letter-spacing:.08em;
-    text-transform:uppercase;
-    color:var(--flare-ink);
-    display:flex;
-    align-items:center;
-    gap:10px;
+nav a {
+    text-decoration: none;
+    color: #506078;
+    margin-left: 25px;
+    font-weight: 600;
 }
 
-.kicker::before{
-    content:'';
-    width:8px;
-    height:8px;
-    border-radius:50%;
-    background:var(--flare);
-    display:inline-block;
+nav a:hover {
+    color: #2575fc;
 }
 
-h1.title{
-    font-family:var(--disp);
-    font-weight:700;
-    font-size:clamp(48px,9vw,88px);
-    margin:8px 0 6px;
-    letter-spacing:-0.02em;
-    line-height:.95;
-}
+/* HERO */
 
-.subtitle{
-    font-family:var(--body);
-    font-style:italic;
-    color:var(--ink-soft);
-    font-size:18px;
-    max-width:60ch;
-    margin:0 0 28px;
-}
+.hero {
+    background:
+        radial-gradient(circle at 85% 20%, rgba(37,117,252,0.15), transparent 30%),
+        radial-gradient(circle at 10% 80%, rgba(76,201,240,0.12), transparent 30%),
+        linear-gradient(135deg, #ffffff, #eef5ff);
 
-.credit{
-    font-family:var(--mono);
-    font-size:11px;
-    color:var(--ink-faint);
+    padding: 80px 25px 100px;
 }
 
-.wrap{
-    max-width:880px;
-    margin:0 auto;
-    padding:0 24px 100px;
+.hero-content {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 70px;
+    align-items: center;
 }
 
-section{
-    margin:64px 0;
+.tag {
+    display: inline-block;
+    background: #e8f1ff;
+    color: #1d5bd1;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 20px;
 }
 
-.eyebrow{
-    font-family:var(--mono);
-    font-size:12px;
-    color:var(--flare-ink);
-    text-transform:uppercase;
-    letter-spacing:.08em;
-    margin-bottom:6px;
+.hero h1 {
+    font-size: clamp(48px, 7vw, 78px);
+    line-height: 1;
+    letter-spacing: -3px;
+    color: #14213d;
+    margin-bottom: 25px;
 }
 
-section.brake .eyebrow{
-    color:var(--brake-ink);
+.hero h1 span {
+    color: #2575fc;
 }
 
-section.grav .eyebrow{
-    color:var(--grav-ink);
+.hero-subtitle {
+    font-size: 25px;
+    font-weight: 700;
+    color: #173b8f;
+    margin-bottom: 18px;
 }
 
-h2{
-    font-family:var(--disp);
-    font-weight:500;
-    font-size:32px;
-    margin:0 0 14px;
-    letter-spacing:-.01em;
+.hero-text {
+    font-size: 19px;
+    color: #5d6b82;
+    max-width: 680px;
+    margin-bottom: 30px;
 }
 
-h3{
-    font-family:var(--disp);
-    font-size:24px;
-    font-weight:500;
-    margin:28px 0 10px;
+.buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
 }
 
-p{
-    margin:0 0 16px;
-    color:var(--ink);
+.btn {
+    padding: 14px 25px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: 0.25s;
 }
 
-p.lead{
-    font-size:18px;
-    color:var(--ink-soft);
+.primary {
+    background: #2575fc;
+    color: white;
+    box-shadow: 0 8px 20px rgba(37,117,252,0.25);
 }
 
-.formula{
-    font-family:var(--mono);
-    background:var(--card);
-    border:1px solid var(--line);
-    border-left:4px solid var(--flare);
-    border-radius:0 8px 8px 0;
-    padding:18px 20px;
-    margin:20px 0;
-    font-size:17px;
+.primary:hover {
+    transform: translateY(-3px);
+    background: #1d63d8;
 }
 
-section.brake .formula{
-    border-left-color:var(--brake);
+.secondary {
+    background: white;
+    color: #1d5bd1;
+    border: 1px solid #d8e2f0;
 }
 
-section.grav .formula{
-    border-left-color:var(--grav);
+.secondary:hover {
+    background: #f0f6ff;
 }
 
-.formula .name{
-    display:block;
-    font-size:11px;
-    text-transform:uppercase;
-    letter-spacing:.06em;
-    color:var(--ink-faint);
-    margin-bottom:6px;
-}
+/* AVATAR */
 
-.symbols{
-    width:100%;
-    border-collapse:collapse;
-    margin:16px 0;
-    font-family:var(--mono);
-    font-size:14px;
+.avatar-card {
+    background: white;
+    border-radius: 28px;
+    padding: 30px;
+    box-shadow: 0 20px 60px rgba(36,67,110,0.12);
+    border: 1px solid #e5ebf4;
+    text-align: center;
 }
 
-.symbols th,
-.symbols td{
-    border-bottom:1px solid var(--line);
-    padding:8px 10px;
-    text-align:left;
+.avatar-container {
+    width: 270px;
+    height: 270px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: linear-gradient(135deg, #e8f1ff, #dcecff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.symbols th{
-    color:var(--ink-faint);
-    font-weight:500;
-    text-transform:uppercase;
-    font-size:11px;
-    letter-spacing:.05em;
+.avatar-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-.speedo-box{
-    margin-top:32px;
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:14px;
-    padding:24px;
+.avatar-card h3 {
+    color: #173b8f;
+    font-size: 26px;
 }
 
-.speedo-row{
-    display:flex;
-    flex-wrap:wrap;
-    gap:20px;
-    align-items:flex-end;
+.avatar-card p {
+    color: #718096;
+    margin-top: 5px;
 }
 
-.field{
-    display:flex;
-    flex-direction:column;
-    gap:6px;
-    min-width:140px;
-}
+/* SECTIONS */
 
-.field label{
-    font-family:var(--mono);
-    font-size:11px;
-    text-transform:uppercase;
-    letter-spacing:.06em;
-    color:var(--ink-faint);
+section {
+    padding: 80px 25px;
 }
 
-.field input{
-    font-family:var(--mono);
-    font-size:20px;
-    padding:8px 10px;
-    border:1px solid var(--line);
-    border-radius:6px;
-    background:var(--paper);
-    color:var(--ink);
-    width:100%;
+.container {
+    max-width: 1200px;
+    margin: auto;
 }
 
-.readout{
-    margin-left:auto;
-    text-align:right;
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
 }
 
-.readout .val{
-    font-family:var(--mono);
-    font-size:36px;
-    font-weight:700;
-    color:var(--flare-ink);
+.section-header h2 {
+    font-size: 40px;
+    color: #172033;
+    margin-bottom: 10px;
 }
 
-.readout .unit{
-    font-family:var(--mono);
-    font-size:14px;
-    color:var(--ink-faint);
+.section-header p {
+    color: #718096;
+    font-size: 18px;
 }
 
-.track{
-    margin-top:20px;
-    height:36px;
-    border-radius:18px;
-    background:var(--paper-2);
-    position:relative;
-    overflow:hidden;
-    border:1px solid var(--line);
-}
+/* ABOUT */
 
-.tracer{
-    position:absolute;
-    top:6px;
-    left:6px;
-    width:24px;
-    height:24px;
-    border-radius:50%;
-    background:var(--flare);
-    transition:left .3s ease;
+.about {
+    background: white;
 }
 
-.info-card{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:20px 22px;
-    margin:20px 0;
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 60px;
+    align-items: center;
 }
 
-.info-card strong{
-    color:var(--flare-ink);
+.about-text h2 {
+    font-size: 42px;
+    color: #172033;
+    margin-bottom: 25px;
 }
 
-.qcard{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:20px 22px;
-    margin:20px 0;
+.about-text h2 span {
+    color: #2575fc;
 }
 
-.qcard .qlabel{
-    font-family:var(--mono);
-    font-size:12px;
-    color:var(--flare-ink);
-    font-weight:700;
-    margin-bottom:6px;
+.about-text p {
+    color: #5d6b82;
+    font-size: 17px;
+    margin-bottom: 18px;
 }
 
-section.brake .qcard .qlabel{
-    color:var(--brake-ink);
+.vision-box {
+    background: linear-gradient(135deg, #173b8f, #2575fc);
+    color: white;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 20px 50px rgba(37,117,252,0.2);
 }
 
-section.grav .qcard .qlabel{
-    color:var(--grav-ink);
+.vision-box h3 {
+    font-size: 28px;
+    margin-bottom: 20px;
 }
 
-.qcard .qtext{
-    font-size:16px;
-    margin-bottom:14px;
+.vision-box p {
+    color: rgba(255,255,255,0.9);
 }
 
-.qrow{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-    align-items:center;
-}
+/* PROGRESS */
 
-.qrow input{
-    font-family:var(--mono);
-    font-size:15px;
-    padding:8px 10px;
-    border:1px solid var(--line);
-    border-radius:6px;
-    background:var(--paper);
-    color:var(--ink);
-    width:120px;
+.progress-card {
+    max-width: 800px;
+    margin: 0 auto 60px;
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid #e5eaf2;
 }
 
-.qrow input.ans-text{
-    width:180px;
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    color: #506078;
 }
 
-.qrow span.u{
-    font-family:var(--mono);
-    font-size:13px;
-    color:var(--ink-faint);
+.progress-info strong {
+    color: #173b8f;
 }
 
-button.check{
-    font-family:var(--mono);
-    font-size:13px;
-    font-weight:700;
-    letter-spacing:.03em;
-    background:var(--ink);
-    color:#fff;
-    border:none;
-    border-radius:6px;
-    padding:9px 16px;
-    cursor:pointer;
+.progress-bar {
+    height: 10px;
+    background: #e8edf5;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
-button.check:hover{
-    background:var(--flare-ink);
+.progress-fill {
+    width: 18.75%;
+    height: 100%;
+    background: linear-gradient(90deg, #2575fc, #4cc9f0);
+    border-radius: 10px;
 }
 
-.feedback{
-    margin-top:12px;
-    font-size:14px;
-    font-family:var(--mono);
-    padding:10px 12px;
-    border-radius:6px;
-    display:none;
-}
+/* TOPIC GRID */
 
-.feedback.show{
-    display:block;
+.topic-grid {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
 }
 
-.feedback.correct{
-    background:#E4F3EC;
-    color:var(--grav-ink);
+.topic-card {
+    background: white;
+    border: 1px solid #e3e8f0;
+    border-radius: 20px;
+    padding: 30px;
+    transition: 0.3s;
+    position: relative;
 }
 
-.feedback.wrong{
-    background:#FCE9E4;
-    color:var(--flare-ink);
+.topic-card.available:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px rgba(36,67,110,0.12);
 }
 
-.uniform-table{
-    width:100%;
-    border-collapse:collapse;
-    margin:16px 0;
+.topic-card.available {
+    border-top: 4px solid #2575fc;
 }
 
-.uniform-table th,
-.uniform-table td{
-    border:1px solid var(--line);
-    padding:10px;
-    text-align:center;
-    font-family:var(--mono);
-    font-size:14px;
+.topic-number {
+    font-size: 14px;
+    font-weight: 800;
+    color: #a0aec0;
+    margin-bottom: 15px;
 }
 
-.uniform-table th{
-    background:var(--paper-2);
-    color:var(--ink-soft);
-    font-weight:500;
+.topic-icon {
+    font-size: 38px;
+    margin-bottom: 15px;
 }
 
-.graphwrap{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:20px;
-    margin:20px 0;
-    overflow-x:auto;
+.status {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
 }
 
-svg text{
-    font-family:var(--mono);
+.available-status {
+    color: #16845b;
 }
 
-.axis-label{
-    font-size:11px;
-    fill:var(--ink-faint);
+.coming-status {
+    color: #a0aec0;
 }
 
-.gridline{
-    stroke:var(--paper-2);
-    stroke-width:1;
+.topic-card h3 {
+    font-size: 22px;
+    color: #172033;
+    margin-bottom: 12px;
 }
 
-.axisline{
-    stroke:var(--ink-soft);
-    stroke-width:1.4;
+.topic-card p {
+    color: #718096;
+    font-size: 15px;
+    margin-bottom: 20px;
 }
 
-.shape-gallery{
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-    margin:14px 0;
+.launch {
+    display: inline-block;
+    color: #2575fc;
+    font-weight: 700;
+    text-decoration: none;
 }
 
-.shape-btn{
-    font-family:var(--mono);
-    font-size:12px;
-    padding:8px 14px;
-    border-radius:20px;
-    border:1px solid var(--line);
-    background:var(--card);
-    cursor:pointer;
-    color:var(--ink-soft);
+.launch:hover {
+    color: #173b8f;
 }
 
-.shape-btn.active{
-    background:var(--flare);
-    border-color:var(--flare);
-    color:#fff;
+/* FEATURES */
+
+.features {
+    background: white;
 }
 
-.shape-desc{
-    font-size:15px;
-    color:var(--ink-soft);
-    margin-top:6px;
-    min-height:44px;
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
 }
 
-.toggle-btn{
-    font-family:var(--mono);
-    font-size:13px;
-    background:transparent;
-    border:1px solid var(--line);
-    border-radius:6px;
-    padding:8px 14px;
-    cursor:pointer;
-    color:var(--ink-soft);
+.feature {
+    text-align: center;
+    padding: 25px 15px;
 }
 
-.toggle-btn:hover{
-    border-color:var(--ink-soft);
-    color:var(--ink);
+.feature-icon {
+    font-size: 42px;
+    margin-bottom: 15px;
 }
 
-.reveal{
-    margin-top:14px;
-    padding:14px 16px;
-    background:var(--paper-2);
-    border-radius:8px;
-    font-family:var(--mono);
-    font-size:13.5px;
-    display:none;
-    line-height:1.9;
+.feature h3 {
+    color: #173b8f;
+    margin-bottom: 10px;
 }
 
-.reveal.show{
-    display:block;
+.feature p {
+    color: #718096;
+    font-size: 14px;
 }
+
+/* CTA */
 
-.reveal b{
-    color:var(--ink);
+.cta {
+    background: linear-gradient(135deg, #173b8f, #2575fc);
+    color: white;
+    text-align: center;
+    padding: 80px 25px;
 }
 
-.tube-demo{
-    display:flex;
-    gap:28px;
-    flex-wrap:wrap;
-    align-items:flex-start;
+.cta h2 {
+    font-size: 42px;
+    margin-bottom: 15px;
 }
 
-.tube{
-    width:64px;
-    height:220px;
-    border:2px solid var(--ink-soft);
-    border-radius:8px;
-    position:relative;
-    background:var(--card);
-    flex:none;
-    overflow:hidden;
+.cta p {
+    max-width: 700px;
+    margin: 0 auto 30px;
+    color: rgba(255,255,255,0.9);
 }
 
-.tube .coin,
-.tube .feather{
-    position:absolute;
-    left:50%;
-    transform:translateX(-50%);
-    top:12px;
-    transition:top 1.2s linear;
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
 }
 
-.tube .coin{
-    width:16px;
-    height:16px;
-    border-radius:50%;
-    background:var(--flare);
+.cta-button {
+    display: inline-block;
+    padding: 14px 25px;
+    background: white;
+    color: #173b8f;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
 }
 
-.tube .feather{
-    width:20px;
-    height:10px;
-    border-radius:0 50% 50% 0;
-    background:var(--brake);
+.cta-button:hover {
+    background: #eef5ff;
 }
 
-.tube-controls{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
+.cta-button.secondary-cta {
+    background: rgba(255,255,255,0.15);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.5);
 }
 
-.tube-controls .toggle-btn{
-    width:fit-content;
+/* FOOTER */
+
+footer {
+    background: #14213d;
+    color: #aebbd0;
+    text-align: center;
+    padding: 40px 25px;
 }
 
-.tube-note{
-    font-size:14px;
-    color:var(--ink-soft);
-    max-width:42ch;
+footer strong {
+    color: white;
+    font-size: 20px;
 }
 
-footer{
-    max-width:880px;
-    margin:0 auto;
-    padding:40px 24px 80px;
-    font-family:var(--mono);
-    font-size:11px;
-    color:var(--ink-faint);
-    border-top:1px solid var(--line);
+footer p {
+    margin-top: 8px;
 }
+
+/* MOBILE */
 
-@media(max-width:600px){
+@media (max-width: 900px) {
 
-    header.hero{
-        padding:44px 18px 24px;
+    .topic-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .wrap{
-        padding:0 18px 80px;
+    .feature-grid {
+        grid-template-columns: repeat(3, 1fr);
     }
 
-    .speedo-row{
-        flex-direction:column;
-        align-items:stretch;
-    }
-
-    .readout{
-        margin-left:0;
-        text-align:left;
-    }
-
-    h2{
-        font-size:28px;
-    }
 }
+
+@media (max-width: 800px) {
+
+    .hero-content,
+    .about-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-text {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .buttons {
+        justify-content: center;
+    }
+
+    nav a {
+        display: none;
+    }
+
+    .hero {
+        padding-top: 60px;
+    }
+
+    .hero h1 {
+        letter-spacing: -2px;
+    }
+
+    .avatar-container {
+        width: 220px;
+        height: 220px;
+    }
+
+    .about-text h2 {
+        font-size: 32px;
+    }
+
+    .progress-info {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .topic-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
 </style>
 </head>
 
 <body>
 
+<!-- NAVIGATION -->
+
+<nav>
+
+<div class="nav-container">
+
+<div class="logo">
+Physics with <span>Mr Nabeel</span>
+</div>
+
+<div>
+<a href="#about">About</a>
+<a href="#syllabus">Syllabus</a>
+<a href="#features">Features</a>
+</div>
+
+</div>
+
+</nav>
+
+
+<!-- HERO -->
+
 <header class="hero">
 
-    <div class="kicker">PhysicsAI 5054 · Motion</div>
+<div class="hero-content">
 
-    <h1 class="title">Motion</h1>
+<div>
 
-    <p class="subtitle">
-        Describing how objects move using distance, speed, velocity,
-        acceleration and graphs.
-    </p>
+<div class="tag">
+CAMBRIDGE O LEVEL PHYSICS • 5054 • 2026–2028
+</div>
 
-    <div class="credit">
-        Cambridge O Level Physics · Interactive Learning
-    </div>
+<div class="hero-subtitle">
+Physics with Mr Nabeel
+</div>
 
-    <!-- SPEED CALCULATOR -->
+<h1>
+Learn Physics.<br>
+<span>Understand the Universe.</span>
+</h1>
 
-    <div class="speedo-box">
+<p class="hero-text">
 
-        <div class="speedo-row">
+Welcome to a new way of learning Physics. Explore concepts,
+visualise ideas, interact with simulations and develop a deeper
+understanding of the physical world.
 
-            <div class="field">
-                <label>Distance / m</label>
-                <input type="number" id="distanceInput" value="100" min="0">
-            </div>
+</p>
 
-            <div class="field">
-                <label>Time / s</label>
-                <input type="number" id="timeInput" value="10" min="0.01">
-            </div>
+<div class="buttons">
 
-            <div class="readout">
-                <div class="val" id="speedReadout">10.00</div>
-                <div class="unit">m/s</div>
-            </div>
+<a href="#syllabus" class="btn primary">
+Explore the 5054 Syllabus
+</a>
 
-        </div>
+<a href="Motion.html" class="btn secondary">
+Start Learning Motion
+</a>
 
-        <div class="track">
-            <div class="tracer" id="tracer"></div>
-        </div>
+</div>
 
-    </div>
+</div>
+
+
+<!-- AVATAR -->
+
+<div class="avatar-card">
+
+<div class="avatar-container">
+
+<img src="avatar.png" alt="Mr Nabeel">
+
+</div>
+
+<h3>Mr Nabeel</h3>
+
+<p>Physics Educator • Almost 30 Years of Teaching Experience</p>
+
+</div>
+
+</div>
 
 </header>
 
 
-<main class="wrap">
+<!-- ABOUT -->
 
-<!-- ===================================================== -->
-<!-- 1. DISTANCE AND DISPLACEMENT -->
-<!-- ===================================================== -->
+<section class="about" id="about">
 
-<section>
+<div class="container">
 
-    <div class="eyebrow">01 · Describing motion</div>
+<div class="about-grid">
 
-    <h2>Distance and displacement</h2>
+<div class="about-text">
 
-    <p class="lead">
-        When describing motion, it is important to distinguish between
-        the total path travelled and the change in position.
-    </p>
+<h2>
+Teaching Physics for <span>the Future</span>
+</h2>
 
-    <div class="info-card">
-        <p>
-            <strong>Distance</strong> is the total length of the path travelled
-            by an object. It is a scalar quantity.
-        </p>
+<p>
+We are Physics educators with almost 30 years of teaching
+experience. Throughout our journey in education, we have
+seen how students learn differently and how technology is
+changing the way knowledge is shared.
+</p>
 
-        <p>
-            <strong>Displacement</strong> is the distance travelled in a
-            specified direction from the starting point to the finishing point.
-            It is a vector quantity.
-        </p>
-    </div>
+<p>
+Our concern is simple:
+<strong>How can we find new and better ways to enhance teaching and learning?</strong>
+</p>
 
-    <div class="formula">
-        <span class="name">Key idea</span>
-        Distance = total path length
-    </div>
+<p>
+We believe that Physics should not be a subject that students
+simply memorise. It should be something they can see, explore,
+question and understand.
+</p>
 
-    <div class="formula">
-        <span class="name">Key idea</span>
-        Displacement = straight-line change in position in a specified direction
-    </div>
+<p>
+Through this platform, we aim to combine clear explanations,
+interactive activities, visualisations, simulations and the
+power of Artificial Intelligence to create a more engaging
+and meaningful learning experience.
+</p>
 
-</section>
+<p>
+Whether you are a student, a teacher or simply curious about
+how the world works, we invite you to explore Physics with us.
+</p>
 
-
-<!-- ===================================================== -->
-<!-- 2. SPEED -->
-<!-- ===================================================== -->
-
-<section>
-
-    <div class="eyebrow">02 · Speed</div>
-
-    <h2>Speed</h2>
-
-    <p class="lead">
-        Speed tells us how quickly an object is moving.
-    </p>
-
-    <div class="formula">
-        <span class="name">Average speed</span>
-        average speed = total distance / total time taken
-    </div>
-
-    <table class="symbols">
-        <tr>
-            <th>Quantity</th>
-            <th>Symbol</th>
-            <th>SI unit</th>
-        </tr>
-        <tr>
-            <td>distance</td>
-            <td>s</td>
-            <td>m</td>
-        </tr>
-        <tr>
-            <td>time</td>
-            <td>t</td>
-            <td>s</td>
-        </tr>
-        <tr>
-            <td>speed</td>
-            <td>v</td>
-            <td>m/s</td>
-        </tr>
-    </table>
-
-    <h3>Uniform speed</h3>
-
-    <p>
-        A body moving with uniform speed covers equal distances
-        in equal intervals of time.
-    </p>
-
-    <table class="uniform-table">
-        <tr>
-            <th>Time / s</th>
-            <td>0</td>
-            <td>10</td>
-            <td>20</td>
-            <td>30</td>
-            <td>40</td>
-        </tr>
-
-        <tr>
-            <th>Distance / m</th>
-            <td>0</td>
-            <td>25</td>
-            <td>50</td>
-            <td>75</td>
-            <td>100</td>
-        </tr>
-    </table>
-
-    <p style="font-size:14px;color:var(--ink-soft);">
-        Every 10 s the body covers an additional 25 m.
-        The distances covered in equal time intervals are equal.
-    </p>
+</div>
 
 
-    <!-- Q1 -->
+<div class="vision-box">
 
-    <div class="qcard" data-answer="m/s">
+<h3>
+Our Vision
+</h3>
 
-        <div class="qlabel">Qu 1</div>
+<p>
+To use technology, innovation and our experience as educators
+to transform the way Physics is taught and learned.
+</p>
 
-        <div class="qtext">
-            Deduce the SI unit of speed.
-        </div>
+<br>
 
-        <div class="qrow">
+<p>
+We want learners to move beyond memorising formulas—to
+<strong>understand concepts, explore ideas, solve problems
+and discover the Physics all around them.</strong>
+</p>
 
-            <input type="text"
-                   class="ans-text"
-                   placeholder="unit">
+<br>
 
-            <button class="check">
-                Check
-            </button>
+<p>
+<strong>Explore. Understand. Apply. Discover.</strong>
+</p>
 
-        </div>
+</div>
 
-        <div class="feedback"></div>
+</div>
 
-    </div>
-
-
-    <!-- Q2 -->
-
-    <div class="qcard"
-         data-answer="8.33"
-         data-tol="0.05">
-
-        <div class="qlabel">Qu 2</div>
-
-        <div class="qtext">
-            In a 100 m race, the winner's time is 12.0 s.
-            What is her average speed for this race?
-        </div>
-
-        <div class="formula">
-
-            <span class="name">Reminder</span>
-
-            average speed = total distance / total time taken
-
-        </div>
-
-        <div class="qrow">
-
-            <input type="number"
-                   class="ans-num"
-                   step="0.01"
-                   placeholder="0.00">
-
-            <span class="u">m/s</span>
-
-            <button class="check">
-                Check
-            </button>
-
-        </div>
-
-        <div class="feedback"></div>
-
-    </div>
+</div>
 
 </section>
 
 
-<!-- ===================================================== -->
-<!-- 3. VELOCITY -->
-<!-- ===================================================== -->
+<!-- SYLLABUS -->
 
-<section class="brake">
+<section id="syllabus">
 
-    <div class="eyebrow">03 · Velocity</div>
+<div class="container">
 
-    <h2>Velocity</h2>
+<div class="section-header">
 
-    <p class="lead">
-        Velocity is speed in a specified direction.
-        Unlike speed, velocity is a vector quantity.
-    </p>
+<h2>Explore the 5054 Syllabus</h2>
 
-    <div class="formula">
-        <span class="name">Key idea</span>
-        velocity = displacement / time taken
-    </div>
+<p>
+Learn at your own pace. New interactive lessons will be added progressively.
+</p>
 
-    <p>
-        The SI unit of velocity is <b>m/s</b>.
-    </p>
+</div>
 
-    <div class="qcard" data-answer="m/s">
 
-        <div class="qlabel">Qu 3</div>
+<div class="progress-card">
 
-        <div class="qtext">
-            What is the SI unit of velocity?
-        </div>
+<div class="progress-info">
 
-        <div class="qrow">
+<span>Platform Development</span>
 
-            <input type="text"
-                   class="ans-text"
-                   placeholder="unit">
+<strong>3 lessons available</strong>
 
-            <button class="check">
-                Check
-            </button>
+</div>
 
-        </div>
+<div class="progress-bar">
 
-        <div class="feedback"></div>
+<div class="progress-fill"></div>
 
-    </div>
+</div>
+
+</div>
+
+
+<div class="topic-grid">
+
+
+<!-- 01 MASS, WEIGHT & DENSITY -->
+
+<div class="topic-card available">
+
+<div class="topic-number">
+01
+</div>
+
+<div class="topic-icon">
+⚖️
+</div>
+
+<span class="status available-status">
+● AVAILABLE NOW
+</span>
+
+<h3>
+Mass, Weight & Density
+</h3>
+
+<p>
+Explore the relationship between mass, weight and density
+through interactive explanations, visual learning and
+activities.
+</p>
+
+<a class="launch" href="mass-weight-density.html">
+Launch Interactive Lesson →
+</a>
+
+</div>
+
+
+<!-- 02 PHYSICAL QUANTITIES & MEASUREMENT -->
+
+<div class="topic-card available">
+
+<div class="topic-number">
+02
+</div>
+
+<div class="topic-icon">
+📏
+</div>
+
+<span class="status available-status">
+● AVAILABLE NOW
+</span>
+
+<h3>
+Physical Quantities & Measurement Techniques
+</h3>
+
+<p>
+Learn about physical quantities, SI units, prefixes,
+measurement instruments, parallax error, micrometers,
+volume, time, scalars, vectors and resultant forces.
+</p>
+
+<a class="launch" href="physical-quantities.html">
+Launch Interactive Lesson →
+</a>
+
+</div>
+
+
+<!-- 03 MOTION -->
+
+<div class="topic-card available">
+
+<div class="topic-number">
+03
+</div>
+
+<div class="topic-icon">
+🏃
+</div>
+
+<span class="status available-status">
+● AVAILABLE NOW
+</span>
+
+<h3>
+Motion
+</h3>
+
+<p>
+Explore speed, velocity, acceleration and graphical
+descriptions of motion through interactive learning activities.
+</p>
+
+<a class="launch" href="Motion.html">
+Launch Interactive Lesson →
+</a>
+
+</div>
+
+
+<!-- 04 FORCES -->
+
+<div class="topic-card">
+
+<div class="topic-number">
+04
+</div>
+
+<div class="topic-icon">
+🧲
+</div>
+
+<span class="status coming-status">
+COMING SOON
+</span>
+
+<h3>
+Forces
+</h3>
+
+<p>
+Forces, resultant forces, Newton's laws and momentum.
+</p>
+
+</div>
+
+
+<!-- 05 TURNING EFFECTS -->
+
+<div class="topic-card">
+
+<div class="topic-number">
+05
+</div>
+
+<div class="topic-icon">
+🔧
+</div>
+
+<span class="status coming-status">
+COMING SOON
+</span>
+
+<h3>
+Turning Effects of Forces
+</h3>
+
+<p>
+Moments, equilibrium and applications of turning forces.
+</p>
+
+</div>
+
+
+<!-- 06 ENERGY -->
+
+<div class="topic-card">
+
+<div class="topic-number">
+06
+</div>
+
+<div class="topic-icon">
+⚡
+</div>
+
+<span class="status coming-status">
+COMING SOON
+</span>
+
+<h3>
+Energy, Work & Power
+</h3>
+
+<p>
+Energy transfers, work done, power, efficiency and
+energy resources.
+</p>
+
+</div>
+
+
+<!-- 07 PRESSURE -->
+
+<div class="topic-card">
+
+<div class="topic-number">
+07
+</div>
+
+<div class="topic-icon">
+🌊
+</div>
+
+<span class="status coming-status">
+COMING SOON
+</span>
+
+<h3>
+Pressure
+</h3>
+
+<p>
+Pressure in solids, liquids and gases.
+</p>
+
+</div>
+
+
+<!-- 08 THERMAL -->
+
+<div class="topic-card">
+
+<div class="topic-number">
+08
+</div>
+
+<div class="topic-icon">
+🌡️
+</div>
+
+<span class="status coming-status">
+COMING SOON
+</span>
+
+<h3>
+Thermal Physics
+</h3>
+
+<p>
+The kinetic particle model and transfer of thermal energy.
+</p>
+
+</div>
+
+
+<!-- 09 WAVES -->
+
+<div class="topic-card">
+
+<div class="topic-number">
+09
+</div>
+
+<div class="topic-icon">
+🌊
+</div>
+
+<span class="status coming-status">
+COMING SOON
+</span>
+
+<h3>
+Waves
+</h3>
+
+<p>
+Wave properties and wave behaviour.
+</p>
+
+</div>
+
+
+<!-- 10 SOUND -->
+
+<div class="topic-card">
+
+<div class="topic-number">
+10
+</div>
+
+<div class="topic-icon">
+🔊
+</div>
+
+<span class="status coming-status">
+COMING SOON
+</span>
+
+<h3>
+Sound
+</h3>
+
+<p>
+Production, transmission and properties of sound.
+</p>
+
+</div>
+
+
+<!-- 11 LIGHT -->
+
+<div class="topic-card">
+
+<div class="topic-number">
+11
+</div>
+
+<div class="topic-icon">
+🔭
+</div>
+
+<span class="status coming-status">
+COMING SOON
+</span>
+
+<h3>
+Light
+</h3>
+
+<p>
+Reflection, refraction, lenses and optical systems.
+</p>
+
+</div>
+
+
+<!-- 12 ELECTROMAGNETIC SPECTRUM -->
+
+<div class="topic-card">
+
+<div class="topic-number">
+12
+</div>
+
+<div class="topic-icon">
+🌈
+</div>
+
+<span class="status coming-status">
+COMING SOON
+</span>
+
+<h3>
+Electromagnetic Spectrum
+</h3>
+
+<p>
+Properties and applications of electromagnetic radiation.
+</p>
+
+</div>
+
+
+<!-- 13 ELECTRICITY -->
+
+<div class="topic-card">
+
+<div class="topic-number">
+13
+</div>
+
+<div class="topic-icon">
+🔌
+</div>
+
+<span class="status coming-status">
+COMING SOON
+</span>
+
+<h3>
+Electricity
+</h3>
+
+<p>
+Current, potential difference, resistance and electrical circuits.
+</p>
+
+</div>
+
+
+<!-- 14 MAGNETISM -->
+
+<div class="topic-card">
+
+<div class="topic-number">
+14
+</div>
+
+<div class="topic-icon">
+🧭
+</div>
+
+<span class="status coming-status">
+COMING SOON
+</span>
+
+<h3>
+Magnetism & Electromagnetism
+</h3>
+
+<p>
+Magnetic fields, electromagnets, motors and electromagnetic induction.
+</p>
+
+</div>
+
+
+<!-- 15 NUCLEAR -->
+
+<div class="topic-card">
+
+<div class="topic-number">
+15
+</div>
+
+<div class="topic-icon">
+☢️
+</div>
+
+<span class="status coming-status">
+COMING SOON
+</span>
+
+<h3>
+Nuclear Physics
+</h3>
+
+<p>
+Atomic structure, radioactivity, radioactive decay and half-life.
+</p>
+
+</div>
+
+
+<!-- 16 SPACE -->
+
+<div class="topic-card">
+
+<div class="topic-number">
+16
+</div>
+
+<div class="topic-icon">
+🌍
+</div>
+
+<span class="status coming-status">
+COMING SOON
+</span>
+
+<h3>
+Space Physics
+</h3>
+
+<p>
+The Solar System, stars, galaxies and the Universe.
+</p>
+
+</div>
+
+
+</div>
+
+</div>
 
 </section>
 
 
-<!-- ===================================================== -->
-<!-- 4. ACCELERATION -->
-<!-- ===================================================== -->
+<!-- FEATURES -->
 
-<section class="brake">
+<section class="features" id="features">
 
-    <div class="eyebrow">04 · Acceleration</div>
+<div class="container">
 
-    <h2>Acceleration</h2>
+<div class="section-header">
 
-    <p class="lead">
-        Acceleration is the rate of change of velocity.
-    </p>
+<h2>A Different Way to Learn Physics</h2>
 
-    <div class="formula">
+<p>
+PhysicsAI combines explanation, exploration and practice.
+</p>
 
-        <span class="name">
-            Acceleration
-        </span>
-
-        acceleration =
-        change in velocity / time taken
-
-    </div>
-
-    <table class="symbols">
-
-        <tr>
-            <th>Quantity</th>
-            <th>Symbol</th>
-            <th>SI unit</th>
-        </tr>
-
-        <tr>
-            <td>initial velocity</td>
-            <td>u</td>
-            <td>m/s</td>
-        </tr>
-
-        <tr>
-            <td>final velocity</td>
-            <td>v</td>
-            <td>m/s</td>
-        </tr>
-
-        <tr>
-            <td>acceleration</td>
-            <td>a</td>
-            <td>m/s²</td>
-        </tr>
-
-        <tr>
-            <td>time</td>
-            <td>t</td>
-            <td>s</td>
-        </tr>
-
-    </table>
+</div>
 
 
-    <!-- Q4 -->
-
-    <div class="qcard"
-         data-answer="0"
-         data-tol="0.01">
-
-        <div class="qlabel">Qu 4</div>
-
-        <div class="qtext">
-            What is the acceleration of a Mercedes car if it travels
-            at a constant speed of 200 km/h for half an hour?
-        </div>
-
-        <div class="qrow">
-
-            <input type="number"
-                   class="ans-num"
-                   step="0.01"
-                   placeholder="0.00">
-
-            <span class="u">m/s²</span>
-
-            <button class="check">
-                Check
-            </button>
-
-        </div>
-
-        <div class="feedback"></div>
-
-    </div>
+<div class="feature-grid">
 
 
-    <!-- Q5 -->
+<div class="feature">
 
-    <div class="qcard"
-         data-answer="3"
-         data-tol="0.05">
+<div class="feature-icon">
+🧠
+</div>
 
-        <div class="qlabel">Qu 5</div>
+<h3>
+Understand
+</h3>
 
-        <div class="qtext">
-            A body accelerates for 25 s and its velocity increases
-            from 250 to 325 m/s. Calculate its acceleration.
-        </div>
+<p>
+Build strong conceptual understanding through clear,
+step-by-step explanations.
+</p>
 
-        <div class="qrow">
-
-            <input type="number"
-                   class="ans-num"
-                   step="0.01"
-                   placeholder="0.00">
-
-            <span class="u">m/s²</span>
-
-            <button class="check">
-                Check
-            </button>
-
-        </div>
-
-        <div class="feedback"></div>
-
-    </div>
+</div>
 
 
-    <!-- Q6 -->
+<div class="feature">
 
-    <div class="qcard"
-         data-answer="37.5"
-         data-tol="0.1">
+<div class="feature-icon">
+🔬
+</div>
 
-        <div class="qlabel">Qu 6</div>
+<h3>
+Explore
+</h3>
 
-        <div class="qtext">
-            A body starts from rest and accelerates uniformly at
-            2.5 m/s² for 15 s. Deduce its final velocity.
-        </div>
+<p>
+See Physics in action through interactive models,
+visualisations and simulations.
+</p>
 
-        <div class="qrow">
+</div>
 
-            <input type="number"
-                   class="ans-num"
-                   step="0.01"
-                   placeholder="0.00">
 
-            <span class="u">m/s</span>
+<div class="feature">
 
-            <button class="check">
-                Check
-            </button>
+<div class="feature-icon">
+🤖
+</div>
 
-        </div>
+<h3>
+Learn with AI
+</h3>
 
-        <div class="feedback"></div>
+<p>
+Discover how Artificial Intelligence can support learning,
+questioning, feedback and personalised understanding.
+</p>
 
-    </div>
+</div>
+
+
+<div class="feature">
+
+<div class="feature-icon">
+🎯
+</div>
+
+<h3>
+Practise
+</h3>
+
+<p>
+Test your understanding through guided questions
+and problem-solving activities.
+</p>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-icon">
+🏆
+</div>
+
+<h3>
+Master
+</h3>
+
+<p>
+Prepare confidently for Cambridge O Level Physics
+with focused exam practice.
+</p>
+
+</div>
+
+
+</div>
+
+</div>
 
 </section>
 
 
-<!-- ===================================================== -->
-<!-- 5. DISTANCE-TIME GRAPHS -->
-<!-- ===================================================== -->
+<!-- CTA -->
 
-<section>
+<section class="cta">
 
-    <div class="eyebrow">05 · Motion graphs</div>
+<h2>
+Ready to Start Learning?
+</h2>
 
-    <h2>Distance–time graphs</h2>
+<p>
+Begin your journey with our interactive Physics lessons.
+Explore Motion, Mass, Weight & Density, or Physical Quantities
+and Measurement Techniques.
+</p>
 
-    <p class="lead">
-        A distance–time graph shows how the distance travelled
-        by an object changes with time.
-    </p>
+<div class="cta-buttons">
 
-    <div class="formula">
-        <span class="name">Gradient</span>
-        speed = gradient of a distance–time graph
-    </div>
+<a href="Motion.html" class="cta-button">
+Start Motion →
+</a>
 
-    <p>
-        A steeper line represents a greater speed.
-        A horizontal line represents an object that is stationary.
-    </p>
+<a href="mass-weight-density.html" class="cta-button secondary-cta">
+Mass, Weight & Density →
+</a>
 
-    <div class="graphwrap">
+<a href="physical-quantities.html" class="cta-button secondary-cta">
+Physical Quantities & Measurement →
+</a>
 
-        <svg viewBox="0 0 420 220"
-             width="100%"
-             style="max-width:420px;display:block;margin:auto;">
-
-            <line class="axisline"
-                  x1="50" y1="180"
-                  x2="380" y2="180"></line>
-
-            <line class="axisline"
-                  x1="50" y1="20"
-                  x2="50" y2="180"></line>
-
-            <polyline
-                points="50,180 130,140 210,100 290,60 370,20"
-                fill="none"
-                stroke="#E8541F"
-                stroke-width="3"></polyline>
-
-            <text class="axis-label"
-                  x="215"
-                  y="205"
-                  text-anchor="middle">
-                time / s
-            </text>
-
-            <text class="axis-label"
-                  x="18"
-                  y="100"
-                  text-anchor="middle"
-                  transform="rotate(-90 18 100)">
-                distance / m
-            </text>
-
-        </svg>
-
-    </div>
+</div>
 
 </section>
 
 
-<!-- ===================================================== -->
-<!-- 6. UNIFORM ACCELERATION -->
-<!-- ===================================================== -->
-
-<section class="brake">
-
-    <div class="eyebrow">06 · Uniform acceleration</div>
-
-    <h2>Velocity–time graphs</h2>
-
-    <p>
-        In uniform acceleration, velocity changes by equal amounts
-        in equal intervals of time.
-    </p>
-
-    <table class="uniform-table">
-
-        <tr>
-            <th>Time / s</th>
-            <td>0</td>
-            <td>4</td>
-            <td>8</td>
-            <td>12</td>
-            <td>16</td>
-        </tr>
-
-        <tr>
-            <th>Velocity / m/s</th>
-            <td>0</td>
-            <td>10</td>
-            <td>20</td>
-            <td>30</td>
-            <td>40</td>
-        </tr>
-
-    </table>
-
-    <p style="font-size:14px;color:var(--ink-soft);">
-        Every 4 s, the velocity increases by 10 m/s.
-    </p>
-
-    <div class="formula">
-
-        <span class="name">
-            Gradient
-        </span>
-
-        acceleration =
-        change in velocity / time
-
-    </div>
-
-    <div class="formula">
-
-        <span class="name">
-            Area
-        </span>
-
-        distance travelled =
-        area under a velocity–time graph
-
-    </div>
-
-
-    <!-- Q7 -->
-
-    <div class="qcard">
-
-        <div class="qlabel">Qu 7</div>
-
-        <div class="qtext">
-            Using the velocity–time data above, determine:
-            (a) total distance,
-            (b) total time,
-            (c) average speed,
-            (d) acceleration.
-        </div>
-
-        <div class="qrow">
-
-            <input type="number"
-                   id="q7a"
-                   step="0.1"
-                   placeholder="distance">
-
-            <span class="u">m</span>
-
-        </div>
-
-        <div class="qrow">
-
-            <input type="number"
-                   id="q7b"
-                   step="0.1"
-                   placeholder="time">
-
-            <span class="u">s</span>
-
-        </div>
-
-        <div class="qrow">
-
-            <input type="number"
-                   id="q7c"
-                   step="0.01"
-                   placeholder="average speed">
-
-            <span class="u">m/s</span>
-
-        </div>
-
-        <div class="qrow">
-
-            <input type="number"
-                   id="q7d"
-                   step="0.01"
-                   placeholder="acceleration">
-
-            <span class="u">m/s²</span>
-
-        </div>
-
-        <button class="check"
-                id="check-q7"
-                style="margin-top:12px;">
-
-            Check (a)–(d)
-
-        </button>
-
-        <div class="feedback"
-             id="fb-q7"></div>
-
-    </div>
-
-</section>
-
-
-<!-- ===================================================== -->
-<!-- 7. GRAPH SHAPES -->
-<!-- ===================================================== -->
-
-<section>
-
-    <div class="eyebrow">07 · Interpreting graphs</div>
-
-    <h2>Distance–time graph shapes</h2>
-
-    <p>
-        Choose a graph shape to explore what it tells us about motion.
-    </p>
-
-    <div class="shape-gallery"
-         id="dt-shapes"></div>
-
-    <div class="graphwrap">
-
-        <svg viewBox="0 0 300 160"
-             width="100%"
-             style="max-width:280px;display:block;margin:auto;">
-
-            <line class="axisline"
-                  x1="30" y1="140"
-                  x2="280" y2="140"></line>
-
-            <line class="axisline"
-                  x1="30" y1="20"
-                  x2="30" y2="140"></line>
-
-            <path id="dt-shape-path"
-                  d=""
-                  fill="none"
-                  stroke="#E8541F"
-                  stroke-width="3"></path>
-
-        </svg>
-
-        <p class="shape-desc"
-           id="dt-shape-desc">
-            Choose a shape above.
-        </p>
-
-    </div>
-
-</section>
-
-
-<section class="brake">
-
-    <div class="eyebrow">08 · Velocity–time graphs</div>
-
-    <h2>Velocity–time graph shapes</h2>
-
-    <p>
-        The gradient of a velocity–time graph gives acceleration.
-        The area under the graph gives distance travelled.
-    </p>
-
-    <div class="shape-gallery"
-         id="vt-shapes"></div>
-
-    <div class="graphwrap">
-
-        <svg viewBox="0 0 300 160"
-             width="100%"
-             style="max-width:280px;display:block;margin:auto;">
-
-            <line class="axisline"
-                  x1="30" y1="140"
-                  x2="280" y2="140"></line>
-
-            <line class="axisline"
-                  x1="30" y1="20"
-                  x2="30" y2="140"></line>
-
-            <path id="vt-shape-path"
-                  d=""
-                  fill="none"
-                  stroke="#245BD1"
-                  stroke-width="3"></path>
-
-        </svg>
-
-        <p class="shape-desc"
-           id="vt-shape-desc">
-            Choose a shape above.
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- ===================================================== -->
-<!-- 8. Q10 VELOCITY TIME -->
-<!-- ===================================================== -->
-
-<section class="brake">
-
-    <div class="eyebrow">09 · Worked example</div>
-
-    <h2>Analysing a velocity–time graph</h2>
-
-    <div class="qcard">
-
-        <div class="qtext">
-
-            A body speeds up from rest to 10 m/s over the first
-            10 s (O→A), holds 10 m/s from 10 s to 30 s (A→B),
-            then slows to rest by 40 s (B→C).
-
-        </div>
-
-        <div class="graphwrap">
-
-            <svg viewBox="0 0 420 220"
-                 width="100%"
-                 style="max-width:420px;display:block;margin:auto;">
-
-                <line class="axisline"
-                      x1="50" y1="180"
-                      x2="380" y2="180"></line>
-
-                <line class="axisline"
-                      x1="50" y1="20"
-                      x2="50" y2="180"></line>
-
-                <polyline
-                    points="50,180 133,100 216,100 299,180"
-                    fill="none"
-                    stroke="#245BD1"
-                    stroke-width="3"></polyline>
-
-                <text class="axis-label"
-                      x="215"
-                      y="205"
-                      text-anchor="middle">
-                    time / s
-                </text>
-
-                <text class="axis-label"
-                      x="18"
-                      y="100"
-                      text-anchor="middle"
-                      transform="rotate(-90 18 100)">
-                    velocity / m/s
-                </text>
-
-                <text class="axis-label"
-                      x="133"
-                      y="196"
-                      text-anchor="middle">
-                    10
-                </text>
-
-                <text class="axis-label"
-                      x="216"
-                      y="196"
-                      text-anchor="middle">
-                    30
-                </text>
-
-                <text class="axis-label"
-                      x="299"
-                      y="196"
-                      text-anchor="middle">
-                    40
-                </text>
-
-                <text class="axis-label"
-                      x="45"
-                      y="104"
-                      text-anchor="end">
-                    10
-                </text>
-
-            </svg>
-
-        </div>
-
-        <button class="toggle-btn"
-                id="reveal-q10">
-
-            Reveal worked answers
-
-        </button>
-
-        <div class="reveal"
-             id="q10-reveal">
-
-            (a) Total time = <b>40 s</b><br><br>
-
-            (b) Maximum speed = <b>10 m/s</b><br><br>
-
-            (c) Final speed = <b>0 m/s</b> — the body stops.<br><br>
-
-            (d) Acceleration from O→A:<br>
-
-            (10 − 0) / 10 =
-            <b>+1 m/s²</b><br><br>
-
-            (e) Acceleration from B→C:<br>
-
-            (0 − 10) / 10 =
-            <b>−1 m/s²</b><br><br>
-
-            The negative sign indicates that the velocity is decreasing.
-            The magnitude of the deceleration is therefore
-            <b>1 m/s²</b>.<br><br>
-
-            (f) Total distance =
-            area under the graph<br><br>
-
-            ½(10)(10) + (20)(10) + ½(10)(10)<br>
-
-            = 50 + 200 + 50<br>
-
-            = <b>300 m</b><br><br>
-
-            (g) Average speed =
-            total distance / total time<br><br>
-
-            = 300 / 40<br>
-
-            = <b>7.5 m/s</b>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ===================================================== -->
-<!-- 9. FALLING BODY -->
-<!-- ===================================================== -->
-
-<section class="grav">
-
-    <div class="eyebrow">10 · Acceleration due to gravity</div>
-
-    <h2>Free fall</h2>
-
-    <p class="lead">
-        A falling object accelerates because of the gravitational
-        force acting on it.
-    </p>
-
-    <p>
-        Near the Earth's surface, the acceleration due to gravity
-        is approximately <b>9.8 m/s²</b>.
-    </p>
-
-    <div class="qcard">
-
-        <div class="qlabel">Qu 11</div>
-
-        <div class="qtext">
-
-            A falling body's velocity–time graph passes through
-            (1 s, 10 m/s), (2 s, 20 m/s), (3 s, 30 m/s),
-            (4 s, 40 m/s) and (5 s, 50 m/s).
-
-            Use the graph to obtain the acceleration.
-
-        </div>
-
-        <div class="graphwrap">
-
-            <svg viewBox="0 0 320 200"
-                 width="100%"
-                 style="max-width:320px;display:block;margin:auto;">
-
-                <line class="axisline"
-                      x1="50" y1="160"
-                      x2="280" y2="160"></line>
-
-                <line class="axisline"
-                      x1="50" y1="20"
-                      x2="50" y2="160"></line>
-
-                <polyline
-                    points="50,160 96,132 142,104 188,76 234,48 280,20"
-                    fill="none"
-                    stroke="#137A56"
-                    stroke-width="3"></polyline>
-
-                <text class="axis-label"
-                      x="165"
-                      y="185"
-                      text-anchor="middle">
-                    t / s
-                </text>
-
-                <text class="axis-label"
-                      x="18"
-                      y="90"
-                      text-anchor="middle"
-                      transform="rotate(-90 18 90)">
-                    v / m/s
-                </text>
-
-            </svg>
-
-        </div>
-
-        <div class="qrow">
-
-            <input type="number"
-                   step="0.1"
-                   id="q11-input"
-                   placeholder="0.0">
-
-            <span class="u">m/s²</span>
-
-            <button class="check"
-                    id="check-q11">
-                Check
-            </button>
-
-        </div>
-
-        <div class="feedback"
-             id="fb-q11"></div>
-
-    </div>
-
-</section>
-
-
-<!-- ===================================================== -->
-<!-- 10. COIN AND FEATHER -->
-<!-- ===================================================== -->
-
-<section class="grav">
-
-    <div class="eyebrow">11 · Air resistance</div>
-
-    <h2>Coin and feather</h2>
-
-    <p class="lead">
-
-        A coin and a feather fall from the same height inside
-        a sealed perspex tube. Observe what happens with air
-        present and then when the air is removed.
-
-    </p>
-
-    <div class="tube-demo">
-
-        <div class="tube"
-             id="tube1">
-
-            <div class="coin"
-                 id="coin1"></div>
-
-            <div class="feather"
-                 id="feather1"></div>
-
-        </div>
-
-        <div class="tube-controls">
-
-            <button class="toggle-btn"
-                    id="drop-air">
-
-                Drop with air
-
-            </button>
-
-            <button class="toggle-btn"
-                    id="drop-vacuum">
-
-                Drop in vacuum
-
-            </button>
-
-            <button class="toggle-btn"
-                    id="reset-tube">
-
-                Reset
-
-            </button>
-
-            <p class="tube-note"
-               id="tube-note">
-
-                With air present, the feather experiences
-                a much greater effect from air resistance
-                and falls more slowly.
-
-            </p>
-
-        </div>
-
-    </div>
-
-    <button class="toggle-btn"
-            id="reveal-q12"
-            style="margin-top:14px;">
-
-        Reveal answer
-
-    </button>
-
-    <div class="reveal"
-         id="q12-reveal">
-
-        With air present, the feather falls more slowly because
-        it experiences a relatively large effect from air resistance.
-
-        <br><br>
-
-        In a vacuum, there is no air resistance.
-        Both the coin and the feather fall with the same acceleration
-        due to gravity, <b>g</b>, and reach the bottom at the same time.
-
-    </div>
-
-</section>
-
-</main>
-
+<!-- FOOTER -->
 
 <footer>
 
-    PhysicsAI 5054 · Cambridge O Level Physics<br>
-    Motion · Interactive Learning Module
+<strong>
+Physics with Mr Nabeel
+</strong>
+
+<p>
+PhysicsAI 5054 • Cambridge O Level Physics
+</p>
+
+<p>
+Exploring new ways to enhance teaching and learning through
+technology, innovation and AI.
+</p>
 
 </footer>
 
-
-<script>
-
-/* =====================================================
-   SPEED CALCULATOR
-===================================================== */
-
-const distanceInput =
-    document.getElementById("distanceInput");
-
-const timeInput =
-    document.getElementById("timeInput");
-
-const speedReadout =
-    document.getElementById("speedReadout");
-
-const tracer =
-    document.getElementById("tracer");
-
-
-function updateSpeed(){
-
-    const d =
-        parseFloat(distanceInput.value) || 0;
-
-    const t =
-        parseFloat(timeInput.value);
-
-    if(t > 0){
-
-        const speed = d / t;
-
-        speedReadout.textContent =
-            speed.toFixed(2);
-
-        const position =
-            Math.min(90, Math.max(0, speed * 3));
-
-        tracer.style.left =
-            `calc(${position}% - 6px)`;
-
-    }else{
-
-        speedReadout.textContent =
-            "—";
-
-        tracer.style.left =
-            "6px";
-
-    }
-
-}
-
-
-distanceInput.addEventListener(
-    "input",
-    updateSpeed
-);
-
-timeInput.addEventListener(
-    "input",
-    updateSpeed
-);
-
-
-/* =====================================================
-   GENERAL QUESTION CHECKING
-===================================================== */
-
-document.querySelectorAll(
-    ".qcard[data-answer]"
-).forEach(card => {
-
-    const button =
-        card.querySelector(".check");
-
-    const feedback =
-        card.querySelector(".feedback");
-
-    button.addEventListener(
-        "click",
-        () => {
-
-            const textInput =
-                card.querySelector(".ans-text");
-
-            const numberInput =
-                card.querySelector(".ans-num");
-
-            const expected =
-                card.dataset.answer;
-
-            const tolerance =
-                parseFloat(
-                    card.dataset.tol || "0"
-                );
-
-            let correct = false;
-
-            if(textInput){
-
-                const answer =
-                    textInput.value
-                    .trim()
-                    .toLowerCase()
-                    .replace(/\s/g,"");
-
-                correct =
-                    answer ===
-                    expected
-                    .toLowerCase()
-                    .replace(/\s/g,"");
-
-            }
-
-            if(numberInput){
-
-                const answer =
-                    parseFloat(
-                        numberInput.value
-                    );
-
-                const target =
-                    parseFloat(expected);
-
-                correct =
-                    !isNaN(answer) &&
-                    Math.abs(
-                        answer - target
-                    ) <= tolerance;
-
-            }
-
-            feedback.className =
-                "feedback show " +
-                (correct
-                    ? "correct"
-                    : "wrong");
-
-            feedback.textContent =
-                correct
-                    ? "✓ Correct. Well done!"
-                    : "✗ Not quite. Try again.";
-
-        }
-    );
-
-});
-
-
-/* =====================================================
-   Q7
-===================================================== */
-
-document.getElementById(
-    "check-q7"
-).addEventListener(
-    "click",
-    () => {
-
-        const a =
-            parseFloat(
-                document.getElementById("q7a").value
-            );
-
-        const b =
-            parseFloat(
-                document.getElementById("q7b").value
-            );
-
-        const c =
-            parseFloat(
-                document.getElementById("q7c").value
-            );
-
-        const d =
-            parseFloat(
-                document.getElementById("q7d").value
-            );
-
-        const correct =
-            Math.abs(a - 320) < 2 &&
-            Math.abs(b - 16) < .2 &&
-            Math.abs(c - 20) < .2 &&
-            Math.abs(d - 2.5) < .1;
-
-        const fb =
-            document.getElementById("fb-q7");
-
-        fb.className =
-            "feedback show " +
-            (correct
-                ? "correct"
-                : "wrong");
-
-        fb.textContent =
-            correct
-                ? "✓ Correct. Excellent graph analysis!"
-                : "✗ Check the area, total time, average speed and gradient.";
-
-    }
-);
-
-
-/* =====================================================
-   DISTANCE-TIME SHAPES
-===================================================== */
-
-const dtShapes = [
-
-    {
-        name:"Uniform speed",
-        path:"M30 140 L270 40",
-        desc:"A straight sloping line means constant speed. The gradient is constant."
-    },
-
-    {
-        name:"Stationary",
-        path:"M30 90 L270 90",
-        desc:"A horizontal line means the distance is not changing. The object is stationary."
-    },
-
-    {
-        name:"Faster motion",
-        path:"M30 140 L270 20",
-        desc:"A steeper gradient means a greater speed."
-    },
-
-    {
-        name:"Slowing down",
-        path:"M30 140 Q150 60 270 45",
-        desc:"A curve becoming less steep means the object is slowing down."
-    }
-
-];
-
-
-const dtContainer =
-    document.getElementById("dt-shapes");
-
-const dtPath =
-    document.getElementById("dt-shape-path");
-
-const dtDesc =
-    document.getElementById("dt-shape-desc");
-
-
-dtShapes.forEach(
-    (shape,index) => {
-
-        const btn =
-            document.createElement("button");
-
-        btn.className =
-            "shape-btn";
-
-        btn.textContent =
-            shape.name;
-
-        btn.addEventListener(
-            "click",
-            () => {
-
-                document
-                    .querySelectorAll(
-                        "#dt-shapes .shape-btn"
-                    )
-                    .forEach(
-                        b =>
-                        b.classList.remove(
-                            "active"
-                        )
-                    );
-
-                btn.classList.add(
-                    "active"
-                );
-
-                dtPath.setAttribute(
-                    "d",
-                    shape.path
-                );
-
-                dtDesc.textContent =
-                    shape.desc;
-
-            }
-        );
-
-        dtContainer.appendChild(
-            btn
-        );
-
-        if(index === 0){
-            btn.click();
-        }
-
-    }
-);
-
-
-/* =====================================================
-   VELOCITY-TIME SHAPES
-===================================================== */
-
-const vtShapes = [
-
-    {
-        name:"Uniform acceleration",
-        path:"M30 140 L270 30",
-        desc:"A straight positive gradient means constant positive acceleration."
-    },
-
-    {
-        name:"Constant velocity",
-        path:"M30 80 L270 80",
-        desc:"A horizontal line means constant velocity and zero acceleration."
-    },
-
-    {
-        name:"Deceleration",
-        path:"M30 30 L270 140",
-        desc:"A negative gradient means negative acceleration, or deceleration when the object is moving in the positive direction."
-    },
-
-    {
-        name:"Stationary",
-        path:"M30 140 L270 140",
-        desc:"Zero velocity means the object is stationary."
-    }
-
-];
-
-
-const vtContainer =
-    document.getElementById("vt-shapes");
-
-const vtPath =
-    document.getElementById("vt-shape-path");
-
-const vtDesc =
-    document.getElementById("vt-shape-desc");
-
-
-vtShapes.forEach(
-    (shape,index) => {
-
-        const btn =
-            document.createElement("button");
-
-        btn.className =
-            "shape-btn";
-
-        btn.textContent =
-            shape.name;
-
-        btn.addEventListener(
-            "click",
-            () => {
-
-                document
-                    .querySelectorAll(
-                        "#vt-shapes .shape-btn"
-                    )
-                    .forEach(
-                        b =>
-                        b.classList.remove(
-                            "active"
-                        )
-                    );
-
-                btn.classList.add(
-                    "active"
-                );
-
-                vtPath.setAttribute(
-                    "d",
-                    shape.path
-                );
-
-                vtDesc.textContent =
-                    shape.desc;
-
-            }
-        );
-
-        vtContainer.appendChild(
-            btn
-        );
-
-        if(index === 0){
-            btn.click();
-        }
-
-    }
-);
-
-
-/* =====================================================
-   Q10 REVEAL
-===================================================== */
-
-document.getElementById(
-    "reveal-q10"
-).addEventListener(
-    "click",
-    () => {
-
-        document.getElementById(
-            "q10-reveal"
-        ).classList.toggle(
-            "show"
-        );
-
-    }
-);
-
-
-/* =====================================================
-   Q11
-===================================================== */
-
-document.getElementById(
-    "check-q11"
-).addEventListener(
-    "click",
-    () => {
-
-        const answer =
-            parseFloat(
-                document.getElementById(
-                    "q11-input"
-                ).value
-            );
-
-        const fb =
-            document.getElementById(
-                "fb-q11"
-            );
-
-        const correct =
-            Math.abs(
-                answer - 10
-            ) < .2;
-
-        fb.className =
-            "feedback show " +
-            (
-                correct
-                    ? "correct"
-                    : "wrong"
-            );
-
-        fb.textContent =
-            correct
-                ? "✓ Correct. The gradient is 10 m/s²."
-                : "✗ Remember: acceleration = change in velocity / time.";
-
-    }
-);
-
-
-/* =====================================================
-   COIN AND FEATHER
-===================================================== */
-
-const coin =
-    document.getElementById(
-        "coin1"
-    );
-
-const feather =
-    document.getElementById(
-        "feather1"
-    );
-
-const note =
-    document.getElementById(
-        "tube-note"
-    );
-
-
-document.getElementById(
-    "drop-air"
-).addEventListener(
-    "click",
-    () => {
-
-        coin.style.top =
-            "190px";
-
-        feather.style.top =
-            "100px";
-
-        note.textContent =
-            "With air present, the feather experiences a much greater effect from air resistance and falls more slowly than the coin.";
-
-    }
-);
-
-
-document.getElementById(
-    "drop-vacuum"
-).addEventListener(
-    "click",
-    () => {
-
-        coin.style.top =
-            "190px";
-
-        feather.style.top =
-            "190px";
-
-        note.textContent =
-            "In a vacuum, there is no air resistance. The coin and feather have the same acceleration due to gravity and reach the bottom together.";
-
-    }
-);
-
-
-document.getElementById(
-    "reset-tube"
-).addEventListener(
-    "click",
-    () => {
-
-        coin.style.top =
-            "12px";
-
-        feather.style.top =
-            "12px";
-
-        note.textContent =
-            "With air present, the feather experiences a much greater effect from air resistance and falls more slowly.";
-
-    }
-);
-
-
-/* =====================================================
-   Q12 REVEAL
-===================================================== */
-
-document.getElementById(
-    "reveal-q12"
-).addEventListener(
-    "click",
-    () => {
-
-        document.getElementById(
-            "q12-reveal"
-        ).classList.toggle(
-            "show"
-        );
-
-    }
-);
-
-</script>
 
 </body>
 </html>
