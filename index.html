@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -14,32 +15,20 @@
     box-sizing: border-box;
 }
 
-:root {
-    --bg: #f7f8fa;
-    --card: #ffffff;
-    --ink: #17202a;
-    --soft: #5f6b76;
-    --line: #e1e5e8;
-    --accent: #245bd1;
-    --accent-dark: #17439e;
-}
-
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background: var(--bg);
-    color: var(--ink);
+    background: #f7f8fa;
+    color: #17202a;
     line-height: 1.6;
 }
 
-/* HEADER */
-
 header {
-    background: var(--card);
-    border-bottom: 1px solid var(--line);
-    padding: 22px 30px;
+    background: white;
+    border-bottom: 1px solid #e1e5e8;
+    padding: 20px 30px;
 }
 
-.nav {
+.header-inner {
     max-width: 1100px;
     margin: auto;
     display: flex;
@@ -49,56 +38,50 @@ header {
 
 .logo {
     font-size: 22px;
-    font-weight: 700;
-    color: var(--accent);
+    font-weight: bold;
+    color: #245bd1;
 }
 
 .logo span {
-    color: var(--ink);
+    color: #17202a;
 }
 
 nav a {
     text-decoration: none;
-    color: var(--soft);
-    margin-left: 22px;
-    font-size: 14px;
+    color: #5f6b76;
+    margin-left: 20px;
 }
 
 nav a:hover {
-    color: var(--accent);
+    color: #245bd1;
 }
-
-/* HERO */
 
 .hero {
     max-width: 1100px;
     margin: auto;
-    padding: 80px 30px 60px;
+    padding: 70px 30px 50px;
 }
 
 .kicker {
+    color: #245bd1;
     font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
+    font-weight: bold;
     text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 12px;
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
 }
 
 h1 {
-    font-size: clamp(42px, 7vw, 76px);
+    font-size: clamp(45px, 7vw, 76px);
     line-height: 1;
-    letter-spacing: -0.03em;
     margin-bottom: 20px;
 }
 
 .hero p {
     max-width: 650px;
-    font-size: 19px;
-    color: var(--soft);
+    color: #5f6b76;
+    font-size: 18px;
 }
-
-/* CHAPTERS */
 
 .chapters {
     max-width: 1100px;
@@ -108,9 +91,10 @@ h1 {
 
 .section-title {
     font-size: 13px;
+    font-weight: bold;
+    color: #5f6b76;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: var(--soft);
     margin-bottom: 20px;
 }
 
@@ -120,87 +104,71 @@ h1 {
     gap: 20px;
 }
 
-/* CHAPTER CARD */
-
 .chapter-card {
-    background: var(--card);
-    border: 1px solid var(--line);
+    background: white;
+    border: 1px solid #e1e5e8;
     border-radius: 14px;
     padding: 28px;
-    transition: transform 0.2s ease,
-                box-shadow 0.2s ease,
-                border-color 0.2s ease;
+    transition: 0.2s ease;
 }
 
 .chapter-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--accent);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transform: translateY(-3px);
+    border-color: #245bd1;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.07);
 }
 
 .chapter-number {
+    color: #245bd1;
     font-size: 12px;
-    font-weight: 700;
+    font-weight: bold;
     letter-spacing: 0.08em;
-    color: var(--accent);
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
 .chapter-card h2 {
-    font-size: 27px;
+    font-size: 26px;
     margin-bottom: 10px;
 }
 
 .chapter-card p {
-    color: var(--soft);
+    color: #5f6b76;
     font-size: 15px;
-    margin-bottom: 24px;
+    margin-bottom: 22px;
 }
 
 .chapter-btn {
     display: inline-block;
-    text-decoration: none;
-    background: var(--ink);
+    background: #17202a;
     color: white;
+    text-decoration: none;
     padding: 10px 18px;
     border-radius: 6px;
     font-size: 14px;
-    font-weight: 600;
-    transition: background 0.2s ease;
+    font-weight: bold;
 }
 
 .chapter-btn:hover {
-    background: var(--accent);
+    background: #245bd1;
 }
 
-/* COMING SOON */
-
-.chapter-card.coming-soon {
-    opacity: 0.65;
+.coming-soon {
+    opacity: 0.6;
 }
 
-.chapter-card.coming-soon .chapter-btn {
+.coming-soon .chapter-btn {
     background: #dfe3e7;
     color: #6b747c;
-    cursor: default;
 }
-
-/* FOOTER */
 
 footer {
-    border-top: 1px solid var(--line);
-    background: var(--card);
-    padding: 35px 30px;
+    border-top: 1px solid #e1e5e8;
+    background: white;
     text-align: center;
-    color: var(--soft);
+    padding: 35px 20px;
+    color: #5f6b76;
     font-size: 13px;
 }
-
-footer strong {
-    color: var(--ink);
-}
-
-/* MOBILE */
 
 @media (max-width: 650px) {
 
@@ -208,10 +176,10 @@ footer strong {
         padding: 18px;
     }
 
-    .nav {
+    .header-inner {
         flex-direction: column;
-        gap: 12px;
         align-items: flex-start;
+        gap: 12px;
     }
 
     nav a {
@@ -220,29 +188,26 @@ footer strong {
     }
 
     .hero {
-        padding: 55px 20px 45px;
+        padding: 50px 20px 40px;
     }
 
     .chapters {
         padding: 20px 20px 70px;
     }
 
-    h1 {
-        font-size: 48px;
-    }
-
 }
 
 </style>
+
 </head>
+
 
 <body>
 
-<!-- HEADER -->
 
 <header>
 
-    <div class="nav">
+    <div class="header-inner">
 
         <div class="logo">
             PhysicsAI <span>5054</span>
@@ -257,8 +222,6 @@ footer strong {
 
 </header>
 
-
-<!-- HERO -->
 
 <section class="hero">
 
@@ -279,18 +242,17 @@ footer strong {
 </section>
 
 
-<!-- CHAPTERS -->
-
 <section class="chapters" id="chapters">
 
     <div class="section-title">
         Interactive Chapters
     </div>
 
+
     <div class="chapter-grid">
 
 
-        <!-- CHAPTER 1 -->
+        <!-- YOUR EXISTING CHAPTER 1 -->
 
         <div class="chapter-card">
 
@@ -299,23 +261,22 @@ footer strong {
             </div>
 
             <h2>
-                Physical Quantities and Measurement
+                Chapter 1
             </h2>
 
             <p>
-                Physical quantities, SI units, measuring instruments,
-                accuracy, precision and measurement techniques.
+                Interactive Cambridge O Level Physics learning module.
             </p>
 
-            <a href="Physical%20Quantities%20and%20Measurement.html"
-               class="chapter-btn">
+            <!-- CHANGE THIS ONLY IF YOUR FIRST FILE HAS A DIFFERENT NAME -->
+            <a href="#" class="chapter-btn">
                 Start Chapter
             </a>
 
         </div>
 
 
-        <!-- CHAPTER 2 -->
+        <!-- YOUR EXISTING CHAPTER 2 -->
 
         <div class="chapter-card">
 
@@ -324,23 +285,22 @@ footer strong {
             </div>
 
             <h2>
-                Forces
+                Chapter 2
             </h2>
 
             <p>
-                Understanding forces, their effects, moments,
-                balanced forces and applications in everyday life.
+                Interactive Cambridge O Level Physics learning module.
             </p>
 
-            <a href="Forces.html"
-               class="chapter-btn">
+            <!-- CHANGE THIS ONLY IF YOUR SECOND FILE HAS A DIFFERENT NAME -->
+            <a href="#" class="chapter-btn">
                 Start Chapter
             </a>
 
         </div>
 
 
-        <!-- CHAPTER 3 : MOTION -->
+        <!-- MOTION -->
 
         <div class="chapter-card">
 
@@ -353,17 +313,13 @@ footer strong {
             </h2>
 
             <p>
-                Distance, speed, velocity, acceleration and the
-                interpretation of distance–time and velocity–time graphs.
+                Distance, speed, velocity, acceleration and
+                motion graphs.
             </p>
 
-            <!-- IMPORTANT:
-                 The file is named Motion.html
-                 with a capital M.
-            -->
+            <!-- IMPORTANT: FILE NAME IS Motion.html -->
 
-            <a href="Motion.html"
-               class="chapter-btn">
+            <a href="Motion.html" class="chapter-btn">
                 Start Chapter
             </a>
 
@@ -383,56 +339,7 @@ footer strong {
             </h2>
 
             <p>
-                Energy stores, energy transfers, work, power
-                and efficiency.
-            </p>
-
-            <span class="chapter-btn">
-                Coming Soon
-            </span>
-
-        </div>
-
-
-        <!-- FUTURE CHAPTER -->
-
-        <div class="chapter-card coming-soon">
-
-            <div class="chapter-number">
-                CHAPTER 05
-            </div>
-
-            <h2>
-                Thermal Physics
-            </h2>
-
-            <p>
-                Temperature, thermal energy, thermal properties
-                and energy transfer.
-            </p>
-
-            <span class="chapter-btn">
-                Coming Soon
-            </span>
-
-        </div>
-
-
-        <!-- FUTURE CHAPTER -->
-
-        <div class="chapter-card coming-soon">
-
-            <div class="chapter-number">
-                CHAPTER 06
-            </div>
-
-            <h2>
-                Waves
-            </h2>
-
-            <p>
-                Wave properties, reflection, refraction,
-                diffraction and electromagnetic waves.
+                Energy stores, transfers, work, power and efficiency.
             </p>
 
             <span class="chapter-btn">
@@ -446,8 +353,6 @@ footer strong {
 
 </section>
 
-
-<!-- FOOTER -->
 
 <footer>
 
