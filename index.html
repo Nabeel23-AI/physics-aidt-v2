@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Physics with Mr Nabeel | PhysicsAI 5054</title>
+<title>PhysicsAI 5054 | Cambridge O Level Physics</title>
 
 <style>
 
@@ -14,541 +14,221 @@
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
+:root {
+    --bg: #f7f8fa;
+    --card: #ffffff;
+    --ink: #17202a;
+    --soft: #5f6b76;
+    --line: #e1e5e8;
+    --accent: #245bd1;
+    --accent-dark: #17439e;
 }
 
 body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: #f5f8fc;
-    color: #172033;
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
     line-height: 1.6;
 }
 
-/* NAVIGATION */
+/* HEADER */
 
-nav {
-    background: rgba(255,255,255,0.97);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid #e5eaf2;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+header {
+    background: var(--card);
+    border-bottom: 1px solid var(--line);
+    padding: 22px 30px;
 }
 
-.nav-container {
-    max-width: 1200px;
+.nav {
+    max-width: 1100px;
     margin: auto;
-    padding: 16px 25px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .logo {
-    font-size: 23px;
-    font-weight: 800;
-    color: #173b8f;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
 }
 
 .logo span {
-    color: #2575fc;
+    color: var(--ink);
 }
 
 nav a {
     text-decoration: none;
-    color: #506078;
-    margin-left: 25px;
-    font-weight: 600;
+    color: var(--soft);
+    margin-left: 22px;
+    font-size: 14px;
 }
 
 nav a:hover {
-    color: #2575fc;
+    color: var(--accent);
 }
 
 /* HERO */
 
 .hero {
-    background:
-        radial-gradient(circle at 85% 20%, rgba(37,117,252,0.15), transparent 30%),
-        radial-gradient(circle at 10% 80%, rgba(76,201,240,0.12), transparent 30%),
-        linear-gradient(135deg, #ffffff, #eef5ff);
-
-    padding: 80px 25px 100px;
-}
-
-.hero-content {
-    max-width: 1200px;
+    max-width: 1100px;
     margin: auto;
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 70px;
-    align-items: center;
+    padding: 80px 30px 60px;
 }
 
-.tag {
-    display: inline-block;
-    background: #e8f1ff;
-    color: #1d5bd1;
-    padding: 8px 16px;
-    border-radius: 30px;
+.kicker {
     font-size: 13px;
     font-weight: 700;
-    margin-bottom: 20px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
 }
 
-.hero h1 {
-    font-size: clamp(48px, 7vw, 78px);
+h1 {
+    font-size: clamp(42px, 7vw, 76px);
     line-height: 1;
-    letter-spacing: -3px;
-    color: #14213d;
-    margin-bottom: 25px;
+    letter-spacing: -0.03em;
+    margin-bottom: 20px;
 }
 
-.hero h1 span {
-    color: #2575fc;
-}
-
-.hero-subtitle {
-    font-size: 25px;
-    font-weight: 700;
-    color: #173b8f;
-    margin-bottom: 18px;
-}
-
-.hero-text {
+.hero p {
+    max-width: 650px;
     font-size: 19px;
-    color: #5d6b82;
-    max-width: 680px;
-    margin-bottom: 30px;
+    color: var(--soft);
 }
 
-.buttons {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-}
+/* CHAPTERS */
 
-.btn {
-    padding: 14px 25px;
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: 700;
-    transition: 0.25s;
-}
-
-.primary {
-    background: #2575fc;
-    color: white;
-    box-shadow: 0 8px 20px rgba(37,117,252,0.25);
-}
-
-.primary:hover {
-    transform: translateY(-3px);
-    background: #1d63d8;
-}
-
-.secondary {
-    background: white;
-    color: #1d5bd1;
-    border: 1px solid #d8e2f0;
-}
-
-.secondary:hover {
-    background: #f0f6ff;
-}
-
-/* AVATAR */
-
-.avatar-card {
-    background: white;
-    border-radius: 28px;
-    padding: 30px;
-    box-shadow: 0 20px 60px rgba(36,67,110,0.12);
-    border: 1px solid #e5ebf4;
-    text-align: center;
-}
-
-.avatar-container {
-    width: 270px;
-    height: 270px;
-    margin: 0 auto 20px;
-    border-radius: 50%;
-    overflow: hidden;
-    background: linear-gradient(135deg, #e8f1ff, #dcecff);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.avatar-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.avatar-card h3 {
-    color: #173b8f;
-    font-size: 26px;
-}
-
-.avatar-card p {
-    color: #718096;
-    margin-top: 5px;
-}
-
-/* SECTIONS */
-
-section {
-    padding: 80px 25px;
-}
-
-.container {
-    max-width: 1200px;
+.chapters {
+    max-width: 1100px;
     margin: auto;
+    padding: 20px 30px 100px;
 }
 
-.section-header {
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-.section-header h2 {
-    font-size: 40px;
-    color: #172033;
-    margin-bottom: 10px;
-}
-
-.section-header p {
-    color: #718096;
-    font-size: 18px;
-}
-
-/* ABOUT */
-
-.about {
-    background: white;
-}
-
-.about-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 60px;
-    align-items: center;
-}
-
-.about-text h2 {
-    font-size: 42px;
-    color: #172033;
-    margin-bottom: 25px;
-}
-
-.about-text h2 span {
-    color: #2575fc;
-}
-
-.about-text p {
-    color: #5d6b82;
-    font-size: 17px;
-    margin-bottom: 18px;
-}
-
-.vision-box {
-    background: linear-gradient(135deg, #173b8f, #2575fc);
-    color: white;
-    padding: 40px;
-    border-radius: 25px;
-    box-shadow: 0 20px 50px rgba(37,117,252,0.2);
-}
-
-.vision-box h3 {
-    font-size: 28px;
+.section-title {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--soft);
     margin-bottom: 20px;
 }
 
-.vision-box p {
-    color: rgba(255,255,255,0.9);
-}
-
-/* PROGRESS */
-
-.progress-card {
-    max-width: 800px;
-    margin: 0 auto 60px;
-    background: white;
-    padding: 25px;
-    border-radius: 15px;
-    border: 1px solid #e5eaf2;
-}
-
-.progress-info {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 12px;
-    color: #506078;
-}
-
-.progress-info strong {
-    color: #173b8f;
-}
-
-.progress-bar {
-    height: 10px;
-    background: #e8edf5;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.progress-fill {
-    width: 18.75%;
-    height: 100%;
-    background: linear-gradient(90deg, #2575fc, #4cc9f0);
-    border-radius: 10px;
-}
-
-/* TOPIC GRID */
-
-.topic-grid {
-    max-width: 1200px;
-    margin: auto;
+.chapter-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
-}
-
-.topic-card {
-    background: white;
-    border: 1px solid #e3e8f0;
-    border-radius: 20px;
-    padding: 30px;
-    transition: 0.3s;
-    position: relative;
-}
-
-.topic-card.available:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 15px 35px rgba(36,67,110,0.12);
-}
-
-.topic-card.available {
-    border-top: 4px solid #2575fc;
-}
-
-.topic-number {
-    font-size: 14px;
-    font-weight: 800;
-    color: #a0aec0;
-    margin-bottom: 15px;
-}
-
-.topic-icon {
-    font-size: 38px;
-    margin-bottom: 15px;
-}
-
-.status {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    margin-bottom: 12px;
-}
-
-.available-status {
-    color: #16845b;
-}
-
-.coming-status {
-    color: #a0aec0;
-}
-
-.topic-card h3 {
-    font-size: 22px;
-    color: #172033;
-    margin-bottom: 12px;
-}
-
-.topic-card p {
-    color: #718096;
-    font-size: 15px;
-    margin-bottom: 20px;
-}
-
-.launch {
-    display: inline-block;
-    color: #2575fc;
-    font-weight: 700;
-    text-decoration: none;
-}
-
-.launch:hover {
-    color: #173b8f;
-}
-
-/* FEATURES */
-
-.features {
-    background: white;
-}
-
-.feature-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
 }
 
-.feature {
-    text-align: center;
-    padding: 25px 15px;
+/* CHAPTER CARD */
+
+.chapter-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 28px;
+    transition: transform 0.2s ease,
+                box-shadow 0.2s ease,
+                border-color 0.2s ease;
 }
 
-.feature-icon {
-    font-size: 42px;
-    margin-bottom: 15px;
+.chapter-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
-.feature h3 {
-    color: #173b8f;
+.chapter-number {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 12px;
+}
+
+.chapter-card h2 {
+    font-size: 27px;
     margin-bottom: 10px;
 }
 
-.feature p {
-    color: #718096;
-    font-size: 14px;
+.chapter-card p {
+    color: var(--soft);
+    font-size: 15px;
+    margin-bottom: 24px;
 }
 
-/* CTA */
-
-.cta {
-    background: linear-gradient(135deg, #173b8f, #2575fc);
-    color: white;
-    text-align: center;
-    padding: 80px 25px;
-}
-
-.cta h2 {
-    font-size: 42px;
-    margin-bottom: 15px;
-}
-
-.cta p {
-    max-width: 700px;
-    margin: 0 auto 30px;
-    color: rgba(255,255,255,0.9);
-}
-
-.cta-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-
-.cta-button {
+.chapter-btn {
     display: inline-block;
-    padding: 14px 25px;
-    background: white;
-    color: #173b8f;
-    border-radius: 10px;
     text-decoration: none;
-    font-weight: 700;
-}
-
-.cta-button:hover {
-    background: #eef5ff;
-}
-
-.cta-button.secondary-cta {
-    background: rgba(255,255,255,0.15);
+    background: var(--ink);
     color: white;
-    border: 1px solid rgba(255,255,255,0.5);
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background 0.2s ease;
+}
+
+.chapter-btn:hover {
+    background: var(--accent);
+}
+
+/* COMING SOON */
+
+.chapter-card.coming-soon {
+    opacity: 0.65;
+}
+
+.chapter-card.coming-soon .chapter-btn {
+    background: #dfe3e7;
+    color: #6b747c;
+    cursor: default;
 }
 
 /* FOOTER */
 
 footer {
-    background: #14213d;
-    color: #aebbd0;
+    border-top: 1px solid var(--line);
+    background: var(--card);
+    padding: 35px 30px;
     text-align: center;
-    padding: 40px 25px;
+    color: var(--soft);
+    font-size: 13px;
 }
 
 footer strong {
-    color: white;
-    font-size: 20px;
-}
-
-footer p {
-    margin-top: 8px;
+    color: var(--ink);
 }
 
 /* MOBILE */
 
-@media (max-width: 900px) {
+@media (max-width: 650px) {
 
-    .topic-grid {
-        grid-template-columns: repeat(2, 1fr);
+    header {
+        padding: 18px;
     }
 
-    .feature-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-}
-
-@media (max-width: 800px) {
-
-    .hero-content,
-    .about-grid {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-
-    .hero-text {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .buttons {
-        justify-content: center;
+    .nav {
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
     }
 
     nav a {
-        display: none;
+        margin-left: 0;
+        margin-right: 15px;
     }
 
     .hero {
-        padding-top: 60px;
+        padding: 55px 20px 45px;
     }
 
-    .hero h1 {
-        letter-spacing: -2px;
+    .chapters {
+        padding: 20px 20px 70px;
     }
 
-    .avatar-container {
-        width: 220px;
-        height: 220px;
-    }
-
-    .about-text h2 {
-        font-size: 32px;
-    }
-
-    .progress-info {
-        flex-direction: column;
-        gap: 5px;
-    }
-
-}
-
-@media (max-width: 600px) {
-
-    .topic-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .feature-grid {
-        grid-template-columns: 1fr;
+    h1 {
+        font-size: 48px;
     }
 
 }
@@ -558,815 +238,211 @@ footer p {
 
 <body>
 
-<!-- NAVIGATION -->
+<!-- HEADER -->
 
-<nav>
+<header>
 
-<div class="nav-container">
+    <div class="nav">
 
-<div class="logo">
-Physics with <span>Mr Nabeel</span>
-</div>
+        <div class="logo">
+            PhysicsAI <span>5054</span>
+        </div>
 
-<div>
-<a href="#about">About</a>
-<a href="#syllabus">Syllabus</a>
-<a href="#features">Features</a>
-</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="#chapters">Chapters</a>
+        </nav>
 
-</div>
-
-</nav>
-
-
-<!-- HERO -->
-
-<header class="hero">
-
-<div class="hero-content">
-
-<div>
-
-<div class="tag">
-CAMBRIDGE O LEVEL PHYSICS • 5054 • 2026–2028
-</div>
-
-<div class="hero-subtitle">
-Physics with Mr Nabeel
-</div>
-
-<h1>
-Learn Physics.<br>
-<span>Understand the Universe.</span>
-</h1>
-
-<p class="hero-text">
-
-Welcome to a new way of learning Physics. Explore concepts,
-visualise ideas, interact with simulations and develop a deeper
-understanding of the physical world.
-
-</p>
-
-<div class="buttons">
-
-<a href="#syllabus" class="btn primary">
-Explore the 5054 Syllabus
-</a>
-
-<a href="Motion.html" class="btn secondary">
-Start Learning Motion
-</a>
-
-</div>
-
-</div>
-
-
-<!-- AVATAR -->
-
-<div class="avatar-card">
-
-<div class="avatar-container">
-
-<img src="avatar.png" alt="Mr Nabeel">
-
-</div>
-
-<h3>Mr Nabeel</h3>
-
-<p>Physics Educator • Almost 30 Years of Teaching Experience</p>
-
-</div>
-
-</div>
+    </div>
 
 </header>
 
 
-<!-- ABOUT -->
+<!-- HERO -->
 
-<section class="about" id="about">
+<section class="hero">
 
-<div class="container">
+    <div class="kicker">
+        Cambridge O Level Physics
+    </div>
 
-<div class="about-grid">
+    <h1>
+        PhysicsAI 5054
+    </h1>
 
-<div class="about-text">
-
-<h2>
-Teaching Physics for <span>the Future</span>
-</h2>
-
-<p>
-We are Physics educators with almost 30 years of teaching
-experience. Throughout our journey in education, we have
-seen how students learn differently and how technology is
-changing the way knowledge is shared.
-</p>
-
-<p>
-Our concern is simple:
-<strong>How can we find new and better ways to enhance teaching and learning?</strong>
-</p>
-
-<p>
-We believe that Physics should not be a subject that students
-simply memorise. It should be something they can see, explore,
-question and understand.
-</p>
-
-<p>
-Through this platform, we aim to combine clear explanations,
-interactive activities, visualisations, simulations and the
-power of Artificial Intelligence to create a more engaging
-and meaningful learning experience.
-</p>
-
-<p>
-Whether you are a student, a teacher or simply curious about
-how the world works, we invite you to explore Physics with us.
-</p>
-
-</div>
-
-
-<div class="vision-box">
-
-<h3>
-Our Vision
-</h3>
-
-<p>
-To use technology, innovation and our experience as educators
-to transform the way Physics is taught and learned.
-</p>
-
-<br>
-
-<p>
-We want learners to move beyond memorising formulas—to
-<strong>understand concepts, explore ideas, solve problems
-and discover the Physics all around them.</strong>
-</p>
-
-<br>
-
-<p>
-<strong>Explore. Understand. Apply. Discover.</strong>
-</p>
-
-</div>
-
-</div>
-
-</div>
+    <p>
+        Interactive learning for Cambridge O Level Physics.
+        Explore concepts, simulations, worked examples and
+        practice questions designed to help you understand physics.
+    </p>
 
 </section>
 
 
-<!-- SYLLABUS -->
+<!-- CHAPTERS -->
 
-<section id="syllabus">
+<section class="chapters" id="chapters">
 
-<div class="container">
+    <div class="section-title">
+        Interactive Chapters
+    </div>
 
-<div class="section-header">
+    <div class="chapter-grid">
 
-<h2>Explore the 5054 Syllabus</h2>
 
-<p>
-Learn at your own pace. New interactive lessons will be added progressively.
-</p>
+        <!-- CHAPTER 1 -->
 
-</div>
+        <div class="chapter-card">
 
+            <div class="chapter-number">
+                CHAPTER 01
+            </div>
 
-<div class="progress-card">
+            <h2>
+                Physical Quantities and Measurement
+            </h2>
 
-<div class="progress-info">
+            <p>
+                Physical quantities, SI units, measuring instruments,
+                accuracy, precision and measurement techniques.
+            </p>
 
-<span>Platform Development</span>
+            <a href="Physical%20Quantities%20and%20Measurement.html"
+               class="chapter-btn">
+                Start Chapter
+            </a>
 
-<strong>3 lessons available</strong>
+        </div>
 
-</div>
 
-<div class="progress-bar">
+        <!-- CHAPTER 2 -->
 
-<div class="progress-fill"></div>
+        <div class="chapter-card">
 
-</div>
+            <div class="chapter-number">
+                CHAPTER 02
+            </div>
 
-</div>
+            <h2>
+                Forces
+            </h2>
 
+            <p>
+                Understanding forces, their effects, moments,
+                balanced forces and applications in everyday life.
+            </p>
 
-<div class="topic-grid">
+            <a href="Forces.html"
+               class="chapter-btn">
+                Start Chapter
+            </a>
 
+        </div>
 
-<!-- 01 MASS, WEIGHT & DENSITY -->
 
-<div class="topic-card available">
+        <!-- CHAPTER 3 : MOTION -->
 
-<div class="topic-number">
-01
-</div>
+        <div class="chapter-card">
 
-<div class="topic-icon">
-⚖️
-</div>
+            <div class="chapter-number">
+                CHAPTER 03
+            </div>
 
-<span class="status available-status">
-● AVAILABLE NOW
-</span>
+            <h2>
+                Motion
+            </h2>
 
-<h3>
-Mass, Weight & Density
-</h3>
+            <p>
+                Distance, speed, velocity, acceleration and the
+                interpretation of distance–time and velocity–time graphs.
+            </p>
 
-<p>
-Explore the relationship between mass, weight and density
-through interactive explanations, visual learning and
-activities.
-</p>
+            <!-- IMPORTANT:
+                 The file is named Motion.html
+                 with a capital M.
+            -->
 
-<a class="launch" href="mass-weight-density.html">
-Launch Interactive Lesson →
-</a>
+            <a href="Motion.html"
+               class="chapter-btn">
+                Start Chapter
+            </a>
 
-</div>
+        </div>
 
 
-<!-- 02 PHYSICAL QUANTITIES & MEASUREMENT -->
+        <!-- FUTURE CHAPTER -->
 
-<div class="topic-card available">
+        <div class="chapter-card coming-soon">
 
-<div class="topic-number">
-02
-</div>
+            <div class="chapter-number">
+                CHAPTER 04
+            </div>
 
-<div class="topic-icon">
-📏
-</div>
+            <h2>
+                Energy
+            </h2>
 
-<span class="status available-status">
-● AVAILABLE NOW
-</span>
+            <p>
+                Energy stores, energy transfers, work, power
+                and efficiency.
+            </p>
 
-<h3>
-Physical Quantities & Measurement Techniques
-</h3>
+            <span class="chapter-btn">
+                Coming Soon
+            </span>
 
-<p>
-Learn about physical quantities, SI units, prefixes,
-measurement instruments, parallax error, micrometers,
-volume, time, scalars, vectors and resultant forces.
-</p>
+        </div>
 
-<a class="launch" href="physical-quantities.html">
-Launch Interactive Lesson →
-</a>
 
-</div>
+        <!-- FUTURE CHAPTER -->
 
+        <div class="chapter-card coming-soon">
 
-<!-- 03 MOTION -->
+            <div class="chapter-number">
+                CHAPTER 05
+            </div>
 
-<div class="topic-card available">
+            <h2>
+                Thermal Physics
+            </h2>
 
-<div class="topic-number">
-03
-</div>
+            <p>
+                Temperature, thermal energy, thermal properties
+                and energy transfer.
+            </p>
 
-<div class="topic-icon">
-🏃
-</div>
+            <span class="chapter-btn">
+                Coming Soon
+            </span>
 
-<span class="status available-status">
-● AVAILABLE NOW
-</span>
+        </div>
 
-<h3>
-Motion
-</h3>
 
-<p>
-Explore speed, velocity, acceleration and graphical
-descriptions of motion through interactive learning activities.
-</p>
+        <!-- FUTURE CHAPTER -->
 
-<a class="launch" href="Motion.html">
-Launch Interactive Lesson →
-</a>
+        <div class="chapter-card coming-soon">
 
-</div>
+            <div class="chapter-number">
+                CHAPTER 06
+            </div>
 
+            <h2>
+                Waves
+            </h2>
 
-<!-- 04 FORCES -->
+            <p>
+                Wave properties, reflection, refraction,
+                diffraction and electromagnetic waves.
+            </p>
 
-<div class="topic-card">
+            <span class="chapter-btn">
+                Coming Soon
+            </span>
 
-<div class="topic-number">
-04
-</div>
+        </div>
 
-<div class="topic-icon">
-🧲
-</div>
 
-<span class="status coming-status">
-COMING SOON
-</span>
-
-<h3>
-Forces
-</h3>
-
-<p>
-Forces, resultant forces, Newton's laws and momentum.
-</p>
-
-</div>
-
-
-<!-- 05 TURNING EFFECTS -->
-
-<div class="topic-card">
-
-<div class="topic-number">
-05
-</div>
-
-<div class="topic-icon">
-🔧
-</div>
-
-<span class="status coming-status">
-COMING SOON
-</span>
-
-<h3>
-Turning Effects of Forces
-</h3>
-
-<p>
-Moments, equilibrium and applications of turning forces.
-</p>
-
-</div>
-
-
-<!-- 06 ENERGY -->
-
-<div class="topic-card">
-
-<div class="topic-number">
-06
-</div>
-
-<div class="topic-icon">
-⚡
-</div>
-
-<span class="status coming-status">
-COMING SOON
-</span>
-
-<h3>
-Energy, Work & Power
-</h3>
-
-<p>
-Energy transfers, work done, power, efficiency and
-energy resources.
-</p>
-
-</div>
-
-
-<!-- 07 PRESSURE -->
-
-<div class="topic-card">
-
-<div class="topic-number">
-07
-</div>
-
-<div class="topic-icon">
-🌊
-</div>
-
-<span class="status coming-status">
-COMING SOON
-</span>
-
-<h3>
-Pressure
-</h3>
-
-<p>
-Pressure in solids, liquids and gases.
-</p>
-
-</div>
-
-
-<!-- 08 THERMAL -->
-
-<div class="topic-card">
-
-<div class="topic-number">
-08
-</div>
-
-<div class="topic-icon">
-🌡️
-</div>
-
-<span class="status coming-status">
-COMING SOON
-</span>
-
-<h3>
-Thermal Physics
-</h3>
-
-<p>
-The kinetic particle model and transfer of thermal energy.
-</p>
-
-</div>
-
-
-<!-- 09 WAVES -->
-
-<div class="topic-card">
-
-<div class="topic-number">
-09
-</div>
-
-<div class="topic-icon">
-🌊
-</div>
-
-<span class="status coming-status">
-COMING SOON
-</span>
-
-<h3>
-Waves
-</h3>
-
-<p>
-Wave properties and wave behaviour.
-</p>
-
-</div>
-
-
-<!-- 10 SOUND -->
-
-<div class="topic-card">
-
-<div class="topic-number">
-10
-</div>
-
-<div class="topic-icon">
-🔊
-</div>
-
-<span class="status coming-status">
-COMING SOON
-</span>
-
-<h3>
-Sound
-</h3>
-
-<p>
-Production, transmission and properties of sound.
-</p>
-
-</div>
-
-
-<!-- 11 LIGHT -->
-
-<div class="topic-card">
-
-<div class="topic-number">
-11
-</div>
-
-<div class="topic-icon">
-🔭
-</div>
-
-<span class="status coming-status">
-COMING SOON
-</span>
-
-<h3>
-Light
-</h3>
-
-<p>
-Reflection, refraction, lenses and optical systems.
-</p>
-
-</div>
-
-
-<!-- 12 ELECTROMAGNETIC SPECTRUM -->
-
-<div class="topic-card">
-
-<div class="topic-number">
-12
-</div>
-
-<div class="topic-icon">
-🌈
-</div>
-
-<span class="status coming-status">
-COMING SOON
-</span>
-
-<h3>
-Electromagnetic Spectrum
-</h3>
-
-<p>
-Properties and applications of electromagnetic radiation.
-</p>
-
-</div>
-
-
-<!-- 13 ELECTRICITY -->
-
-<div class="topic-card">
-
-<div class="topic-number">
-13
-</div>
-
-<div class="topic-icon">
-🔌
-</div>
-
-<span class="status coming-status">
-COMING SOON
-</span>
-
-<h3>
-Electricity
-</h3>
-
-<p>
-Current, potential difference, resistance and electrical circuits.
-</p>
-
-</div>
-
-
-<!-- 14 MAGNETISM -->
-
-<div class="topic-card">
-
-<div class="topic-number">
-14
-</div>
-
-<div class="topic-icon">
-🧭
-</div>
-
-<span class="status coming-status">
-COMING SOON
-</span>
-
-<h3>
-Magnetism & Electromagnetism
-</h3>
-
-<p>
-Magnetic fields, electromagnets, motors and electromagnetic induction.
-</p>
-
-</div>
-
-
-<!-- 15 NUCLEAR -->
-
-<div class="topic-card">
-
-<div class="topic-number">
-15
-</div>
-
-<div class="topic-icon">
-☢️
-</div>
-
-<span class="status coming-status">
-COMING SOON
-</span>
-
-<h3>
-Nuclear Physics
-</h3>
-
-<p>
-Atomic structure, radioactivity, radioactive decay and half-life.
-</p>
-
-</div>
-
-
-<!-- 16 SPACE -->
-
-<div class="topic-card">
-
-<div class="topic-number">
-16
-</div>
-
-<div class="topic-icon">
-🌍
-</div>
-
-<span class="status coming-status">
-COMING SOON
-</span>
-
-<h3>
-Space Physics
-</h3>
-
-<p>
-The Solar System, stars, galaxies and the Universe.
-</p>
-
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- FEATURES -->
-
-<section class="features" id="features">
-
-<div class="container">
-
-<div class="section-header">
-
-<h2>A Different Way to Learn Physics</h2>
-
-<p>
-PhysicsAI combines explanation, exploration and practice.
-</p>
-
-</div>
-
-
-<div class="feature-grid">
-
-
-<div class="feature">
-
-<div class="feature-icon">
-🧠
-</div>
-
-<h3>
-Understand
-</h3>
-
-<p>
-Build strong conceptual understanding through clear,
-step-by-step explanations.
-</p>
-
-</div>
-
-
-<div class="feature">
-
-<div class="feature-icon">
-🔬
-</div>
-
-<h3>
-Explore
-</h3>
-
-<p>
-See Physics in action through interactive models,
-visualisations and simulations.
-</p>
-
-</div>
-
-
-<div class="feature">
-
-<div class="feature-icon">
-🤖
-</div>
-
-<h3>
-Learn with AI
-</h3>
-
-<p>
-Discover how Artificial Intelligence can support learning,
-questioning, feedback and personalised understanding.
-</p>
-
-</div>
-
-
-<div class="feature">
-
-<div class="feature-icon">
-🎯
-</div>
-
-<h3>
-Practise
-</h3>
-
-<p>
-Test your understanding through guided questions
-and problem-solving activities.
-</p>
-
-</div>
-
-
-<div class="feature">
-
-<div class="feature-icon">
-🏆
-</div>
-
-<h3>
-Master
-</h3>
-
-<p>
-Prepare confidently for Cambridge O Level Physics
-with focused exam practice.
-</p>
-
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- CTA -->
-
-<section class="cta">
-
-<h2>
-Ready to Start Learning?
-</h2>
-
-<p>
-Begin your journey with our interactive Physics lessons.
-Explore Motion, Mass, Weight & Density, or Physical Quantities
-and Measurement Techniques.
-</p>
-
-<div class="cta-buttons">
-
-<a href="Motion.html" class="cta-button">
-Start Motion →
-</a>
-
-<a href="mass-weight-density.html" class="cta-button secondary-cta">
-Mass, Weight & Density →
-</a>
-
-<a href="physical-quantities.html" class="cta-button secondary-cta">
-Physical Quantities & Measurement →
-</a>
-
-</div>
+    </div>
 
 </section>
 
@@ -1375,18 +451,12 @@ Physical Quantities & Measurement →
 
 <footer>
 
-<strong>
-Physics with Mr Nabeel
-</strong>
+    <strong>PhysicsAI 5054</strong>
+    · Cambridge O Level Physics
 
-<p>
-PhysicsAI 5054 • Cambridge O Level Physics
-</p>
+    <br><br>
 
-<p>
-Exploring new ways to enhance teaching and learning through
-technology, innovation and AI.
-</p>
+    Interactive Learning Module
 
 </footer>
 
