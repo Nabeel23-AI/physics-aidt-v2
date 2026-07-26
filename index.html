@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -188,10 +187,6 @@ nav a:hover {
     object-fit: cover;
 }
 
-.avatar-placeholder {
-    font-size: 100px;
-}
-
 .avatar-card h3 {
     color: #173b8f;
     font-size: 26px;
@@ -226,7 +221,7 @@ section {
 
 .section-header p {
     color: #718096;
-    font-size: 17px;
+    font-size: 18px;
 }
 
 /* ABOUT */
@@ -237,15 +232,15 @@ section {
 
 .about-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 60px;
     align-items: center;
 }
 
 .about-text h2 {
-    font-size: 40px;
+    font-size: 42px;
     color: #172033;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .about-text h2 span {
@@ -268,81 +263,81 @@ section {
 
 .vision-box h3 {
     font-size: 28px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .vision-box p {
-    color: white;
-    opacity: 0.95;
-    font-size: 17px;
+    color: rgba(255,255,255,0.9);
 }
 
 /* PROGRESS */
 
 .progress-card {
+    max-width: 800px;
+    margin: 0 auto 60px;
     background: white;
-    padding: 28px;
-    border-radius: 18px;
-    border: 1px solid #e4eaf2;
-    margin-bottom: 45px;
-    box-shadow: 0 8px 30px rgba(40,70,110,0.05);
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid #e5eaf2;
 }
 
 .progress-info {
     display: flex;
     justify-content: space-between;
     margin-bottom: 12px;
-    font-weight: 600;
+    color: #506078;
 }
 
-.progress-info span {
-    color: #66758b;
+.progress-info strong {
+    color: #173b8f;
 }
 
 .progress-bar {
     height: 10px;
     background: #e8edf5;
-    border-radius: 20px;
+    border-radius: 10px;
     overflow: hidden;
 }
 
 .progress-fill {
+    width: 18.75%;
     height: 100%;
-    width: 13%;
     background: linear-gradient(90deg, #2575fc, #4cc9f0);
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 /* TOPIC GRID */
 
 .topic-grid {
+    max-width: 1200px;
+    margin: auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 22px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
 }
 
 .topic-card {
     background: white;
+    border: 1px solid #e3e8f0;
+    border-radius: 20px;
     padding: 30px;
-    border-radius: 18px;
-    border: 1px solid #e4eaf2;
     transition: 0.3s;
     position: relative;
 }
 
-.topic-card:hover {
+.topic-card.available:hover {
     transform: translateY(-6px);
-    box-shadow: 0 15px 40px rgba(37,117,252,0.12);
+    box-shadow: 0 15px 35px rgba(36,67,110,0.12);
 }
 
 .topic-card.available {
-    border: 2px solid #2575fc;
+    border-top: 4px solid #2575fc;
 }
 
 .topic-number {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 800;
-    color: #8b98aa;
+    color: #a0aec0;
     margin-bottom: 15px;
 }
 
@@ -351,35 +346,32 @@ section {
     margin-bottom: 15px;
 }
 
+.status {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+}
+
+.available-status {
+    color: #16845b;
+}
+
+.coming-status {
+    color: #a0aec0;
+}
+
 .topic-card h3 {
     font-size: 22px;
-    margin-bottom: 10px;
     color: #172033;
+    margin-bottom: 12px;
 }
 
 .topic-card p {
     color: #718096;
     font-size: 15px;
     margin-bottom: 20px;
-}
-
-.status {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 800;
-    padding: 6px 10px;
-    border-radius: 20px;
-    margin-bottom: 15px;
-}
-
-.available-status {
-    color: #087f5b;
-    background: #e6fcf5;
-}
-
-.coming-status {
-    color: #7c8798;
-    background: #f0f2f5;
 }
 
 .launch {
@@ -390,7 +382,7 @@ section {
 }
 
 .launch:hover {
-    text-decoration: underline;
+    color: #173b8f;
 }
 
 /* FEATURES */
@@ -401,31 +393,28 @@ section {
 
 .feature-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
 }
 
 .feature {
-    padding: 30px;
-    border-radius: 18px;
-    background: #f7faff;
-    border: 1px solid #e5edf8;
     text-align: center;
+    padding: 25px 15px;
 }
 
 .feature-icon {
-    font-size: 38px;
+    font-size: 42px;
     margin-bottom: 15px;
 }
 
 .feature h3 {
-    margin-bottom: 8px;
     color: #173b8f;
+    margin-bottom: 10px;
 }
 
 .feature p {
     color: #718096;
-    font-size: 15px;
+    font-size: 14px;
 }
 
 /* CTA */
@@ -434,17 +423,18 @@ section {
     background: linear-gradient(135deg, #173b8f, #2575fc);
     color: white;
     text-align: center;
+    padding: 80px 25px;
 }
 
 .cta h2 {
-    font-size: 38px;
+    font-size: 42px;
     margin-bottom: 15px;
 }
 
 .cta p {
-    max-width: 650px;
-    margin: auto auto 25px;
-    opacity: 0.9;
+    max-width: 700px;
+    margin: 0 auto 30px;
+    color: rgba(255,255,255,0.9);
 }
 
 .cta-buttons {
@@ -456,12 +446,16 @@ section {
 
 .cta-button {
     display: inline-block;
+    padding: 14px 25px;
     background: white;
-    color: #1d5bd1;
-    padding: 14px 28px;
+    color: #173b8f;
     border-radius: 10px;
-    font-weight: 800;
     text-decoration: none;
+    font-weight: 700;
+}
+
+.cta-button:hover {
+    background: #eef5ff;
 }
 
 .cta-button.secondary-cta {
@@ -489,6 +483,18 @@ footer p {
 }
 
 /* MOBILE */
+
+@media (max-width: 900px) {
+
+    .topic-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .feature-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
 
 @media (max-width: 800px) {
 
@@ -531,6 +537,18 @@ footer p {
     .progress-info {
         flex-direction: column;
         gap: 5px;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .topic-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
     }
 
 }
@@ -596,8 +614,8 @@ understanding of the physical world.
 Explore the 5054 Syllabus
 </a>
 
-<a href="mass-weight-density.html" class="btn secondary">
-Start Learning
+<a href="motion.html" class="btn secondary">
+Start Learning Motion
 </a>
 
 </div>
@@ -610,12 +628,6 @@ Start Learning
 <div class="avatar-card">
 
 <div class="avatar-container">
-
-<!-- 
-Replace "avatar.png" with the filename of your avatar.
-For example:
-<img src="nabeel-avatar.png" alt="Mr Nabeel">
--->
 
 <img src="avatar.png" alt="Mr Nabeel">
 
@@ -654,8 +666,8 @@ changing the way knowledge is shared.
 </p>
 
 <p>
-Our concern is simple: <strong>How can we find new and better
-ways to enhance teaching and learning?</strong>
+Our concern is simple:
+<strong>How can we find new and better ways to enhance teaching and learning?</strong>
 </p>
 
 <p>
@@ -736,7 +748,7 @@ Learn at your own pace. New interactive lessons will be added progressively.
 
 <span>Platform Development</span>
 
-<strong>2 lessons available</strong>
+<strong>3 lessons available</strong>
 
 </div>
 
@@ -752,7 +764,7 @@ Learn at your own pace. New interactive lessons will be added progressively.
 <div class="topic-grid">
 
 
-<!-- AVAILABLE: MASS, WEIGHT & DENSITY -->
+<!-- 01 MASS, WEIGHT & DENSITY -->
 
 <div class="topic-card available">
 
@@ -785,7 +797,7 @@ Launch Interactive Lesson →
 </div>
 
 
-<!-- AVAILABLE: PHYSICAL QUANTITIES & MEASUREMENT -->
+<!-- 02 PHYSICAL QUANTITIES & MEASUREMENT -->
 
 <div class="topic-card available">
 
@@ -818,9 +830,9 @@ Launch Interactive Lesson →
 </div>
 
 
-<!-- 03 MOTION -->
+<!-- 03 MOTION — NOW AVAILABLE -->
 
-<div class="topic-card">
+<div class="topic-card available">
 
 <div class="topic-number">
 03
@@ -830,8 +842,8 @@ Launch Interactive Lesson →
 🏃
 </div>
 
-<span class="status coming-status">
-COMING SOON
+<span class="status available-status">
+● AVAILABLE NOW
 </span>
 
 <h3>
@@ -839,9 +851,13 @@ Motion
 </h3>
 
 <p>
-Speed, velocity, acceleration and graphical descriptions
-of motion.
+Explore speed, velocity, acceleration and graphical
+descriptions of motion through interactive learning activities.
 </p>
+
+<a class="launch" href="motion.html">
+Launch Interactive Lesson →
+</a>
 
 </div>
 
@@ -1332,13 +1348,17 @@ Ready to Start Learning?
 
 <p>
 Begin your journey with our interactive Physics lessons.
-Explore Mass, Weight & Density or discover Physical Quantities
+Explore Motion, Mass, Weight & Density, or Physical Quantities
 and Measurement Techniques.
 </p>
 
 <div class="cta-buttons">
 
-<a href="mass-weight-density.html" class="cta-button">
+<a href="motion.html" class="cta-button">
+Start Motion →
+</a>
+
+<a href="mass-weight-density.html" class="cta-button secondary-cta">
 Mass, Weight & Density →
 </a>
 
@@ -1373,4 +1393,3 @@ technology, innovation and AI.
 
 </body>
 </html>
-```
