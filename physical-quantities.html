@@ -576,6 +576,41 @@ footer {
 
 }
 
+
+.measurement-result{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+margin-top:20px;
+}
+.measurement-result div{
+background:#eef8ff;
+padding:12px 18px;
+border-radius:10px;
+}
+.length-answer{
+background:#e9f8ef!important;
+color:#087f5b;
+}
+
+
+.image-card{
+    background:white;
+    border:1px solid #dce8f2;
+    border-radius:18px;
+    padding:25px;
+    margin:20px 0;
+}
+
+.image-card h3{
+    color:#1554a3;
+}
+
+.caption{
+    text-align:center;
+    color:#61758a;
+    font-size:15px;
+}
 </style>
 </head>
 
@@ -918,55 +953,56 @@ precision required.
 <div class="diagram">
 
 <div class="diagram-title">
-📏 Reading a Metre Rule
+📏 Interactive Metre Rule Challenge
 </div>
 
-<svg viewBox="0 0 900 180" width="100%">
+<p>
+Move the two blue markers to the ends of the object.
+Read the scale at X and Y, then calculate:
+</p>
 
-<rect x="50" y="65"
-width="800"
-height="70"
-rx="6"
-fill="#f2d27a"
-stroke="#9c7b2d"
-stroke-width="4"/>
+<div class="formula">
+Length = Reading at Y − Reading at X
+</div>
 
-<g stroke="#222">
+<svg id="metreSVG" viewBox="0 0 900 300" width="100%">
 
-<line x1="100" y1="65" x2="100" y2="115"/>
-<line x1="200" y1="65" x2="200" y2="115"/>
-<line x1="300" y1="65" x2="300" y2="115"/>
-<line x1="400" y1="65" x2="400" y2="115"/>
-<line x1="500" y1="65" x2="500" y2="115"/>
-<line x1="600" y1="65" x2="600" y2="115"/>
-<line x1="700" y1="65" x2="700" y2="115"/>
-<line x1="800" y1="65" x2="800" y2="115"/>
+<rect id="measuredObject" x="270" y="110" width="300" height="30" rx="5" fill="#e63946"/>
 
-</g>
+<rect x="80" y="160" width="700" height="55"
+fill="white" stroke="#163b63" stroke-width="2"/>
 
-<line x1="200" y1="35"
-x2="700" y2="35"
-stroke="#e45b5b"
-stroke-width="4"/>
+<g id="rulerScale"></g>
 
-<text x="450"
-y="25"
-text-anchor="middle"
-fill="#c44545"
-font-size="20">
+<line id="xMarker" x1="270" y1="80" x2="270" y2="230"
+stroke="#0878d1" stroke-width="3" stroke-dasharray="8"/>
 
-Length = 5.0 cm
+<text id="xLabel" x="270" y="65" text-anchor="middle"
+font-size="22" font-weight="bold" fill="#0878d1">X</text>
 
-</text>
+<line id="yMarker" x1="570" y1="80" x2="570" y2="230"
+stroke="#0878d1" stroke-width="3" stroke-dasharray="8"/>
+
+<text id="yLabel" x="570" y="65" text-anchor="middle"
+font-size="22" font-weight="bold" fill="#0878d1">Y</text>
 
 </svg>
 
-<p>
-Read the scale at eye level and record the measurement to an
-appropriate precision.
-</p>
+<div class="measurement-result">
+
+<div>Reading X = <strong><span id="readX">1.9</span> cm</strong></div>
+<div>Reading Y = <strong><span id="readY">4.9</span> cm</strong></div>
+<div class="length-answer">
+Object length = <strong><span id="objectLength">3.0</span> cm</strong>
+</div>
 
 </div>
+
+<button id="newMetreQuestion">
+Generate New Measurement
+</button>
+
+</div></div>
 
 </section>
 
@@ -1001,109 +1037,29 @@ The line of sight should be perpendicular to the scale.
 <div class="diagram">
 
 <div class="diagram-title">
-👁️ Correct and Incorrect Eye Positions
+👁️ Understanding Parallax Error
 </div>
 
-<svg viewBox="0 0 900 300" width="100%">
+<div class="image-card">
 
-<line x1="150"
-y1="220"
-x2="750"
-y2="220"
-stroke="#163b63"
-stroke-width="8"/>
+    <h3>Understanding Parallax Error</h3>
 
-<circle cx="450"
-cy="70"
-r="25"
-fill="#0878d1"/>
+    <p>
+        The position of the eye affects the reading of a scale.
+        To obtain an accurate measurement, the eye should be positioned
+        directly above the point being measured.
+    </p>
 
-<line x1="450"
-y1="95"
-x2="450"
-y2="220"
-stroke="#2e9d62"
-stroke-width="4"
-stroke-dasharray="10 8"/>
+    <img 
+        src="images/parallax_error_precise.svg" 
+        alt="Illustration of parallax error when reading a metre rule"
+        style="width:100%; max-width:1000px; display:block; margin:20px auto;"
+    >
 
-<text x="450"
-y="45"
-text-anchor="middle"
-fill="#2e9d62"
-font-size="22">
-
-CORRECT
-
-</text>
-
-<circle cx="180"
-cy="70"
-r="25"
-fill="#e45b5b"/>
-
-<line x1="205"
-y1="80"
-x2="450"
-y2="220"
-stroke="#e45b5b"
-stroke-width="4"
-stroke-dasharray="10 8"/>
-
-<text x="180"
-y="40"
-text-anchor="middle"
-fill="#c44545"
-font-size="20">
-
-WRONG
-
-</text>
-
-<circle cx="720"
-cy="100"
-r="25"
-fill="#e45b5b"/>
-
-<line x1="695"
-y1="110"
-x2="450"
-y2="220"
-stroke="#e45b5b"
-stroke-width="4"
-stroke-dasharray="10 8"/>
-
-<text x="720"
-y="150"
-text-anchor="middle"
-fill="#c44545"
-font-size="20">
-
-WRONG
-
-</text>
-
-</svg>
-
-</div>
-
-
-<div class="question">
-
-<strong>Question 2</strong>
-
-<p>
-Why should parallax error be avoided?
-</p>
-
-<button onclick="showAnswer('a2')">
-Show Answer
-</button>
-
-<div class="answer" id="a2">
-
-Parallax error can cause the scale reading to appear different
-depending on the observer's eye position, producing an inaccurate
-measurement.
+    <p class="caption">
+        The true endpoint is at 4.3 cm. Viewing the scale from different
+        positions can produce an apparent reading of 4.2 cm or 4.4 cm.
+    </p>
 
 </div>
 
@@ -2005,6 +1961,51 @@ function quiz(button, correct, resultID) {
         "#d94b4b";
 
     }
+
+}
+
+
+// Interactive metre rule
+const rulerScale = document.getElementById("rulerScale");
+
+if(rulerScale){
+
+for(let i=0;i<=60;i++){
+let x=100+i*10;
+let h=(i%10===0)?30:(i%5===0?20:12);
+rulerScale.innerHTML +=
+`<line x1="${x}" y1="215" x2="${x}" y2="${215-h}" stroke="#163b63"/>`;
+
+if(i%10===0){
+rulerScale.innerHTML +=
+`<text x="${x}" y="245" text-anchor="middle" font-size="14">${i/10}</text>`;
+}
+}
+
+let xReading=1.9;
+let yReading=4.9;
+
+function updateMetre(){
+document.getElementById("xMarker").setAttribute("x1",100+xReading*100);
+document.getElementById("xMarker").setAttribute("x2",100+xReading*100);
+document.getElementById("yMarker").setAttribute("x1",100+yReading*100);
+document.getElementById("yMarker").setAttribute("x2",100+yReading*100);
+document.getElementById("xLabel").setAttribute("x",100+xReading*100);
+document.getElementById("yLabel").setAttribute("x",100+yReading*100);
+document.getElementById("measuredObject").setAttribute("x",100+xReading*100);
+document.getElementById("measuredObject").setAttribute("width",(yReading-xReading)*100);
+document.getElementById("readX").innerHTML=xReading.toFixed(1);
+document.getElementById("readY").innerHTML=yReading.toFixed(1);
+document.getElementById("objectLength").innerHTML=(yReading-xReading).toFixed(1);
+}
+
+document.getElementById("newMetreQuestion").onclick=function(){
+xReading=Math.round((Math.random()*2+1)*10)/10;
+yReading=Math.round((xReading+Math.random()*2+1)*10)/10;
+updateMetre();
+}
+
+updateMetre();
 
 }
 
